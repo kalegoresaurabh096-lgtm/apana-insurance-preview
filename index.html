@@ -745,7 +745,7 @@ table.compare tbody td:nth-child(2){background:#f6f8ff}
         </tbody>
       </table></div>
       <div class="cta-line"><p>Not sure which fits? We'll compare both against your doctors and prescriptions.</p><button class="btn btn-amber" type="button" data-scroll-form>Get a free plan review</button></div>
-      <p class="byline">Reviewed by Christopher Apana, Florida license W197973, on <span class="ph">[date]</span>.</p>
+      <p class="byline">Reviewed by Christopher Apana, Florida license W197973.</p>
     </div>
   </section>
   <section class="band">
@@ -814,7 +814,7 @@ table.compare tbody td:nth-child(2){background:#f6f8ff}
       <div class="head">
         <p class="eyebrow">2027 questions</p>
         <h2>Straight answers, checked for this year.</h2>
-        <p class="byline">Reviewed by Christopher Apana, Florida license W197973, on <span class="ph">[date]</span>.</p>
+        <p class="byline">Reviewed by Christopher Apana, Florida license W197973.</p>
         <p><a href="#faq"><b>See all questions <span class="arrow">→</span></b></a></p>
       </div>
       <div class="faq" data-faq="home"></div>
@@ -827,7 +827,7 @@ table.compare tbody td:nth-child(2){background:#f6f8ff}
   <section class="page-head on-navy"><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / Guides / Turning 65</p>
     <h1>Turning 65? Here's how to start Medicare without missing a step.</h1>
-    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513. Reviewed <span class="ph">[date]</span>.</p>
+    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513.</p>
   </div></section>
   <section class="band"><div class="wrap article">
     <div class="article-main">
@@ -986,7 +986,7 @@ table.compare tbody td:nth-child(2){background:#f6f8ff}
   <section class="page-head on-navy"><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / Guides / Veterans</p>
     <h1>Medicare for veterans: how it fits with the benefits you earned.</h1>
-    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513. Reviewed <span class="ph">[date]</span>.</p>
+    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513.</p>
   </div></section>
   <section class="band"><div class="wrap article">
     <div class="article-main">
@@ -1033,7 +1033,7 @@ table.compare tbody td:nth-child(2){background:#f6f8ff}
   <section class="page-head on-navy"><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / FAQ</p>
     <h1>Medicare questions, answered for 2027.</h1>
-    <p class="byline">Reviewed by Christopher Apana, Florida license W197973, on <span class="ph">[date]</span>.</p>
+    <p class="byline">Reviewed by Christopher Apana, Florida license W197973.</p>
   </div></section>
   <section class="band"><div class="wrap stack-lg" style="max-width:900px">
     <div class="faq" data-faq="all"></div>
@@ -1077,7 +1077,7 @@ table.compare tbody td:nth-child(2){background:#f6f8ff}
   </div></section>
   <section class="band"><div class="wrap stack-lg">
     <div class="posts">
-      <article class="post"><span class="tag">Being updated for 2027</span><h3>Protect your Medicare by reviewing your Medicare Summary Notice</h3><p>What fraud, waste and abuse mean, how to read the notice, and what to do if you see a charge you don't recognize.</p><p class="byline">Reviewed by Christopher Apana on <span class="ph">[date]</span></p></article>
+      <article class="post"><span class="tag">Being updated for 2027</span><h3>Protect your Medicare by reviewing your Medicare Summary Notice</h3><p>What fraud, waste and abuse mean, how to read the notice, and what to do if you see a charge you don't recognize.</p><p class="byline">Reviewed by Christopher Apana</p></article>
       <article class="post"><span class="tag">Update or retire</span><h3>Fun facts you didn't know about Social Security</h3><p>First published February 2024. It will be brought up to date or folded into the Turning 65 guide.</p><p><a href="#turning-65"><b>Read the Turning 65 guide <span class="arrow">→</span></b></a></p></article>
       <article class="post"><span class="tag">Moving into a guide</span><h3>How Broward County residents can apply online for Medicaid</h3><p>The useful steps are moving into the Medicare and Medicaid guide.</p><p><a href="#medicare-and-medicaid"><b>Read the guide <span class="arrow">→</span></b></a></p></article>
     </div>
@@ -1100,7 +1100,7 @@ table.compare tbody td:nth-child(2){background:#f6f8ff}
   <section class="page-head on-navy"><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / Guides / <span id="g-crumb"></span></p>
     <h1 id="g-h1"></h1>
-    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513. Reviewed <span class="ph">[date]</span>.</p>
+    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513.</p>
   </div></section>
   <section class="band"><div class="wrap article">
     <div class="article-main" id="g-main"></div>
@@ -1141,7 +1141,6 @@ table.compare tbody td:nth-child(2){background:#f6f8ff}
       <p>Not connected with or endorsed by the U.S. government or the federal Medicare program. Apana Insurance is a licensed insurance agency in Florida, license L121927.</p>
     </div>
     <div class="legal"><span>© <span id="yr">2026</span> Apana Insurance. All rights reserved.</span><a href="#privacy">Privacy policy</a><a href="#terms">Terms</a><a href="#accessibility">Accessibility</a></div>
-    <p class="preview-note">Design preview for Apana Insurance. Forms are not connected yet, and items in <span class="ph">[brackets]</span> are waiting on details from Apana.</p>
   </div>
 </footer>
 
@@ -1273,7 +1272,7 @@ var FAQ=[
 $$("[data-faq]").forEach(function(el){
   var home=el.getAttribute("data-faq")==="home";
   el.innerHTML=FAQ.filter(function(f){return !home||f.home}).map(function(f,i){
-    return "<details"+(i===0?" open":"")+"><summary>"+f.q+"</summary><div class=\"a\"><p>"+f.a+"</p>"+(home?"":"<p class=\"byline\">Reviewed by Christopher Apana, Florida license W197973, on <span class=\"ph\">[date]</span>.</p>")+"</div></details>";
+    return "<details"+(i===0?" open":"")+"><summary>"+f.q+"</summary><div class=\"a\"><p>"+f.a+"</p>"+(home?"":"<p class=\"byline\">Reviewed by Christopher Apana, Florida license W197973.</p>")+"</div></details>";
   }).join("");
 });
 
@@ -1378,16 +1377,16 @@ var GUIDES={
     check:["List every prescription with dose and frequency","Note which pharmacy you use","Read the drug section of your Annual Notice of Change","Ask your plan about the Medicare Prescription Payment Plan","Book a free review during Annual Enrollment"]}
 };
 var LEGAL={
-  "accessibility":{t:"Accessibility",h:"Accessibility at Apana Insurance.",by:"Last reviewed "+PH("date")+".",sec:[
+  "accessibility":{t:"Accessibility",h:"Accessibility at Apana Insurance.",by:"",sec:[
     ["Our commitment",["We want everyone to be able to use this website, whatever their eyesight, hearing, mobility or device. The site is built to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA."]],
     ["What we've done",["Body text is 18 pixels and never smaller than 16.","Text and buttons meet a contrast ratio of at least 4.5 to 1.","Every page works with a keyboard alone and shows a clear focus outline.","Forms have written labels, and errors are explained in words.","Animation switches off when your device asks for reduced motion."]],
     ["If something doesn't work for you",["Call (561) 918-2999, Monday to Friday, 9AM to 5PM, or email info@apanainsurance.com. Tell us the page and what went wrong. We'll help you by phone straight away and fix the page."]]]},
-  "privacy":{t:"Privacy policy",h:"Privacy policy.",by:"Draft outline. Final wording comes from Apana's attorney. Effective "+PH("date")+".",sec:[
+  "privacy":{t:"Privacy policy",h:"Privacy policy.",by:"Draft outline. Final wording comes from Apana's attorney.",sec:[
     ["What we collect",["When you send a form we store what you typed, whether you ticked the consent box and the exact consent wording you saw, the date and time, the page you were on, the situation you chose, your IP address and how you reached the site."]],
     ["How we use it",["To call you back about Medicare, and to keep a record of your consent. Submitting a form does not enroll you in a plan."]],
     ["Who we share it with",["Your request goes to Apana's client system, "+PH("CRM name")+". Calls are logged by our call tracking provider. We do not sell your information. "+PH("Attorney to confirm full list")]],
     ["Your choices",["You can tell us to stop calling or texting at any time, and ask to see or delete what we hold about you. Call (561) 918-2999 or email info@apanainsurance.com."]]]},
-  "terms":{t:"Terms",h:"Terms of use.",by:"Draft outline. Final wording comes from Apana's attorney. Effective "+PH("date")+".",sec:[
+  "terms":{t:"Terms",h:"Terms of use.",by:"Draft outline. Final wording comes from Apana's attorney.",sec:[
     ["About this site",["This site is run by Apana Insurance, Inc., a licensed insurance agency in Florida. It gives general information about Medicare. It is not connected with or endorsed by the U.S. government or the federal Medicare program."]],
     ["Not advice for your situation",["Guides and articles explain how Medicare generally works. For advice about your own coverage, speak to a licensed agent."]],
     ["Full terms",[PH("Terms text from Apana's attorney")]]]}
