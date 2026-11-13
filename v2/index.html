@@ -1,0 +1,1422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Apana Insurance Website</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#090c2b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap">
+<style>
+/* Apana Insurance, design pass 2: "Clear sky".
+   Layout concept: a calm white page with a lot of air. Reading sits on white, grouped content sits on soft mist tiles,
+   and two deep-indigo panels (the Medicare year, the closing call) carry the big moments. Sky blue is used as light
+   (a glow behind objects, the open window, "today"); indigo is the one action colour. One type family at two optical sizes.
+   Divi mapping: .band = Section, .wrap = Row, the grids = column structures, .tile/.card = module presets.
+   Only the strip, situation chips, Medicare-year bar, seven-month window and mobile call bar need a Code module. */
+:root{
+  color-scheme:light;
+  /* Colour */
+  --ink:#0c0f33; --text:#272b49; --muted:#565b7b;
+  --white:#fff; --mist:#f4f5fa; --mist-2:#e9ebf4;
+  --line:rgba(12,15,51,.12); --line-2:rgba(12,15,51,.22); --control:#858aa8;
+  --indigo:#303890; --indigo-700:#252c7a; --indigo-900:#151950; --night:#090c2b;
+  --sky:#31b5ff; --sky-300:#8ad4ff; --sky-200:#bfe7ff; --sky-100:#e7f5ff;
+  --blue:#1f4fd8; --peri:#b4bcff;
+  --on-dark:#eef0ff; --on-dark-muted:#bcc2ee; --line-dark:rgba(255,255,255,.16);
+  --ph-bg:#fff4c9; --ph-line:#a87400;
+  --ok-bg:#e8f6ef; --ok-line:#9fd3bb; --ok-ink:#0e4a33;
+  --grad-text:linear-gradient(96deg,#303890 4%,#2456d8 56%,#1b6fe4 100%);
+  /* Type */
+  --font:"Inter","Inter Fallback",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  /* Shape and space */
+  --r-xs:10px; --r-sm:14px; --r-md:20px; --r-lg:28px; --r-xl:40px;
+  --wrap:1200px; --gut:24px; --sec:clamp(72px,9vw,136px); --head-h:76px;
+  /* Motion */
+  --ease:cubic-bezier(.22,.61,.36,1); --ease-out:cubic-bezier(.16,1,.3,1);
+  /* Depth */
+  --shadow-card:0 0 0 1px rgba(12,15,51,.05),0 2px 6px rgba(12,15,51,.04),0 30px 70px -30px rgba(27,33,102,.34);
+  --shadow-pop:0 0 0 1px rgba(12,15,51,.06),0 24px 60px -20px rgba(12,15,51,.3);
+  /* Icons (masks) */
+  --i-arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15.5M13 5.5l6.5 6.5-6.5 6.5'/%3E%3C/svg%3E");
+  --i-chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5.5 9l6.5 6.5L18.5 9'/%3E%3C/svg%3E");
+  --i-check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.6 4.6L19 7.4'/%3E%3C/svg%3E");
+  --i-plus:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+}
+@font-face{font-family:"Inter Fallback";src:local("Arial");size-adjust:107.1%;ascent-override:90.4%;descent-override:22.5%;line-gap-override:0%}
+
+/* ---------- Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(var(--head-h) + 28px + env(safe-area-inset-top,0px));interpolate-size:allow-keywords}
+body{margin:0;background:var(--white);color:var(--text);font-family:var(--font);font-size:1.125rem;font-weight:425;line-height:1.6;letter-spacing:-.011em;font-optical-sizing:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--night)}
+h1,h2,h3,h4{margin:0;color:var(--ink);font-weight:650;text-wrap:balance}
+h1{font-size:clamp(2.5rem,1.3rem + 4.4vw,4.75rem);line-height:1.03;letter-spacing:-.038em}
+h2{font-size:clamp(2rem,1.25rem + 2.8vw,3.5rem);line-height:1.07;letter-spacing:-.034em}
+h3{font-size:1.5rem;line-height:1.2;letter-spacing:-.022em;font-weight:600}
+p{margin:0;text-wrap:pretty}
+b,strong{font-weight:600}
+a{color:var(--blue);text-decoration-thickness:.07em;text-underline-offset:.22em;transition:color .2s var(--ease)}
+a:hover{color:var(--indigo)}
+img{max-width:100%;height:auto;display:block}
+button,input,select{font:inherit;letter-spacing:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.on-dark :focus-visible{outline-color:var(--sky-200)}
+::selection{background:rgba(49,181,255,.32)}
+
+.wrap{max-width:calc(var(--wrap) + 2*var(--gut));margin-inline:auto;padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
+.band{padding-block:var(--sec);overflow-x:clip}
+.band.mist{background:var(--mist)}
+.band.flush{padding-top:0}
+.on-dark{color:var(--on-dark)}
+.on-dark h1,.on-dark h2,.on-dark h3{color:#fff}
+.on-dark a:not(.btn){color:#fff}
+.stack{display:flex;flex-direction:column;gap:1rem}
+.stack-lg{display:flex;flex-direction:column;gap:clamp(40px,5vw,68px)}
+.head{display:flex;flex-direction:column;gap:18px;max-width:840px}
+.eyebrow{font-size:1.0625rem;font-weight:600;letter-spacing:-.012em;line-height:1.3;color:var(--blue)}
+.on-dark .eyebrow{color:var(--sky-300)}
+.lede{font-size:clamp(1.25rem,1.08rem + .55vw,1.5rem);line-height:1.45;letter-spacing:-.02em;color:var(--muted);max-width:60ch}
+.byline{font-size:1rem;color:var(--muted)}
+.on-dark .byline{color:var(--on-dark-muted)}
+.row{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.sr:focus{position:fixed;left:16px;top:calc(12px + env(safe-area-inset-top,0px));z-index:80;width:auto;height:auto;clip-path:none;padding:12px 18px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600}
+/* Bracketed items waiting on the client: kept deliberately visible */
+.ph{background:var(--ph-bg);border:1px dashed var(--ph-line);color:var(--ink);border-radius:7px;padding:.05em .4em;font-size:max(1rem,.94em);font-weight:500;letter-spacing:0;white-space:nowrap;-webkit-text-fill-color:currentColor}
+.on-dark .ph{background:rgba(255,214,102,.16);border-color:#ffd666;color:#fff}
+
+/* Arrow glyphs are kept in the text and drawn as a crisp icon */
+.arrow{display:inline-block;width:.92em;height:.92em;vertical-align:-.1em;overflow:hidden;text-indent:4em;white-space:nowrap;background:currentColor;-webkit-mask:var(--i-arrow) center/100% 100% no-repeat;mask:var(--i-arrow) center/100% 100% no-repeat;transition:transform .35s var(--ease-out)}
+a:hover .arrow,.btn:hover .arrow{transform:translateX(4px)}
+.link-cta{font-weight:600;text-decoration:none}
+.link-cta:hover{text-decoration:underline}
+
+/* ---------- Buttons ---------- */
+.btn{--bg:var(--indigo);--fg:#fff;display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:56px;padding:.55em 1.6em;border-radius:999px;border:0;background:var(--bg);color:var(--fg);font:600 1.125rem/1.15 var(--font);letter-spacing:-.014em;text-align:center;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color .25s var(--ease),color .25s var(--ease),box-shadow .25s var(--ease),transform .2s var(--ease)}
+.btn:hover{color:var(--fg)}
+.btn:active{transform:scale(.975)}
+.btn-primary:hover{--bg:var(--indigo-700);box-shadow:0 12px 26px -12px rgba(48,56,144,.75)}
+.btn-secondary{--bg:transparent;--fg:var(--indigo);box-shadow:inset 0 0 0 1.5px var(--indigo)}
+.btn-secondary:hover{--bg:rgba(48,56,144,.08)}
+.on-dark .btn-primary{--bg:#fff;--fg:var(--indigo-900)}
+.on-dark .btn-primary:hover{--bg:var(--sky-100);box-shadow:0 14px 34px -14px rgba(49,181,255,.7)}
+.on-dark .btn-secondary{--fg:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6)}
+.on-dark .btn-secondary:hover{--bg:rgba(255,255,255,.12)}
+.btn-sm{min-height:46px;font-size:1.0625rem;padding:.4em 1.3em}
+
+/* ---------- Enrollment strip ---------- */
+.strip{background:var(--night);color:var(--on-dark);font-size:1rem;line-height:1.4}
+.strip .wrap{display:flex;align-items:center;justify-content:center;gap:.35em .8em;flex-wrap:wrap;padding-block:12px;text-align:center}
+.strip a{color:var(--sky-300);font-weight:600;white-space:nowrap;text-decoration:none}
+.strip a:hover{color:#fff}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--sky);flex:none;animation:pulse 1.8s var(--ease) 3}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(49,181,255,.6)}100%{box-shadow:0 0 0 12px rgba(49,181,255,0)}}
+@media (max-width:600px){.pulse{display:none}.strip .wrap{padding-block:10px}}
+
+/* ---------- Header ---------- */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.8);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);view-transition-name:site-head}
+.site-head::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:var(--line);opacity:0;transition:opacity .3s var(--ease)}
+.site-head.scrolled::after,.site-head.menu-open::after{opacity:1}
+.site-head.menu-open{background:#fff}
+.site-head .wrap{display:flex;align-items:center;gap:6px;min-height:var(--head-h)}
+.brand{display:flex;align-items:center;flex:none;margin-right:auto;text-decoration:none}
+.brand img{height:34px;width:auto;mix-blend-mode:multiply}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a,.nav .navlink{font:500 1.0625rem/1.2 var(--font);letter-spacing:-.014em;color:var(--ink);text-decoration:none;padding:11px 15px;border-radius:999px;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:background-color .2s var(--ease),color .2s var(--ease)}
+.nav a:hover,.nav .navlink:hover,.nav .navlink[aria-expanded="true"]{background:rgba(12,15,51,.06);color:var(--ink)}
+.nav > a[aria-current="page"]{background:rgba(48,56,144,.09);color:var(--indigo);font-weight:600}
+.navlink [aria-hidden]{display:inline-block;width:.78em;height:.78em;overflow:hidden;text-indent:4em;white-space:nowrap;background:currentColor;opacity:.75;-webkit-mask:var(--i-chev) center/100% 100% no-repeat;mask:var(--i-chev) center/100% 100% no-repeat;transition:transform .35s var(--ease-out)}
+.navlink[aria-expanded="true"] [aria-hidden]{transform:rotate(180deg)}
+.dd{position:relative}
+.dd-panel{position:absolute;top:calc(100% + 16px);left:50%;margin-left:-330px;width:660px;background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-pop);padding:10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;transform-origin:50% 0;animation:pop .32s var(--ease-out) both}
+@keyframes pop{from{opacity:0;transform:translateY(-10px) scale(.985)}}
+.nav .dd-panel a{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px 18px;border-radius:19px;font-weight:600;font-size:1.0625rem;line-height:1.25;white-space:normal}
+.nav .dd-panel a span{font-size:1rem;font-weight:425;line-height:1.4;color:var(--muted);letter-spacing:-.008em}
+.nav .dd-panel a[aria-current="page"]{background:rgba(48,56,144,.09);color:var(--indigo)}
+.head-cta{display:flex;align-items:center;gap:18px;flex:none;margin-left:14px}
+.phone{display:flex;flex-direction:column;align-items:flex-end;gap:4px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.phone span{font:650 1.125rem/1.1 var(--font);letter-spacing:-.022em;transition:color .2s var(--ease)}
+.phone small{font:425 1rem/1.1 var(--font);letter-spacing:-.012em;color:var(--muted)}
+.phone:hover span{color:var(--blue)}
+.burger{display:none;position:relative;flex:none;width:48px;height:48px;margin-right:-10px;border:0;border-radius:50%;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color .2s}
+.burger:hover{background:rgba(12,15,51,.06)}
+.burger span::before,.burger span::after{content:"";position:absolute;left:14px;width:20px;height:2px;border-radius:2px;background:var(--ink);transition:transform .4s var(--ease-out),top .4s var(--ease-out)}
+.burger span::before{top:19px}.burger span::after{top:27px}
+.burger[aria-expanded="true"] span::before{top:23px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span::after{top:23px;transform:rotate(-45deg)}
+@media (max-width:1180px){.phone small{display:none}.head-cta{gap:14px}}
+@media (max-width:1080px){
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;height:calc(100vh - var(--head-h));height:calc(100dvh - var(--head-h));overflow-y:auto;overscroll-behavior:contain;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px max(var(--gut),env(safe-area-inset-right,0px)) calc(120px + env(safe-area-inset-bottom,0px)) max(var(--gut),env(safe-area-inset-left,0px))}
+  .nav.open{display:flex;animation:sheet .4s var(--ease-out) both}
+  @keyframes sheet{from{opacity:0;transform:translateY(-12px)}}
+  .nav > a,.nav .navlink{width:100%;justify-content:space-between;padding:20px 4px;border-radius:0;border-bottom:1px solid var(--line);font-size:1.5rem;font-weight:600;letter-spacing:-.028em}
+  .nav > a:hover,.nav .navlink:hover,.nav .navlink[aria-expanded="true"],.nav > a[aria-current="page"]{background:none}
+  .dd-panel{position:static;width:auto;margin:0;box-shadow:none;border-radius:0;padding:6px 0 10px;grid-template-columns:minmax(0,1fr);animation:none;border-bottom:1px solid var(--line)}
+  .nav .dd-panel a{padding:12px 4px;border-radius:12px;font-size:1.1875rem}
+  .burger{display:inline-flex}
+  .head-cta{margin-left:0}
+  .head-cta .btn{display:none}
+}
+@media (max-width:520px){:root{--head-h:64px;--gut:20px}.brand img{height:29px}.site-head .phone{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;isolation:isolate;overflow-x:clip;background:
+  radial-gradient(54% 62% at 94% 0%,rgba(49,181,255,.2),rgba(49,181,255,0) 72%),
+  radial-gradient(44% 52% at 0% 0%,rgba(48,56,144,.1),rgba(48,56,144,0) 72%),
+  linear-gradient(180deg,#f6f8ff 0%,#fff 70%)}
+.hero > .wrap{padding-block:clamp(40px,5.2vw,76px) clamp(28px,4vw,56px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,clamp(440px,41vw,520px));gap:clamp(32px,5vw,76px);align-items:start}
+.hero-copy{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.hero-copy .eyebrow{margin-bottom:clamp(14px,1.6vw,22px)}
+.hero h1{font-size:clamp(2.7rem,1.05rem + 5.1vw,5.25rem);line-height:1;letter-spacing:-.04em;margin-bottom:clamp(28px,3.2vw,44px)}
+.hero h1 em{display:block;font-style:normal;padding-bottom:.14em;margin-bottom:-.14em;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--indigo)}
+.chips{border:0;padding:0;margin:0 0 clamp(22px,2.4vw,30px);min-width:0}
+.chips legend{padding:0;margin-bottom:14px;font-weight:600;font-size:1.125rem;letter-spacing:-.016em;color:var(--ink)}
+.chip-row{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative;display:inline-flex}
+.chip input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--control);color:var(--ink);font-weight:500;font-size:1.0625rem;letter-spacing:-.014em;transition:background-color .3s var(--ease),color .3s var(--ease),box-shadow .3s var(--ease)}
+.chip input:hover+span{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.chip input:checked+span{background:var(--indigo);color:#fff;box-shadow:inset 0 0 0 1px var(--indigo),0 10px 22px -12px rgba(48,56,144,.8)}
+.chip input:focus-visible+span{outline:3px solid var(--blue);outline-offset:3px}
+.swap{font-size:clamp(1.3rem,1.08rem + .75vw,1.625rem);line-height:1.3;font-weight:550;letter-spacing:-.026em;color:var(--ink);min-height:2.6em;max-width:21em;margin-bottom:8px}
+.swap.is-changing{animation:swap .55s var(--ease-out)}
+@keyframes swap{from{opacity:0;transform:translateY(10px);filter:blur(5px)}}
+.trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(40px,5vw,72px);border-top:1px solid var(--line)}
+.trust div{display:flex;flex-direction:column;gap:4px;min-width:0;padding:26px 24px 0 0;font-size:1.0625rem;line-height:1.45;color:var(--muted)}
+.trust div+div{padding-left:24px;border-left:1px solid var(--line)}
+.trust b{font-weight:650;font-size:1.3125rem;line-height:1.2;letter-spacing:-.026em;color:var(--ink)}
+@media (max-width:1099px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .hero [data-form]{max-width:640px}
+}
+@media (max-width:860px){
+  .trust{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .trust div{padding:20px 16px 20px 0}
+  .trust div:nth-child(odd){padding-left:0;border-left:0}
+  .trust div:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
+  .trust div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (min-width:1100px) and (min-height:800px){.hero-copy{position:sticky;top:calc(var(--head-h) + 36px + env(safe-area-inset-top,0px))}}
+
+/* ---------- Forms ---------- */
+[data-form]{position:relative;min-width:0}
+.hero [data-form]::before{content:"";position:absolute;z-index:-1;right:-24%;top:-15%;width:92%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(49,181,255,.4),rgba(49,181,255,0));pointer-events:none}
+.form{position:relative;display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-card);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:20px;min-width:0;color:var(--text)}
+.card-head{display:flex;flex-direction:column;gap:6px}
+.card h2{font-size:clamp(1.6rem,1.35rem + .9vw,1.875rem);line-height:1.12;letter-spacing:-.032em}
+.card .sub{font-size:1.0625rem;color:var(--muted)}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 14px}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-weight:600;font-size:1rem;line-height:1.3;letter-spacing:-.01em;color:var(--ink)}
+.field input,.field select{font:425 1.125rem/1.2 var(--font);letter-spacing:-.011em;color:var(--ink);min-height:56px;width:100%;padding:0 16px;border:1px solid var(--control);border-radius:var(--r-sm);background-color:#fff;-webkit-appearance:none;appearance:none;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.field select{padding-right:46px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c0f33' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5.5 9l6.5 6.5L18.5 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:18px;cursor:pointer;text-overflow:ellipsis}
+.field input:hover,.field select:hover{border-color:var(--ink)}
+.field input:focus,.field select:focus{outline:3px solid var(--blue);outline-offset:2px;border-color:var(--blue)}
+.consent{display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;align-items:start;font-size:1rem;line-height:1.5;color:var(--text);cursor:pointer}
+.consent input,.check input{-webkit-appearance:none;appearance:none;flex:none;width:28px;height:28px;margin:0;border:1px solid var(--control);border-radius:9px;background:#fff;display:grid;place-content:center;cursor:pointer;transition:background-color .25s var(--ease),border-color .25s var(--ease)}
+.consent input::after,.check input::after{content:"";width:17px;height:17px;background:#fff;-webkit-mask:var(--i-check) center/100% 100% no-repeat;mask:var(--i-check) center/100% 100% no-repeat;transform:scale(0);transition:transform .35s var(--ease-out)}
+.consent input:hover,.check input:hover{border-color:var(--ink)}
+.consent input:checked,.check input:checked{background:var(--indigo);border-color:var(--indigo)}
+.consent input:checked::after,.check input:checked::after{transform:scale(1)}
+.fine{font-size:1rem;line-height:1.55;color:var(--text)}
+.fine.small{color:var(--muted)}
+.card .btn{width:100%;min-height:60px}
+.legal-note{display:flex;flex-direction:column;gap:10px;padding-inline:clamp(2px,1vw,12px)}
+.form-done{background:var(--ph-bg);border:1px solid #e3c768;color:var(--ink);border-radius:var(--r-sm);padding:14px 18px;font-size:1rem;line-height:1.5}
+.thanks{display:flex;flex-direction:column;gap:8px;background:var(--ok-bg);border:1px solid var(--ok-line);color:var(--ok-ink);border-radius:var(--r-md);padding:24px}
+.thanks h3{color:var(--ok-ink);font-size:1.5rem;font-weight:650}
+@media (max-width:440px){.fields{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Tiles: guides ---------- */
+.guides{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.guide{position:relative;display:flex;flex-direction:column;gap:10px;min-height:348px;min-width:0;padding:clamp(24px,2.6vw,36px);border-radius:var(--r-lg);background:var(--mist);color:var(--text);text-decoration:none;overflow-wrap:break-word;transition:background-color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease-out)}
+.guide:hover{background:#fff;color:var(--text);box-shadow:var(--shadow-card);transform:translateY(-4px)}
+.ico{flex:none;width:56px;height:56px;border-radius:17px;background:#fff;color:var(--indigo);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(12,15,51,.06);transition:background-color .4s var(--ease),color .4s var(--ease)}
+.guide .ico{margin-bottom:clamp(34px,4vw,56px)}
+.ico svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.guide:hover .ico{background:var(--indigo);color:#fff}
+.guide .who{font-size:1rem;font-weight:600;line-height:1.3;color:var(--muted)}
+.guide h3{font-size:clamp(1.6rem,1.35rem + .85vw,1.9375rem);font-weight:650;line-height:1.1;letter-spacing:-.034em}
+.guide .go{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:22px;font-weight:600;color:var(--blue)}
+.guide .go .arrow{flex:none;width:44px;height:44px;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23303890' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12h15M13 5.5l6.5 6.5-6.5 6.5'/%3E%3C/svg%3E") center/19px no-repeat;-webkit-mask:none;mask:none;box-shadow:0 1px 2px rgba(12,15,51,.06);transition:background-color .4s var(--ease),transform .4s var(--ease-out)}
+.guide:hover .go .arrow{transform:none;background-color:var(--indigo);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12h15M13 5.5l6.5 6.5-6.5 6.5'/%3E%3C/svg%3E")}
+@media (max-width:980px){.guides{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.guides{grid-template-columns:minmax(0,1fr);gap:14px}.guide{min-height:0}}
+
+/* ---------- Deep-indigo panels (the Medicare year, the closing call) ---------- */
+.band.dark{padding-block:0 var(--sec);padding-inline:max(12px,env(safe-area-inset-left,0px)) max(12px,env(safe-area-inset-right,0px))}
+.band.dark > .wrap{position:relative;isolation:isolate;overflow:hidden;max-width:1376px;padding:clamp(48px,7vw,112px) clamp(22px,6.4vw,100px);border-radius:var(--r-xl);background:
+  radial-gradient(60% 80% at 100% 0%,rgba(49,181,255,.3),rgba(49,181,255,0) 68%),
+  radial-gradient(50% 70% at 0% 100%,rgba(77,88,208,.34),rgba(77,88,208,0) 70%),
+  linear-gradient(155deg,#0a0d30 0%,#151a56 58%,#1f2a85 100%)}
+.year{display:flex;flex-direction:column;gap:clamp(28px,3.6vw,44px)}
+.year-now{font-size:clamp(1.45rem,1.1rem + 1.4vw,2.25rem);line-height:1.2;font-weight:600;letter-spacing:-.032em;color:#fff;max-width:25em}
+.year-now b{color:var(--sky-300)}
+.yearbar{position:relative;padding-top:56px}
+.months{display:grid;grid-template-columns:repeat(12,minmax(0,1fr))}
+.months div{height:108px;display:flex;align-items:flex-end;justify-content:center;font-size:1rem;font-weight:500;line-height:1;color:var(--on-dark-muted);border-left:1px solid var(--line-dark);transition:color .3s}
+.months div:last-child{border-right:1px solid var(--line-dark)}
+.months div.now{color:#fff;font-weight:650}
+.win{position:absolute;top:56px;height:52px;border-radius:26px;display:flex;align-items:center;padding:0 14px 0 18px;font-size:1rem;font-weight:600;letter-spacing:-.012em;white-space:nowrap;overflow:hidden;container-type:inline-size;color:var(--night);transform-origin:0 50%}
+.win.oep{background:var(--peri)}
+.win.aep{background:linear-gradient(90deg,#31b5ff,#8ad4ff);box-shadow:0 12px 40px -8px rgba(49,181,255,.7)}
+@container (max-width:182px){.win.oep span{display:none}}
+@container (max-width:168px){.win.aep span{display:none}}
+.today{position:absolute;top:0;height:56px;width:2px;margin-left:-1px;border-radius:2px;background:#fff;z-index:2}
+.today::after{content:"";position:absolute;left:50%;bottom:-7px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px #10154a}
+.today span{position:absolute;top:0;left:50%;transform:translateX(-50%);padding:6px 14px;border-radius:999px;background:#fff;color:var(--night);font-size:1rem;font-weight:650;line-height:1.25;letter-spacing:-.012em;white-space:nowrap;box-shadow:0 8px 24px -8px rgba(0,0,0,.5)}
+.today.edge-r span{left:auto;right:-10px;transform:none}
+.today.edge-l span{left:-10px;transform:none}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,52px)}
+.legend div{--key:#fff;display:flex;flex-direction:column;gap:8px;padding-top:22px;border-top:1px solid var(--line-dark);font-size:1.0625rem;line-height:1.55;color:var(--on-dark-muted)}
+.legend div::before{content:"";width:30px;height:8px;border-radius:8px;background:var(--key);margin-bottom:8px}
+.legend b{font-size:1.3125rem;font-weight:600;line-height:1.2;letter-spacing:-.024em;color:#fff}
+.legend .l-oep{--key:var(--peri)}.legend .l-aep{--key:var(--sky)}
+.legend .l-iep::before{background:none;box-shadow:inset 0 0 0 2px #fff}
+@media (max-width:820px){.legend{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.months div{height:104px}.months div i{display:none}.band.dark > .wrap{border-radius:var(--r-lg)}}
+.months div i{font-style:normal}
+
+/* ---------- Compare table ---------- */
+.tablewrap{min-width:0}
+.sheet{background:#fff;border-radius:var(--r-lg);padding:clamp(8px,2vw,20px) clamp(20px,3.4vw,44px)}
+table.compare{border-collapse:collapse;width:100%;font-size:1.125rem}
+table.compare th,table.compare td{text-align:left;vertical-align:top;padding:24px 28px 24px 0}
+table.compare th:last-child,table.compare td:last-child{padding-right:0}
+table.compare thead th{vertical-align:bottom;padding-top:22px;font-size:clamp(1.375rem,1.1rem + .9vw,1.75rem);font-weight:650;line-height:1.15;letter-spacing:-.03em;color:var(--ink)}
+table.compare thead th span:not(.sr){display:block;margin-top:6px;font-size:1rem;font-weight:425;line-height:1.4;letter-spacing:-.008em;color:var(--muted)}
+table.compare tbody th{width:22%;font-weight:600;color:var(--ink)}
+table.compare tbody tr{border-top:1px solid var(--line)}
+.cta-line{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;background:#fff;border-radius:var(--r-lg);padding:clamp(22px,2.8vw,32px) clamp(22px,3.4vw,44px)}
+.band:not(.mist) .cta-line{background:var(--mist)}
+.cta-line p{font-size:clamp(1.25rem,1.1rem + .5vw,1.5rem);font-weight:600;line-height:1.3;letter-spacing:-.026em;color:var(--ink);max-width:34ch}
+@media (max-width:760px){
+  table.compare,table.compare thead,table.compare tbody,table.compare tr,table.compare th,table.compare td{display:block}
+  table.compare thead tr{display:flex;flex-direction:column;gap:14px;padding-block:18px 22px}
+  table.compare thead th{padding:0}
+  table.compare thead th:first-child{display:none}
+  table.compare tbody tr{padding-block:22px}
+  table.compare tbody th{width:auto;padding:0 0 6px;font-size:1.3125rem;letter-spacing:-.024em}
+  table.compare td{padding:8px 0 0}
+  table.compare td::before{content:attr(data-label);display:block;font-size:1rem;font-weight:600;color:var(--indigo)}
+}
+
+/* ---------- Steps ---------- */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,60px);counter-reset:s}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:12px;min-width:0;padding-top:26px;border-top:1px solid var(--line-2)}
+.steps li::before{content:counter(s);align-self:flex-start;margin-bottom:clamp(18px,2.6vw,36px);font-size:clamp(3.5rem,2.7rem + 2.8vw,5rem);font-weight:600;line-height:.92;letter-spacing:-.05em;font-variant-numeric:tabular-nums;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--indigo)}
+.steps h3{font-size:clamp(1.375rem,1.25rem + .5vw,1.625rem);letter-spacing:-.028em}
+.steps.col{grid-template-columns:minmax(0,1fr);gap:0}
+.steps.col li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:4px 12px;padding-block:24px;border-top:1px solid var(--line)}
+.steps.col li:last-child{border-bottom:1px solid var(--line)}
+.steps.col li::before{grid-row:1 / span 2;margin:0;font-size:2.75rem;line-height:1}
+.steps.col h3{font-size:1.375rem}
+@media (max-width:820px){.steps{grid-template-columns:minmax(0,1fr);gap:36px}.steps li::before{margin-bottom:14px}}
+
+/* ---------- Founder and portrait ---------- */
+.split{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(32px,6vw,96px);align-items:center}
+.split.flip{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)}
+@media (max-width:900px){.split,.split.flip{grid-template-columns:minmax(0,1fr)}}
+.portrait{position:relative;isolation:isolate;margin:0;width:100%;max-width:440px;justify-self:center}
+.portrait::before{content:"";position:absolute;z-index:-1;inset:-16% -20% -10% -14%;border-radius:50%;background:radial-gradient(closest-side,rgba(49,181,255,.34),rgba(49,181,255,0))}
+.portrait img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-xl);box-shadow:0 0 0 1px rgba(12,15,51,.06),0 40px 80px -40px rgba(27,33,102,.5)}
+.portrait figcaption{position:absolute;left:14px;bottom:14px;display:flex;flex-direction:column;gap:1px;padding:11px 18px 12px;border-radius:18px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);font-size:1rem;line-height:1.35;color:var(--text)}
+.portrait figcaption b{font-size:1.125rem;font-weight:650;letter-spacing:-.02em;color:var(--ink)}
+.founder-copy{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.quote{font-size:clamp(1.75rem,1.2rem + 2.2vw,2.875rem);font-weight:600;line-height:1.14;letter-spacing:-.036em;color:var(--ink);text-wrap:balance;text-indent:-.42em}
+.sig{display:flex;flex-direction:column;gap:2px;font-size:1rem;color:var(--muted)}
+.sig b{font-size:1.25rem;font-weight:650;letter-spacing:-.022em;color:var(--ink)}
+
+/* ---------- Reviews ---------- */
+.reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.review{display:flex;flex-direction:column;gap:28px;margin:0;min-width:0;padding:clamp(26px,2.8vw,40px);border-radius:var(--r-lg);background:var(--mist);overflow-wrap:break-word}
+.review blockquote{margin:0;font-size:clamp(1.1875rem,1.1rem + .35vw,1.375rem);font-weight:500;line-height:1.45;letter-spacing:-.022em;color:var(--ink);text-indent:-.4em}
+.review figcaption{margin-top:auto;font-size:1rem;color:var(--muted)}
+@media (max-width:900px){.reviews{grid-template-columns:minmax(0,1fr);gap:14px}}
+
+/* ---------- Two big tiles ---------- */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.panel{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:16px;min-width:0;min-height:clamp(340px,34vw,440px);padding:clamp(28px,4.2vw,56px);border-radius:var(--r-xl);overflow-wrap:break-word}
+.panel.light{background:var(--mist)}
+.band.mist .panel.light{background:#fff}
+.panel.night{background:
+  radial-gradient(70% 90% at 100% 0%,rgba(49,181,255,.34),rgba(49,181,255,0) 66%),
+  linear-gradient(150deg,#0b0e33 0%,#1a2068 62%,#243090 100%)}
+.panel h3{font-size:clamp(1.75rem,1.3rem + 1.7vw,2.625rem);font-weight:650;line-height:1.08;letter-spacing:-.036em;max-width:15em}
+.panel p:not(.eyebrow){font-size:clamp(1.125rem,1.06rem + .25vw,1.25rem);max-width:34em}
+.panel.night p:not(.eyebrow){color:var(--on-dark)}
+.panel .btn{margin-top:auto}
+.panel > p:last-of-type{margin-bottom:18px}
+@media (max-width:820px){.duo{grid-template-columns:minmax(0,1fr);gap:14px}.panel{min-height:0;border-radius:var(--r-lg)}}
+
+/* ---------- FAQ ---------- */
+.cols2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(32px,6vw,96px);align-items:start}
+.cols2.wide-left{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)}
+@media (max-width:980px){.cols2,.cols2.wide-left{grid-template-columns:minmax(0,1fr)}}
+@media (min-width:981px){.cols2 > .head.pin{position:sticky;top:calc(var(--head-h) + 40px)}}
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line-2)}
+.faq details{border-bottom:1px solid var(--line-2)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 2px;font-size:clamp(1.25rem,1.15rem + .4vw,1.4375rem);font-weight:600;line-height:1.28;letter-spacing:-.026em;color:var(--ink);transition:color .2s var(--ease);-webkit-tap-highlight-color:transparent}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:40px;height:40px;border-radius:50%;background:var(--mist) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c0f33' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 5.5v13M5.5 12h13'/%3E%3C/svg%3E") center/18px no-repeat;transition:transform .45s var(--ease-out),background-color .3s var(--ease)}
+.band.mist .faq summary::after{background-color:#fff}
+.faq summary:hover{color:var(--blue)}
+.faq summary:hover::after{background-color:var(--mist-2)}
+.faq details[open] summary::after{transform:rotate(135deg)}
+.faq .a{display:flex;flex-direction:column;gap:10px;max-width:64ch;padding:0 2px 30px}
+.faq details::details-content{block-size:0;overflow:clip;transition:block-size .45s var(--ease),content-visibility .45s allow-discrete}
+.faq details[open]::details-content{block-size:auto}
+
+/* ---------- Closing call ---------- */
+.closing{padding-block:0 clamp(40px,5vw,72px);background:var(--mist)}
+.closing.band.dark{padding-top:clamp(40px,5vw,72px)}
+.closing > .wrap{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
+.closing h2{max-width:17em;font-size:clamp(1.75rem,1.2rem + 2vw,2.75rem);letter-spacing:-.034em}
+.bigphone{font-size:clamp(2.6rem,1rem + 7.4vw,6.75rem);font-weight:650;line-height:1.02;letter-spacing:-.05em;white-space:nowrap;text-decoration:none;font-variant-numeric:tabular-nums;padding-bottom:.06em;background:linear-gradient(96deg,#fff 20%,var(--sky-300) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff;transition:filter .3s var(--ease)}
+.bigphone:hover{filter:brightness(1.12)}
+.closing .row{justify-content:center;margin-top:8px;color:var(--on-dark)}
+
+/* ---------- Footer ---------- */
+.foot{background:var(--mist);color:var(--text);font-size:1.0625rem;padding-block:clamp(40px,5vw,72px) 44px}
+.foot a{color:var(--text);text-decoration:none}
+.foot a:hover{color:var(--blue);text-decoration:underline}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:clamp(28px,4vw,56px)}
+.foot h4{font-size:1rem;font-weight:650;letter-spacing:-.01em;color:var(--ink);margin-bottom:16px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.logo-chip{display:inline-flex;margin-bottom:6px}
+.logo-chip img{height:34px;width:auto;mix-blend-mode:multiply}
+.disclaimer{margin-top:clamp(36px,4vw,56px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--line-2);display:flex;flex-direction:column;gap:12px;font-size:1rem;line-height:1.6;color:var(--text)}
+.disclaimer p{max-width:104ch}
+.disclaimer b{color:var(--ink)}
+.legal{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 24px;font-size:1rem;color:var(--muted)}
+.legal a{color:var(--muted)}
+@media (max-width:900px){.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-grid > :first-child{grid-column:1/-1}}
+@media (max-width:480px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Mobile call bar ---------- */
+.callbar{display:none}
+@media (max-width:767px){
+  .callbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:rgba(255,255,255,.84);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);box-shadow:0 -1px 0 var(--line);transition:transform .4s var(--ease-out)}
+  .callbar .btn{min-height:54px;font-size:1.0625rem;padding:.3em .6em}
+  .callbar.kb{transform:translateY(110%)}
+  .foot{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+}
+
+/* ---------- Inner pages: page head ---------- */
+.page-head{background:
+  radial-gradient(50% 90% at 96% 0%,rgba(49,181,255,.2),rgba(49,181,255,0) 72%),
+  radial-gradient(40% 80% at 0% 0%,rgba(48,56,144,.1),rgba(48,56,144,0) 72%),
+  linear-gradient(180deg,#f6f8ff 0%,#fff 100%)}
+.page-head .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(18px,2vw,26px);padding-block:clamp(40px,5.5vw,84px) clamp(8px,1.5vw,20px)}
+.page-head h1{max-width:19ch}
+.page-head h1.mission{max-width:13ch;font-size:clamp(2.8rem,1.2rem + 6.2vw,6rem);line-height:.99;letter-spacing:-.048em}
+.page-head .lede{color:var(--text)}
+.crumbs{font-size:1rem;color:var(--muted)}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--blue);text-decoration:underline}
+.page-head + .band{padding-top:clamp(40px,5vw,72px)}
+
+/* ---------- Guide and article layout ---------- */
+.article{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,408px);gap:clamp(32px,5vw,72px);align-items:start}
+.article-main{display:flex;flex-direction:column;gap:clamp(48px,6vw,80px);min-width:0}
+.article-main > section{display:flex;flex-direction:column;gap:20px;scroll-margin-top:calc(var(--head-h) + 32px + env(safe-area-inset-top,0px))}
+.article-main h2{font-size:clamp(1.75rem,1.4rem + 1.4vw,2.5rem);letter-spacing:-.034em}
+.article-main p,.article-main li{max-width:66ch}
+.article-main > .lede{color:var(--text);max-width:62ch}
+.aside,.cols2 > [data-form]{position:sticky;top:min(calc(var(--head-h) + 28px + env(safe-area-inset-top,0px)),calc(100vh - var(--aside-h,0px) - 24px));min-width:0}
+@media (max-width:1020px){.article{grid-template-columns:minmax(0,1fr)}.aside{position:static;max-width:640px}}
+@media (max-width:980px){.cols2 > [data-form]{position:static;max-width:640px}}
+.jump{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.jump span{width:100%;margin-bottom:4px;font-size:1rem;font-weight:600;color:var(--muted)}
+.jump button{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:var(--mist);color:var(--ink);font-size:1rem;font-weight:500;letter-spacing:-.01em;cursor:pointer;transition:background-color .25s var(--ease),color .25s var(--ease)}
+.jump button:hover{background:var(--indigo);color:#fff}
+
+.window-tool{display:flex;flex-direction:column;gap:22px;padding:clamp(20px,3vw,32px);border-radius:var(--r-lg);background:var(--mist)}
+.window-tool .field{max-width:320px}
+.iep{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.iep div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;min-height:84px;padding:12px 2px;border-radius:var(--r-sm);background:#fff;text-align:center;font-size:1rem;line-height:1.15;color:var(--muted)}
+.iep b{font-size:1.125rem;font-weight:650;letter-spacing:-.02em;color:var(--ink)}
+.iep .bd{background:var(--indigo);color:#fff;box-shadow:0 14px 28px -14px rgba(48,56,144,.9)}
+.iep .bd b{color:#fff}
+.iep-out{font-size:1.1875rem;line-height:1.5;color:var(--ink)}
+@media (max-width:560px){.iep{gap:4px}.iep div{font-size:1rem;padding:10px 0;border-radius:11px}.iep b{font-size:1rem}}
+
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:14px}
+.cards2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.cost{container-type:inline-size;display:flex;flex-direction:column;gap:8px;min-width:0;padding:clamp(22px,2.4vw,28px);border-radius:var(--r-md);background:var(--mist);overflow-wrap:break-word}
+.cost .part{align-self:flex-start;max-width:100%;margin-bottom:6px;font-size:clamp(2rem,1.6rem + 1.4vw,2.625rem);font-weight:650;line-height:1;letter-spacing:-.045em;font-variant-numeric:tabular-nums;padding-bottom:.08em;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--indigo);overflow-wrap:anywhere}
+.cost .part.word{font-size:clamp(1.25rem,10.4cqi,1.625rem);line-height:1.12;letter-spacing:-.034em}
+.cost > b{font-size:1.125rem;font-weight:600;line-height:1.3;letter-spacing:-.014em;color:var(--ink)}
+.cost p{font-size:1.0625rem;line-height:1.55}
+.pen{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;gap:10px;min-width:0;padding:clamp(24px,3vw,34px);border-radius:var(--r-lg);background:
+  radial-gradient(80% 90% at 100% 0%,rgba(49,181,255,.3),rgba(49,181,255,0) 66%),
+  linear-gradient(150deg,#0b0e33 0%,#1a2068 70%,#243090 100%);overflow-wrap:break-word}
+.pen .num{align-self:flex-start;margin-bottom:8px;font-size:clamp(3.75rem,3rem + 3vw,5.25rem);font-weight:650;line-height:.95;letter-spacing:-.055em;font-variant-numeric:tabular-nums;padding-bottom:.06em;background:linear-gradient(96deg,#fff 10%,var(--sky-300) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff}
+.pen h3{font-size:1.375rem}
+.pen p{font-size:1.0625rem;color:var(--on-dark)}
+@media (max-width:640px){.cards2{grid-template-columns:minmax(0,1fr)}}
+.ways{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line-2)}
+.ways li{display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:6px 32px;padding:22px 0;border-bottom:1px solid var(--line-2)}
+.ways b{font-size:1.1875rem;font-weight:600;line-height:1.3;letter-spacing:-.02em;color:var(--ink)}
+@media (max-width:680px){.ways li{grid-template-columns:minmax(0,1fr)}}
+.check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line-2)}
+.check li{border-bottom:1px solid var(--line-2)}
+.check label{display:grid;grid-template-columns:28px minmax(0,1fr);gap:16px;align-items:center;padding:17px 2px;font-size:1.125rem;line-height:1.4;color:var(--ink);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.check label span{transition:color .3s var(--ease)}
+.check input:checked+span{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.06em}
+.bullets{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.bullets li{position:relative;padding-left:1.5em}
+.bullets li::before{content:"";position:absolute;left:.25em;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--indigo)}
+
+/* ---------- About ---------- */
+.principles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(28px,5vw,80px)}
+.principles div{display:flex;flex-direction:column;gap:10px;padding:clamp(26px,3vw,38px) 0;border-top:1px solid var(--line-2)}
+.principles h3{font-size:clamp(1.375rem,1.2rem + .7vw,1.75rem);font-weight:650;letter-spacing:-.03em;line-height:1.15}
+.principles p{color:var(--muted);font-size:1.1875rem}
+@media (max-width:760px){.principles{grid-template-columns:minmax(0,1fr)}}
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.member{display:flex;flex-direction:column;gap:6px;min-width:0;font-size:1rem;line-height:1.45;color:var(--muted);overflow-wrap:break-word}
+.member img,.member .photo{margin-bottom:12px}
+.member img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--r-lg);box-shadow:0 0 0 1px rgba(12,15,51,.06)}
+.member b{font-size:1.25rem;font-weight:650;line-height:1.25;letter-spacing:-.024em;color:var(--ink)}
+@media (max-width:900px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.photo{display:flex;align-items:center;justify-content:center;max-width:100%;padding:20px;border-radius:var(--r-lg);background:var(--mist);border:1.5px dashed var(--control);text-align:center;color:var(--muted)}
+.photo.wide{aspect-ratio:16/9}
+.photo.sq{aspect-ratio:1}
+.band.mist .photo{background:#fff}
+table.record{border-collapse:collapse;width:100%;font-size:1.125rem}
+table.record th,table.record td{text-align:left;vertical-align:top;padding:20px 16px 20px 0;border-bottom:1px solid var(--line-2)}
+table.record tr:first-child th,table.record tr:first-child td{border-top:1px solid var(--line-2)}
+table.record th{width:38%;font-weight:500;font-size:1.0625rem;color:var(--muted)}
+table.record td{color:var(--ink);font-weight:500;padding-right:0}
+@media (max-width:560px){table.record th,table.record td{display:block;width:auto;padding:0}table.record th{padding-top:18px;border:0}table.record tr:first-child th{border-top:1px solid var(--line-2)}table.record tr:first-child td{border-top:0}table.record td{padding:4px 0 18px}}
+
+/* ---------- Seminars ---------- */
+.notice{display:block;max-width:none;padding:22px clamp(22px,3vw,32px);border-radius:var(--r-md);background:var(--sky-100);color:var(--ink);font-size:1.1875rem;line-height:1.5}
+.events{display:flex;flex-direction:column;border-top:1px solid var(--line-2)}
+.event{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr) auto;gap:10px 28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line-2)}
+.event .when{font-size:1.125rem;font-weight:600;color:var(--ink)}
+.event .what{display:flex;flex-direction:column;gap:6px;min-width:0;color:var(--muted)}
+.event h3{font-size:1.375rem;letter-spacing:-.026em}
+@media (max-width:760px){.event{grid-template-columns:minmax(0,1fr);justify-items:start}}
+.sub-h{font-size:clamp(1.75rem,1.4rem + 1.4vw,2.5rem);letter-spacing:-.034em}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.contact-grid .cost{padding:clamp(22px,2.6vw,30px);border-radius:var(--r-lg);gap:6px}
+.contact-grid .cost .eyebrow{margin-bottom:4px}
+.contact-grid .cost b{font-size:clamp(1.3rem,1.15rem + .7vw,1.625rem);font-weight:650;line-height:1.2;letter-spacing:-.03em;color:var(--ink);overflow-wrap:anywhere}
+
+/* ---------- Articles and legal ---------- */
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.post{display:flex;flex-direction:column;gap:14px;min-width:0;padding:clamp(24px,2.8vw,36px);border-radius:var(--r-lg);background:var(--mist);overflow-wrap:break-word}
+.post .tag{align-self:flex-start;padding:7px 14px;border-radius:999px;background:#fff;color:var(--indigo);font-size:1rem;font-weight:600;line-height:1.25;letter-spacing:-.008em}
+.post h3{font-size:clamp(1.375rem,1.25rem + .5vw,1.625rem);font-weight:650;letter-spacing:-.03em;line-height:1.16}
+.post > p:last-child{margin-top:auto;padding-top:10px}
+@media (max-width:900px){.posts{grid-template-columns:minmax(0,1fr);gap:14px}}
+.prose{display:flex;flex-direction:column;gap:clamp(36px,4.5vw,56px);max-width:760px}
+.prose section{display:flex;flex-direction:column;gap:14px}
+.prose h2{font-size:clamp(1.5rem,1.3rem + .9vw,2rem);letter-spacing:-.03em}
+.narrow{max-width:calc(880px + 2*var(--gut))}
+
+/* ---------- Motion ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@keyframes rise-solid{from{transform:translateY(22px)}}
+@keyframes focus-pull{from{filter:blur(16px);opacity:.35}}
+.anim .hero-copy > *{animation:rise .9s var(--ease-out) both}
+.anim .hero-copy > h1{animation-name:rise-solid}
+.anim .hero h1 em{animation:focus-pull 1.5s var(--ease) .2s both}
+.anim .hero-copy > :nth-child(3){animation-delay:.14s}
+.anim .hero-copy > :nth-child(4){animation-delay:.22s}
+.anim .hero-copy > :nth-child(5){animation-delay:.3s}
+.anim .hero [data-form]{animation:rise 1s var(--ease-out) .12s both}
+.anim .hero .trust{animation:rise 1s var(--ease-out) .4s both}
+.anim .page-head .wrap > *{animation:rise .9s var(--ease-out) .1s both}
+.anim .page-head .wrap > h1{animation-name:rise-solid;animation-delay:0s}
+.anim .page-head .wrap > :nth-child(3){animation-delay:.2s}
+.rv{opacity:0;transform:translateY(26px)}
+.rv.in{opacity:1;transform:none;transition:opacity .9s var(--ease-out) var(--d,0ms),transform .9s var(--ease-out) var(--d,0ms)}
+.yearbar .win{transition:transform 1.3s var(--ease-out) .2s,opacity .6s var(--ease) .2s}
+.yearbar .win.aep{transition-delay:.45s}
+.yearbar .today{transition:opacity .6s var(--ease) 1.15s,transform .8s var(--ease-out) 1.15s}
+.anim .yearbar:not(.go) .win{transform:scaleX(0);opacity:0}
+.anim .yearbar:not(.go) .today{opacity:0;transform:translateY(-14px)}
+.iep div{animation:pop-cell .5s var(--ease-out) both;animation-delay:calc(var(--i,0) * 45ms)}
+@keyframes pop-cell{from{opacity:0;transform:translateY(8px) scale(.96)}}
+.faq .a{animation:rise .5s var(--ease-out) both}
+h1[tabindex="-1"]:focus,h1[tabindex="-1"]:focus-visible{outline:none}
+@keyframes vt-out{to{opacity:0;transform:translateY(-8px)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(14px)}}
+::view-transition-old(root){animation:vt-out .22s var(--ease) both}
+::view-transition-new(root){animation:vt-in .5s var(--ease-out) .08s both}
+::view-transition-group(site-head){z-index:5}
+main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  ::view-transition-old(root),::view-transition-new(root){animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<a class="sr" href="#home">Apana Insurance home</a>
+
+<div class="strip on-dark" role="region" aria-label="Medicare enrollment status">
+  <div class="wrap"><span class="pulse" aria-hidden="true"></span><span id="strip-msg">Annual Enrollment runs October 15 to December 7.</span> <a id="strip-link" href="#plan-review">Get a free plan review <span class="arrow">→</span></a></div>
+</div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Apana Insurance, home"><img src="data:image/png;base64,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" alt="Apana Insurance" width="324" height="48"></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <div class="dd">
+        <button class="navlink" type="button" id="dd-btn" aria-expanded="false" aria-controls="dd-panel">Guides <span aria-hidden="true">▾</span></button>
+        <div class="dd-panel" id="dd-panel" hidden>
+          <a href="#turning-65">Turning 65<span>Your seven-month window, step by step</span></a>
+          <a href="#working-past-65">Working past 65<span>Employer coverage and delaying Part B</span></a>
+          <a href="#plan-review">Already on Medicare<span>A free review of your current plan</span></a>
+          <a href="#medicare-and-medicaid">Medicare and Medicaid<span>Using both, and the help you qualify for</span></a>
+          <a href="#veterans">Veterans<span>Medicare alongside VA and TRICARE</span></a>
+          <a href="#prescription-costs">Prescription costs<span>The 2027 Part D cap and payment plan</span></a>
+        </div>
+      </div>
+      <a href="#seminars">Seminars</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="head-cta">
+      <a class="phone" href="tel:+15619182999"><span>(561) 918-2999</span><small>Mon to Fri, 9AM to 5PM</small></a>
+      <button class="btn btn-primary btn-sm" type="button" data-scroll-form>Free plan review</button>
+    </div>
+    <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HOME ============ -->
+<main data-view="home" data-title="Medicare Agents in Broward and Palm Beach">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Licensed Medicare agents in Boca Raton</p>
+          <h1>Medicare in Broward and Palm&nbsp;Beach, <em>made&nbsp;clear.</em></h1>
+          <fieldset class="chips" role="radiogroup" aria-labelledby="chips-legend">
+            <legend id="chips-legend">Which sounds like you?</legend>
+            <div class="chip-row" id="chip-row"></div>
+          </fieldset>
+          <p class="swap" id="swap" aria-live="polite">Your seven-month window, explained and handled.</p>
+          <p><a class="hero-link link-cta" id="swap-link" href="#turning-65">Read the Turning 65 guide <span class="arrow">→</span></a></p>
+        </div>
+        <div data-form="hero"></div>
+      </div>
+      <div class="trust">
+        <div><b>Local office</b>State Road 7, Boca Raton</div>
+        <div><b>Licensed in Florida</b>Agency license L121927</div>
+        <div><b>83 plans compared</b>From 12 Medicare Advantage organizations</div>
+        <div><b>5.0 on Google</b><a href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener">From 87 reviews</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap stack-lg">
+      <div class="head">
+        <p class="eyebrow">Start with your situation</p>
+        <h2>Six guides, written for where you are right now.</h2>
+        <p class="lede">Medicare advice depends on your age, your job, your doctors and your prescriptions. Pick the one that fits and skip the rest.</p>
+      </div>
+      <div class="guides">
+        <a class="guide" href="#turning-65"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span class="who">Age 64 to 65</span><h3>Turning 65</h3><p>When to sign up, what 2027 costs, and the two penalties to avoid.</p><span class="go">Read the guide <span class="arrow">→</span></span></a>
+        <a class="guide" href="#working-past-65"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/></svg></span><span class="who">Still on an employer plan</span><h3>Working past 65</h3><p>Keep your employer plan or switch, without a late penalty.</p><span class="go">Read the guide <span class="arrow">→</span></span></a>
+        <a class="guide" href="#plan-review"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 13l2 2 4-4"/></svg></span><span class="who">Have a plan today</span><h3>Already on Medicare</h3><p>A free review of your plan against your doctors and prescriptions.</p><span class="go">Review my plan <span class="arrow">→</span></span></a>
+        <a class="guide" href="#medicare-and-medicaid"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></span><span class="who">Limited income</span><h3>Medicare and Medicaid</h3><p>Coverage that uses both, and the extra help you may qualify for.</p><span class="go">Read the guide <span class="arrow">→</span></span></a>
+        <a class="guide" href="#veterans"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="12,3 14.6,9 21,9.5 16.2,13.8 17.7,20.2 12,16.8 6.3,20.2 7.8,13.8 3,9.5 9.4,9"/></svg></span><span class="who">VA, TRICARE, CHAMPVA</span><h3>Veterans</h3><p>How Medicare works alongside the benefits you earned.</p><span class="go">Read the guide <span class="arrow">→</span></span></a>
+        <a class="guide" href="#prescription-costs"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><g transform="rotate(-45 12 12)"><rect x="2" y="8" width="20" height="8" rx="4"/><path d="M12 8v8"/></g></svg></span><span class="who">Part D</span><h3>Prescription costs</h3><p>The 2027 out-of-pocket cap of $2,400 and the monthly payment plan.</p><span class="go">Read the guide <span class="arrow">→</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band dark on-dark" aria-labelledby="year-h">
+    <div class="wrap stack-lg">
+      <div class="head">
+        <p class="eyebrow">The Medicare year</p>
+        <h2 id="year-h">Two windows a year when you can change plans.</h2>
+      </div>
+      <div class="year">
+        <p class="year-now" id="year-now">Annual Enrollment runs October 15 to December 7. Medicare Advantage Open Enrollment runs January 1 to March 31.</p>
+        <div class="yearbar" aria-hidden="true">
+          <div class="months" id="months"></div>
+          <div class="win oep" id="win-oep"><span>MA Open Enrollment</span></div>
+          <div class="win aep" id="win-aep"><span>Annual Enrollment</span></div>
+          <div class="today" id="today"><span>Today</span></div>
+        </div>
+      </div>
+      <div class="legend">
+        <div class="l-oep"><b>January 1 to March 31</b>Medicare Advantage Open Enrollment. If you're in a Medicare Advantage plan, you can switch to another one or go back to Original Medicare once.</div>
+        <div class="l-aep"><b>October 15 to December 7</b>Annual Enrollment. Change your plan for coverage that starts January 1.</div>
+        <div class="l-iep"><b>Any time of year</b>Turning 65 opens your own seven-month window. Some life events open a Special Enrollment Period.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="band mist">
+    <div class="wrap stack-lg">
+      <div class="head">
+        <p class="eyebrow">The first big choice</p>
+        <h2>Original Medicare or Medicare Advantage?</h2>
+        <p class="lede">Neither is better for everyone. It comes down to your doctors, your prescriptions and how you'd rather pay.</p>
+      </div>
+      <div class="tablewrap sheet"><table class="compare" role="table">
+        <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader"><span class="sr">Topic</span></th><th scope="col" role="columnheader">Original Medicare<span>with a Medigap plan and a Part D drug plan</span></th><th scope="col" role="columnheader">Medicare Advantage<span>also called Part C</span></th></tr></thead>
+        <tbody role="rowgroup">
+          <tr role="row"><th scope="row" role="rowheader">Doctors</th><td role="cell" data-label="Original Medicare">Any doctor or hospital in the U.S. that takes Medicare.</td><td role="cell" data-label="Medicare Advantage">Usually a network of doctors and hospitals. Check that yours are in it.</td></tr>
+          <tr role="row"><th scope="row" role="rowheader">Monthly cost</th><td role="cell" data-label="Original Medicare">Your Part B premium, plus a premium for Medigap and one for a drug plan.</td><td role="cell" data-label="Medicare Advantage">Your Part B premium, plus the plan's own premium if it has one.</td></tr>
+          <tr role="row"><th scope="row" role="rowheader">When you get care</th><td role="cell" data-label="Original Medicare">Medigap pays some or all of what Medicare leaves, so costs are predictable.</td><td role="cell" data-label="Medicare Advantage">Copays as you use care, up to a yearly out-of-pocket limit.</td></tr>
+          <tr role="row"><th scope="row" role="rowheader">Prescriptions</th><td role="cell" data-label="Original Medicare">A separate Part D plan.</td><td role="cell" data-label="Medicare Advantage">Included in most plans.</td></tr>
+          <tr role="row"><th scope="row" role="rowheader">Away from home</th><td role="cell" data-label="Original Medicare">Covered anywhere in the U.S.</td><td role="cell" data-label="Medicare Advantage">Outside the plan's service area, usually emergency and urgent care only.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="cta-line"><p>Not sure which fits? We'll compare both against your doctors and prescriptions.</p><button class="btn btn-primary" type="button" data-scroll-form>Get a free plan review</button></div>
+      <p class="byline">Reviewed by Christopher Apana, Florida license W197973.</p>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap stack-lg">
+      <div class="head">
+        <p class="eyebrow">How a plan review works</p>
+        <h2>One conversation. Your doctors and prescriptions come first.</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Tell us your situation</h3><p>Call (561) 918-2999 or send the short form. A licensed agent in Boca Raton calls you back.</p></li>
+        <li><h3>We check your doctors and drugs</h3><p>Bring your list. We compare 83 Medicare Advantage plans from 12 organizations against it and explain the trade-offs.</p></li>
+        <li><h3>You decide, including "stay put"</h3><p>A review doesn't have to end in a change. If you do enroll, we're here afterwards for bills, claims and next year's changes.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band mist">
+    <div class="wrap split">
+      <figure class="portrait"><img data-photo="founder" alt="Christopher Apana, founder of Apana Insurance" width="450" height="450"><figcaption><b>Christopher Apana</b>Founder, Apana Insurance</figcaption></figure>
+      <div class="founder-copy">
+        <p class="eyebrow">From the founder</p>
+        <p class="quote">"If you call us, you'll talk to a licensed agent in Boca Raton, not a call center."</p>
+        <p>I started Apana Insurance in 2020 after <span class="ph">[what got you into Medicare]</span>. Since then we've helped about <span class="ph">[number]</span> people in Broward and Palm Beach choose coverage, most of them referred by someone we'd already helped. I still review plans myself every fall, because the plans change every year and so do the people we serve.</p>
+        <div class="sig"><b>Christopher Apana</b><span>Founder. Florida license W197973, NPN 17317513</span></div>
+        <p><a class="link-cta" href="#about"><b>Meet the team <span class="arrow">→</span></b></a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap stack-lg">
+      <div class="head">
+        <p class="eyebrow">In their words</p>
+        <h2>What clients say on Google.</h2>
+      </div>
+      <div class="reviews">
+        <figure class="review"><blockquote>"After 3 years of diligent work and never giving up on me we finally got everything we were shooting for. I cannot express all the trust and confidence I have in them."</blockquote><figcaption>Royce R., Google review</figcaption></figure>
+        <figure class="review"><blockquote>"They do what they say they will do and went out of their way to help me get money back on my SSI check."</blockquote><figcaption>Norman B., Google review</figcaption></figure>
+        <figure class="review"><blockquote>"They were terrific. Answered questions thoroughly. Very personable. The very next day they personally hand delivered my starting packets."</blockquote><figcaption>Bill H., Google review</figcaption></figure>
+      </div>
+      <p><a class="link-cta" href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener"><b>Read every review on Google <span class="arrow">→</span></b></a></p>
+    </div>
+  </section>
+
+  <section class="band mist">
+    <div class="wrap duo">
+      <div class="panel light">
+        <p class="eyebrow">Free educational events</p>
+        <h3>Medicare seminars near you</h3>
+        <p>An hour on how Medicare works, with time for questions. No plan-specific benefits are discussed and no enrollment forms are collected.</p>
+        <a class="btn btn-secondary" href="#seminars">See upcoming seminars</a>
+      </div>
+      <div class="panel night on-dark">
+        <p class="eyebrow">For veterans</p>
+        <h3>Medicare that works with your VA benefits</h3>
+        <p>VA care, TRICARE For Life and CHAMPVA each treat Medicare differently. We'll walk through what applies to you.</p>
+        <a class="btn btn-primary" href="#veterans">Read the veterans guide</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap cols2">
+      <div class="head pin">
+        <p class="eyebrow">2027 questions</p>
+        <h2>Straight answers, checked for this year.</h2>
+        <p class="byline">Reviewed by Christopher Apana, Florida license W197973.</p>
+        <p><a class="link-cta" href="#faq"><b>See all questions <span class="arrow">→</span></b></a></p>
+      </div>
+      <div class="faq" data-faq="home"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ TURNING 65 ============ -->
+<main data-view="turning-65" data-title="Turning 65 in Broward or Palm Beach" hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Guides / Turning 65</p>
+    <h1>Turning 65? Here's how to start Medicare without missing a step.</h1>
+    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513.</p>
+  </div></section>
+  <section class="band"><div class="wrap article">
+    <div class="article-main">
+      <p class="lede">You get one seven-month window to sign up for Medicare on your own schedule. Miss it and you can pay a penalty for life. This guide walks through the window, the 2027 costs, your three ways to fill Medicare's gaps, and a checklist you can print. If you'd rather talk it through, call (561) 918-2999 and a licensed agent in Boca Raton will.</p>
+
+      <section>
+        <h2>Your seven-month window</h2>
+        <p>Your Initial Enrollment Period starts three months before the month you turn 65 and ends three months after it. Sign up in the three months before, and coverage starts the first day of your birthday month. Sign up during or after, and coverage starts the first of the next month.</p>
+        <div class="window-tool">
+          <div class="field"><label for="bd-month">Month you turn 65</label><select id="bd-month"></select></div>
+          <div class="iep" id="iep" aria-hidden="true"></div>
+          <p class="iep-out" id="iep-out" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section>
+        <h2>What Medicare costs in 2027</h2>
+        <div class="cards3">
+          <div class="cost"><span class="part">Part A</span><b>Hospital</b><p>Most people pay no premium. Hospital deductible $1,788 (projected).</p></div>
+          <div class="cost"><span class="part">Part B</span><b>Doctors and outpatient</b><p>$209.50 a month (projected), with a deductible of about $292 to $310 (projected). Higher incomes pay more.</p></div>
+          <div class="cost"><span class="part">Part D</span><b>Prescriptions</b><p>Premium varies by plan. Deductible up to $700. Out-of-pocket drug costs capped at $2,400.</p></div>
+        </div>
+        <p class="byline">Part A and Part B figures are projections. CMS has not announced the final 2027 amounts, and we will update this page when it does.</p>
+      </section>
+
+      <section>
+        <h2>Three ways to fill the gaps</h2>
+        <ul class="ways">
+          <li><b>Original Medicare with a Medigap plan and a Part D drug plan</b><span>Any doctor who takes Medicare, predictable costs, a separate monthly premium.</span></li>
+          <li><b>A Medicare Advantage plan</b><span>One card, often drug coverage included, a network of doctors and a yearly out-of-pocket limit.</span></li>
+          <li><b>Keep employer coverage for now</b><span>If you or your spouse still work at a company with 20 or more employees, you may be able to delay Part B without a penalty. <a href="#working-past-65">See Working past 65.</a></span></li>
+        </ul>
+        <p>We compare 83 Medicare Advantage plans from 12 organizations in Broward and Palm Beach and explain the trade-offs for your doctors and prescriptions.</p>
+      </section>
+
+      <section>
+        <h2>The two penalties that last for life</h2>
+        <div class="cards2">
+          <div class="pen on-dark"><span class="num">10%</span><h3>Part B late penalty</h3><p>Added to your premium for each full 12 months you could have had Part B and didn't.</p></div>
+          <div class="pen on-dark"><span class="num">1%</span><h3>Part D late penalty</h3><p>Of the national base premium for each month you went without drug coverage that's at least as good as Medicare's.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Your checklist</h2>
+        <ul class="check">
+          <li><label><input type="checkbox" id="ck1"><span>Note your seven-month window</span></label></li>
+          <li><label><input type="checkbox" id="ck2"><span>List your doctors and prescriptions</span></label></li>
+          <li><label><input type="checkbox" id="ck3"><span>Ask HR whether your employer plan counts as creditable coverage</span></label></li>
+          <li><label><input type="checkbox" id="ck4"><span>Sign up for Part A and B at ssa.gov, or confirm you're enrolled automatically</span></label></li>
+          <li><label><input type="checkbox" id="ck5"><span>Book a free plan review</span></label></li>
+        </ul>
+      </section>
+    </div>
+    <aside class="aside"><div data-form="t65"></div></aside>
+  </div></section>
+</main>
+
+<!-- ============ ABOUT ============ -->
+<main data-view="about" data-title="About Apana Insurance" hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / About</p>
+    <h1 class="mission">Medicare, explained by people who live here.</h1>
+    <p class="lede">A local, licensed Medicare agency serving Broward and Palm Beach from one office in Boca Raton since 2020.</p>
+  </div></section>
+
+  <section class="band"><div class="wrap split flip">
+    <div class="founder-copy">
+      <p class="eyebrow">Our story</p>
+      <h2>"I learned how coverage works the hard way, so my neighbors don't have to."</h2>
+      <p>Years ago, I sat in a hospital beside someone I love and was told we didn't have the right insurance. I had done everything I knew how to do. I just didn't know enough.</p>
+      <p>I can't change that day. But I believe we are called to love our neighbors, and in 2020 I set out to look after mine. We help people across Broward and Palm Beach get their coverage right before they ever need it.</p>
+      <p>We've stayed small on purpose, so everyone who comes to us gets the careful, complete planning that is usually reserved for the wealthy. I still review plans myself every fall, because the plans change every year and so do the people we serve.</p>
+      <div class="sig"><b>Christopher Apana</b><span>Founder. Florida license W197973, NPN 17317513</span></div>
+    </div>
+    <figure class="portrait"><img data-photo="founder" alt="Christopher Apana, founder of Apana Insurance" width="450" height="450"><figcaption><b>Christopher Apana</b>Founder, Apana Insurance</figcaption></figure>
+  </div></section>
+
+  <section class="band mist"><div class="wrap stack-lg">
+    <div class="head"><p class="eyebrow">What we stand for</p><h2>Four things you can hold us to.</h2></div>
+    <div class="principles">
+      <div><h3>We start with your doctors and prescriptions.</h3><p>The plan comes second.</p></div>
+      <div><h3>We tell you when the answer is "stay put."</h3><p>A review doesn't have to end in a change.</p></div>
+      <div><h3>We're here after you enroll.</h3><p>Claims, bills, and next year's changes included.</p></div>
+      <div><h3>We say what we don't know.</h3><p>And find out before we answer.</p></div>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap stack-lg">
+    <div class="head"><p class="eyebrow">The team</p><h2>The licensed agents you'll talk to.</h2><p>Every agent's Florida license and National Producer Number is listed under their name.</p></div>
+    <div class="team">
+      <div class="member"><img data-photo="founder" alt="Christopher Apana" width="450" height="450"><b>Christopher Apana</b><span>Founder</span><span>FL license W197973 · NPN 17317513</span></div>
+      <div class="member"><div class="photo sq"><span><span class="ph">[Photo]</span></span></div><b><span class="ph">[Agent name]</span></b><span><span class="ph">[Role]</span></span><span>FL license <span class="ph">[#]</span> · NPN <span class="ph">[#]</span></span></div>
+      <div class="member"><div class="photo sq"><span><span class="ph">[Photo]</span></span></div><b><span class="ph">[Agent name]</span></b><span><span class="ph">[Role]</span></span><span>FL license <span class="ph">[#]</span> · NPN <span class="ph">[#]</span></span></div>
+      <div class="member"><div class="photo sq"><span><span class="ph">[Photo]</span></span></div><b><span class="ph">[Agent name]</span></b><span><span class="ph">[Role]</span></span><span>FL license <span class="ph">[#]</span> · NPN <span class="ph">[#]</span></span></div>
+    </div>
+  </div></section>
+
+  <section class="band mist"><div class="wrap duo">
+    <div class="panel light"><p class="eyebrow">In the community</p><h3>Free Medicare education seminars</h3><p>We hold educational seminars at <span class="ph">[venues]</span>. Open to anyone, with no plans discussed.</p><a class="btn btn-secondary" href="#seminars">Upcoming seminars</a></div>
+    <div class="panel night on-dark"><p class="eyebrow">For those who served</p><h3>Support for veterans</h3><p>Help fitting Medicare around VA benefits, TRICARE For Life and CHAMPVA.</p><a class="btn btn-primary" href="#veterans">Veterans guide</a></div>
+  </div></section>
+
+  <section class="band"><div class="wrap cols2">
+    <div class="head"><p class="eyebrow">On the record</p><h2>The facts about us, in one place.</h2><p>Check them against our Google Business Profile, our BBB listing and the Florida Department of Financial Services licensee search.</p></div>
+    <div class="tablewrap"><table class="record">
+      <tr><th scope="row">Legal name</th><td>Apana Insurance, Inc.</td></tr>
+      <tr><th scope="row">Address</th><td>20283 State Road 7, Suite 400, Boca Raton, FL 33498</td></tr>
+      <tr><th scope="row">Phone</th><td>(561) 918-2999</td></tr>
+      <tr><th scope="row">Founded</th><td>2020</td></tr>
+      <tr><th scope="row">Agency license</th><td>L121927</td></tr>
+      <tr><th scope="row">Organizations represented (2027)</th><td>12 for Medicare Advantage, offering 83 plans. 6 for Medicare Part D, offering 11 plans.</td></tr>
+      <tr><th scope="row">Google rating</th><td><a href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener">5.0 from 87 reviews on Google</a></td></tr>
+    </table></div>
+  </div></section>
+</main>
+
+<!-- ============ SEMINARS ============ -->
+<main data-view="seminars" data-title="Free Medicare Seminars in Broward and Palm Beach" hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Seminars</p>
+    <h1>Free Medicare seminars in Broward and Palm Beach.</h1>
+    <p class="lede">One hour, plain English, plenty of time for questions. Bring a spouse, a friend or the person who helps you with paperwork.</p>
+  </div></section>
+  <section class="band"><div class="wrap stack-lg">
+    <p class="notice"><b>These are educational events.</b> No plan-specific benefits will be discussed and no enrollment forms will be collected.</p>
+    <div class="cols2 wide-left">
+      <div class="stack-lg">
+        <div class="stack">
+          <h2 class="sub-h">Upcoming seminars</h2>
+          <div class="events">
+            <div class="event"><span class="when"><span class="ph">[Date, time]</span></span><div class="what"><h3>Medicare 101: the parts, the windows and the costs</h3><span><span class="ph">[Venue, city]</span> · <span class="ph">[seats]</span> seats</span></div><button class="btn btn-secondary btn-sm" type="button" data-scroll-form>RSVP</button></div>
+            <div class="event"><span class="when"><span class="ph">[Date, time]</span></span><div class="what"><h3>Turning 65 this year: your first Medicare decisions</h3><span><span class="ph">[Venue, city]</span> · <span class="ph">[seats]</span> seats</span></div><button class="btn btn-secondary btn-sm" type="button" data-scroll-form>RSVP</button></div>
+            <div class="event"><span class="when"><span class="ph">[Date, time]</span></span><div class="what"><h3>Medicare for veterans: how it fits with VA care</h3><span><span class="ph">[Venue, city]</span> · <span class="ph">[seats]</span> seats</span></div><button class="btn btn-secondary btn-sm" type="button" data-scroll-form>RSVP</button></div>
+          </div>
+        </div>
+        <div class="stack">
+          <h2 class="sub-h">What we cover</h2>
+          <ul class="bullets">
+            <li>What Parts A, B, C and D each pay for, and what they don't</li>
+            <li>When you can sign up or change, and the penalties for signing up late</li>
+            <li>What changed for 2027, including the $2,400 cap on Part D drug costs</li>
+            <li>Help for people with limited income: Extra Help and Medicare Savings Programs</li>
+            <li>Your questions, for as long as you have them</li>
+          </ul>
+        </div>
+        <div class="photo wide"><span><span class="ph">[Photo: a recent Apana seminar]</span></span></div>
+      </div>
+      <div data-form="seminar"></div>
+    </div>
+  </div></section>
+</main>
+
+<!-- ============ VETERANS ============ -->
+<main data-view="veterans" data-title="Medicare for Veterans in Broward and Palm Beach" hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Guides / Veterans</p>
+    <h1>Medicare for veterans: how it fits with the benefits you earned.</h1>
+    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513.</p>
+  </div></section>
+  <section class="band"><div class="wrap article">
+    <div class="article-main">
+      <p class="lede">VA health care and Medicare are separate systems, and neither pays the other's bills. Many veterans in Broward and Palm Beach keep both, so they can use VA facilities and also see doctors outside the VA. This guide covers how each benefit treats Medicare and what to decide at 65.</p>
+
+      <section>
+        <h2>Three benefits, three sets of rules</h2>
+        <div class="cards3">
+          <div class="cost"><span class="part word">VA health care</span><p>You aren't required to take Medicare. But Medicare doesn't pay for care at VA facilities, and VA benefits generally don't pay for care outside the VA unless the VA authorizes it.</p></div>
+          <div class="cost"><span class="part word">TRICARE For Life</span><p>You need both Medicare Part A and Part B to have it. Medicare pays first and TRICARE For Life pays second.</p></div>
+          <div class="cost"><span class="part word">CHAMPVA</span><p>Once you're eligible for Medicare at 65, you need Part A and Part B to keep CHAMPVA. It then pays after Medicare.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>The Part B decision</h2>
+        <p>VA health care on its own doesn't protect you from the Part B late penalty. If you skip Part B at 65 and want it later, your premium goes up 10% for each full 12 months you waited, and you may have to wait for the General Enrollment Period to sign up.</p>
+        <p>Having Part B means you can see any doctor or hospital that takes Medicare, which matters if the nearest VA facility is a long drive or if VA funding or your priority group changes.</p>
+      </section>
+
+      <section>
+        <h2>Prescriptions and Part D</h2>
+        <p>VA drug coverage counts as creditable coverage. If you have it, you can go without a Part D plan and not owe the Part D late penalty if you join one later. Some veterans still add drug coverage so they can fill prescriptions from non-VA doctors at a local pharmacy.</p>
+      </section>
+
+      <section>
+        <h2>What we'll go through together</h2>
+        <ul class="check">
+          <li><label><input type="checkbox" id="vk1"><span>Which benefit you have: VA health care, TRICARE For Life or CHAMPVA</span></label></li>
+          <li><label><input type="checkbox" id="vk2"><span>Your seven-month window and Part B start date</span></label></li>
+          <li><label><input type="checkbox" id="vk3"><span>Doctors and hospitals you want to use outside the VA</span></label></li>
+          <li><label><input type="checkbox" id="vk4"><span>Where you fill prescriptions today</span></label></li>
+          <li><label><input type="checkbox" id="vk5"><span>Whether a spouse is covered through you</span></label></li>
+        </ul>
+        <p class="byline">Rules summarized from Medicare.gov and VA.gov. We are not connected with or endorsed by the Department of Veterans Affairs.</p>
+      </section>
+    </div>
+    <aside class="aside"><div data-form="veteran"></div></aside>
+  </div></section>
+</main>
+
+<!-- ============ FAQ ============ -->
+<main data-view="faq" data-title="Medicare Questions for 2027" hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / FAQ</p>
+    <h1>Medicare questions, answered for 2027.</h1>
+    <p class="byline">Reviewed by Christopher Apana, Florida license W197973.</p>
+  </div></section>
+  <section class="band"><div class="wrap narrow stack-lg">
+    <div class="faq" data-faq="all"></div>
+    <div class="row"><span>Didn't find yours?</span><a class="btn btn-primary" href="#contact">Ask a licensed agent</a></div>
+  </div></section>
+</main>
+
+<!-- ============ CONTACT ============ -->
+<main data-view="contact" data-title="Contact a Medicare Agent in Boca Raton" hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Contact</p>
+    <h1>Talk to a Medicare agent in Boca Raton.</h1>
+    <p class="lede">Call, send the form, or come by the office. You'll reach a licensed agent, not a call center.</p>
+  </div></section>
+  <section class="band"><div class="wrap cols2 wide-left">
+    <div class="stack-lg">
+      <div class="contact-grid">
+        <div class="cost"><span class="eyebrow">Call</span><b>(561) 918-2999</b><p>Monday to Friday, 9AM to 5PM</p></div>
+        <div class="cost"><span class="eyebrow">Visit</span><b>20283 State Road 7, Suite 400<br>Boca Raton, FL 33498</b><p><a class="link-cta" href="https://www.google.com/maps/search/?api=1&query=20283+State+Road+7+Suite+400+Boca+Raton+FL+33498" target="_blank" rel="noopener">Get directions on Google Maps <span class="arrow">→</span></a></p></div>
+        <div class="cost"><span class="eyebrow">Email</span><b>info@apanainsurance.com</b><p>Please don't email Medicare numbers or health details.</p></div>
+      </div>
+      <div class="stack" style="gap:24px">
+        <h2 class="sub-h">What happens next</h2>
+        <ol class="steps col">
+          <li><h3>We call you back</h3><p>A licensed agent calls the number you give, within one business day.</p></li>
+          <li><h3>We go through your list</h3><p>Your doctors, your prescriptions and what you want from your coverage.</p></li>
+          <li><h3>You decide</h3><p>There's no cost for the review and no obligation to change anything.</p></li>
+        </ol>
+      </div>
+    </div>
+    <div data-form="contact"></div>
+  </div></section>
+</main>
+
+<!-- ============ ARTICLES ============ -->
+<main data-view="articles" data-title="Medicare Articles" hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Articles</p>
+    <h1>Medicare articles, reviewed and dated.</h1>
+    <p class="lede">Short reads on the questions we hear most in Broward and Palm Beach. Every article is checked by a licensed agent and shows the date it was last reviewed.</p>
+  </div></section>
+  <section class="band"><div class="wrap stack-lg">
+    <div class="posts">
+      <article class="post"><span class="tag">Being updated for 2027</span><h3>Protect your Medicare by reviewing your Medicare Summary Notice</h3><p>What fraud, waste and abuse mean, how to read the notice, and what to do if you see a charge you don't recognize.</p><p class="byline">Reviewed by Christopher Apana</p></article>
+      <article class="post"><span class="tag">Update or retire</span><h3>Fun facts you didn't know about Social Security</h3><p>First published February 2024. It will be brought up to date or folded into the Turning 65 guide.</p><p><a class="link-cta" href="#turning-65"><b>Read the Turning 65 guide <span class="arrow">→</span></b></a></p></article>
+      <article class="post"><span class="tag">Moving into a guide</span><h3>How Broward County residents can apply online for Medicaid</h3><p>The useful steps are moving into the Medicare and Medicaid guide.</p><p><a class="link-cta" href="#medicare-and-medicaid"><b>Read the guide <span class="arrow">→</span></b></a></p></article>
+    </div>
+    <div class="cta-line"><p>Have a question we haven't written about? Ask a licensed agent.</p><a class="btn btn-primary" href="#contact">Contact us</a></div>
+  </div></section>
+</main>
+
+<!-- ============ LEGAL (shared template) ============ -->
+<main data-view="legal" data-title="Legal" hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / <span id="l-crumb"></span></p>
+    <h1 id="l-h1"></h1>
+    <p class="byline" id="l-by"></p>
+  </div></section>
+  <section class="band"><div class="wrap"><div class="prose" id="l-main"></div></div></section>
+</main>
+
+<!-- ============ GUIDES (shared template) ============ -->
+<main data-view="guide" data-title="Medicare Guide" hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Guides / <span id="g-crumb"></span></p>
+    <h1 id="g-h1"></h1>
+    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513.</p>
+  </div></section>
+  <section class="band"><div class="wrap article">
+    <div class="article-main" id="g-main"></div>
+    <aside class="aside"><div data-form="stub"></div></aside>
+  </div></section>
+</main>
+
+<section class="band dark closing on-dark" aria-label="Call Apana Insurance">
+  <div class="wrap">
+    <p class="eyebrow">Free plan review</p>
+    <h2>Talk it through with a licensed agent in Boca Raton.</h2>
+    <a class="bigphone" href="tel:+15619182999">(561) 918-2999</a>
+    <div class="row"><button class="btn btn-primary" type="button" data-scroll-form>Request a call back</button><span>Monday to Friday, 9AM to 5PM</span></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="stack">
+        <span class="logo-chip"><img src="data:image/png;base64,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" alt="Apana Insurance" width="324" height="48"></span>
+        <p>Apana Insurance<br>20283 State Road 7, Suite 400<br>Boca Raton, FL 33498</p>
+        <p><a href="tel:+15619182999">(561) 918-2999</a><br>Monday to Friday, 9AM to 5PM</p>
+      </div>
+      <div><h4>Guides</h4><ul>
+        <li><a href="#turning-65">Turning 65</a></li><li><a href="#working-past-65">Working past 65</a></li><li><a href="#plan-review">Already on Medicare</a></li><li><a href="#medicare-and-medicaid">Medicare and Medicaid</a></li><li><a href="#veterans">Veterans</a></li><li><a href="#prescription-costs">Prescription costs</a></li>
+      </ul></div>
+      <div><h4>Apana</h4><ul>
+        <li><a href="#about">About</a></li><li><a href="#seminars">Seminars</a></li><li><a href="#articles">Articles</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li>
+      </ul></div>
+      <div><h4>Follow</h4><ul>
+        <li><a href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener">Google reviews</a></li><li><a href="https://m.facebook.com/apanainsurance/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.linkedin.com/company/apanainsurance" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul></div>
+    </div>
+    <div class="disclaimer">
+      <p><b>Medicare Advantage.</b> We do not offer every Medicare Advantage plan available in your area. Currently we represent 12 organizations which offer 83 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, to get information on all of your options.</p>
+      <p><b>Medicare Part D.</b> We do not offer every Medicare Part D plan available in your area. Currently we represent 6 organizations which offer 11 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, to get information on all of your options.</p>
+      <p>Not connected with or endorsed by the U.S. government or the federal Medicare program. Apana Insurance is a licensed insurance agency in Florida, license L121927.</p>
+    </div>
+    <div class="legal"><span>© <span id="yr">2026</span> Apana Insurance. All rights reserved.</span><a href="#privacy">Privacy policy</a><a href="#terms">Terms</a><a href="#accessibility">Accessibility</a></div>
+  </div>
+</footer>
+
+<div class="callbar" id="callbar">
+  <a class="btn btn-secondary" href="tel:+15619182999">Call now</a>
+  <button class="btn btn-primary" type="button" data-scroll-form>Free review</button>
+</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+/* ---- Today in America/New_York ---- */
+function nyToday(){
+  try{
+    var p=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",year:"numeric",month:"numeric",day:"numeric"}).formatToParts(new Date()),o={};
+    p.forEach(function(x){o[x.type]=+x.value});
+    return {y:o.year,m:o.month,d:o.day};
+  }catch(e){var n=new Date();return {y:n.getFullYear(),m:n.getMonth()+1,d:n.getDate()}}
+}
+function utc(y,m,d){return Date.UTC(y,m-1,d)}
+function daysLeft(t,m,d){return Math.round((utc(t.y,m,d)-utc(t.y,t.m,t.d))/864e5)+1} /* includes the last day */
+function enrollment(t){
+  var k=t.m*100+t.d;
+  if(k>=1015&&k<=1207){var n=daysLeft(t,12,7);return {msg:"Annual Enrollment is open. "+n+(n===1?" day":" days")+" left to change your "+(t.y+1)+" plan.",cta:"Get a free plan review",href:"#plan-review",now:"<b>Annual Enrollment is open</b> until December 7."}}
+  if(k>=1208){return {msg:"Annual Enrollment has closed. Medicare Advantage Open Enrollment starts January 1.",cta:"Get a free plan review",href:"#plan-review",now:"Annual Enrollment has closed. <b>Medicare Advantage Open Enrollment starts January 1.</b>"}}
+  if(k<=331){var n2=daysLeft(t,3,31);return {msg:"Medicare Advantage Open Enrollment is open. "+n2+(n2===1?" day":" days")+" left to switch plans once.",cta:"Get a free plan review",href:"#plan-review",now:"<b>Medicare Advantage Open Enrollment is open</b> until March 31."}}
+  return {msg:"Turning 65 this year? Your sign-up window opens three months before your birthday month.",cta:"Read the Turning 65 guide",href:"#turning-65",now:"The next window, <b>Annual Enrollment, opens October 15.</b>"};
+}
+var T=nyToday(), E=enrollment(T);
+$("#strip-msg").textContent=E.msg;
+$("#strip-link").href=E.href; $("#strip-link").firstChild.nodeValue=E.cta+" ";
+$("#yr").textContent=T.y;
+
+/* ---- Medicare year ---- */
+(function(){
+  var total=(utc(T.y+1,1,1)-utc(T.y,1,1))/864e5, doy=function(m,d){return (utc(T.y,m,d)-utc(T.y,1,1))/864e5};
+  $("#months").innerHTML=MONTHS.map(function(m,i){return "<div"+(i===T.m-1?" class=\"now\"":"")+">"+m.charAt(0)+"<i>"+m.slice(1,3)+"</i></div>"}).join("");
+  var pct=function(n){return (n/total*100).toFixed(3)+"%"};
+  var oep=$("#win-oep"),aep=$("#win-aep"),td=$("#today");
+  oep.style.left="0";oep.style.width=pct(doy(3,31)+1);
+  aep.style.left=pct(doy(10,15));aep.style.width=pct(doy(12,7)+1-doy(10,15));
+  var pos=(doy(T.m,T.d)+.5)/total;
+  td.style.left=(pos*100).toFixed(3)+"%";
+  if(pos>.9)td.classList.add("edge-r"); if(pos<.1)td.classList.add("edge-l");
+  $("#year-now").innerHTML="Today is "+MONTHS[T.m-1]+" "+T.d+". "+E.now;
+})();
+
+/* ---- Forms ---- */
+var CONSENT="Yes, Apana Insurance may call or text me at the number above about Medicare plans, including with automated technology. I don't have to agree to buy anything, and I can say stop at any time. Message and data rates may apply.";
+var DISC="<b>Medicare Advantage.</b> We do not offer every Medicare Advantage plan available in your area. Currently we represent 12 organizations which offer 83 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, to get information on all of your options.</p><p class=\"fine\"><b>Medicare Part D.</b> We do not offer every Medicare Part D plan available in your area. Currently we represent 6 organizations which offer 11 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, to get information on all of your options.";
+var SITS=[
+  {id:"t65",label:"Turning 65",line:"Your seven-month window, explained and handled.",btn:"Plan my Medicare start",href:"#turning-65",link:"Read the Turning 65 guide"},
+  {id:"working65",label:"Working past 65",line:"Keep your employer plan or switch, without a penalty.",btn:"Check my timing",href:"#working-past-65",link:"Read the Working past 65 guide"},
+  {id:"review",label:"Already on Medicare",line:"A free review against your doctors and prescriptions.",btn:"Review my plan",href:"#plan-review",link:"How a plan review works"},
+  {id:"dual",label:"Medicare and Medicaid",line:"Coverage that uses both, and the help you qualify for.",btn:"See what I qualify for",href:"#medicare-and-medicaid",link:"Read the Medicare and Medicaid guide"},
+  {id:"veteran",label:"Veteran",line:"Medicare that works with your VA benefits.",btn:"Fit Medicare with my VA benefits",href:"#veterans",link:"Read the veterans guide"}
+];
+function monthOptions(){return MONTHS.map(function(m,i){return "<option value=\""+i+"\">"+m+"</option>"}).join("")}
+function field(f,id){
+  var fid=id+"-"+f.n, cls="field"+(f.full?" full":"");
+  if(f.type==="select")return "<div class=\""+cls+"\"><label for=\""+fid+"\">"+f.label+"</label><select id=\""+fid+"\" name=\""+f.n+"\">"+f.options+"</select></div>";
+  return "<div class=\""+cls+"\"><label for=\""+fid+"\">"+f.label+"</label><input id=\""+fid+"\" name=\""+f.n+"\" type=\""+(f.type||"text")+"\""+(f.ac?" autocomplete=\""+f.ac+"\"":"")+(f.im?" inputmode=\""+f.im+"\"":"")+(f.max?" maxlength=\""+f.max+"\"":"")+" required></div>";
+}
+var NAME={n:"name",label:"Full name",ac:"name",full:true}, PHONE={n:"phone",label:"Phone",type:"tel",ac:"tel",im:"tel"}, ZIP={n:"zip",label:"ZIP code",ac:"postal-code",im:"numeric",max:5};
+var SITSEL={n:"situation",label:"Your situation",type:"select",full:true,options:SITS.map(function(s){return "<option value=\""+s.id+"\">"+s.label+"</option>"}).join("")};
+var FORMS={
+  hero:{h:"Get a free plan review",sub:"Four fields. A licensed agent calls you back.",fields:[NAME,PHONE,ZIP,SITSEL],btn:"Plan my Medicare start"},
+  t65:{h:"Plan my Medicare start",sub:"We'll map your window and your options with you.",fields:[NAME,Object.assign({},PHONE,{full:true}),{n:"bmonth",label:"Birthday month",type:"select",full:true,options:monthOptions()}],btn:"Plan my Medicare start"},
+  veteran:{h:"Fit Medicare with my VA benefits",sub:"A licensed agent calls you back.",fields:[NAME,PHONE,ZIP],btn:"Fit Medicare with my VA benefits"},
+  contact:{h:"Send us a message",sub:"We reply within one business day.",fields:[NAME,PHONE,ZIP,SITSEL],btn:"Request a call back"},
+  stub:{h:"Get a free plan review",sub:"A licensed agent calls you back.",fields:[NAME,PHONE,ZIP],btn:"Request a call back"},
+  seminar:{h:"Save my seat",sub:"We'll confirm by phone.",seminar:true,fields:[NAME,Object.assign({},PHONE,{full:true}),{n:"event",label:"Which seminar",type:"select",full:true,options:"<option>Medicare 101</option><option>Turning 65 this year</option><option>Medicare for veterans</option>"},{n:"guests",label:"Seats needed",type:"select",full:true,options:"<option>1</option><option>2</option><option>3</option><option>4</option>"}],btn:"RSVP"}
+};
+$$("[data-form]").forEach(function(el){
+  var id=el.getAttribute("data-form"),c=FORMS[id],fid="f-"+id;
+  el.innerHTML="<form class=\"form\" id=\""+fid+"\" novalidate><div class=\"card\">"+
+    "<div class=\"card-head\"><h2>"+c.h+"</h2><p class=\"sub\">"+c.sub+"</p></div>"+
+    (c.seminar?"<p class=\"fine\"><b>This is an educational event.</b> No plan-specific benefits will be discussed and no enrollment forms will be collected.</p>":"")+
+    "<div class=\"fields\">"+c.fields.map(function(f){return field(f,fid)}).join("")+"</div>"+
+    "<label class=\"consent\"><input type=\"checkbox\" id=\""+fid+"-consent\" name=\"consent\"><span>"+CONSENT+"</span></label>"+
+    "<button class=\"btn btn-primary\" type=\"submit\" id=\""+fid+"-btn\">"+c.btn+"</button>"+
+    "<div class=\"form-done\" role=\"status\" hidden></div>"+
+    "<p class=\"fine small\">A licensed Apana agent will contact you. Submitting this form does not enroll you in a plan. <a href=\"#privacy\">Privacy policy</a></p></div>"+
+    "<div class=\"legal-note\"><p class=\"fine\">"+DISC+"</p></div></form>";
+  var form=el.firstChild;
+  form.addEventListener("submit",function(ev){
+    ev.preventDefault();
+    var bad=$$("input[required]",form).filter(function(i){return !i.value.trim()}),done=$(".form-done",form);
+    done.hidden=false;
+    if(bad.length){done.textContent="Please fill in "+bad.map(function(i){return i.previousElementSibling.textContent.toLowerCase()}).join(", ")+" so an agent can reach you.";bad[0].focus();return}
+    var first=(form.elements["name"].value.trim().split(/\s+/)[0]||"").slice(0,30);
+    done.className="thanks";done.textContent="";
+    var h3=document.createElement("h3");h3.textContent="Thanks"+(first?", "+first:"")+".";
+    var p1=document.createElement("p");p1.textContent="On the live site a licensed Apana agent would now call you back within one business day.";
+    var p2=document.createElement("p");p2.textContent="This is a design preview, so nothing was sent.";
+    done.appendChild(h3);done.appendChild(p1);done.appendChild(p2);
+    $$(".fields,.consent,button[type=submit]",form).forEach(function(x){x.hidden=true});
+  });
+});
+
+/* ---- Situation chips ---- */
+(function(){
+  var row=$("#chip-row"),sel=$("#f-hero-situation"),btn=$("#f-hero-btn"),swap=$("#swap"),link=$("#swap-link");
+  row.innerHTML=SITS.map(function(s,i){return "<label class=\"chip\"><input type=\"radio\" name=\"sit\" id=\"chip-"+s.id+"\" value=\""+s.id+"\""+(i===0?" checked":"")+"><span>"+s.label+"</span></label>"}).join("");
+  function apply(id,animate){
+    var s=SITS.filter(function(x){return x.id===id})[0]; if(!s)return;
+    swap.textContent=s.line; btn.textContent=s.btn; sel.value=s.id;
+    link.href=s.href; link.firstChild.nodeValue=s.link+" ";
+    var r=$("#chip-"+s.id); if(r)r.checked=true;
+    if(animate){swap.classList.remove("is-changing");void swap.offsetWidth;swap.classList.add("is-changing")}
+  }
+  row.addEventListener("change",function(e){apply(e.target.value,true)});
+  sel.addEventListener("change",function(){apply(sel.value,true)});
+  apply("t65",false);
+})();
+
+/* ---- FAQ ---- */
+var FAQ=[
+  {q:"What is the Donut Hole?",a:"The coverage gap ended January 1, 2025. In 2027, once your out-of-pocket drug costs reach $2,400, you pay nothing more for covered Part D drugs for the rest of the year (up from $2,100 in 2026).",home:1},
+  {q:"How much do I have to pay for Part D?",a:"Premiums vary by plan. The standard deductible can be no more than $700 in 2027 (up from $615). Covered insulin costs no more than $35 a month.",home:1},
+  {q:"How much do Part A and Part B cost?",a:"Most people pay no Part A premium. The 2027 standard Part B premium is projected at $209.50 a month and the deductible at about $292 to $310. CMS has not announced the final amounts."},
+  {q:"What is the Medicare Advantage Open Enrollment Period?",a:"January 1 to March 31. If you're in a Medicare Advantage plan, you can switch to another one or go back to Original Medicare once.",home:1},
+  {q:"What if I want to change plans?",a:"Annual Enrollment runs October 15 to December 7 for coverage starting January 1. Some life events open a Special Enrollment Period at other times.",home:1},
+  {q:"Can I spread out my drug costs?",a:"Yes. The Medicare Prescription Payment Plan lets you pay out-of-pocket drug costs in monthly amounts across the year. Ask your plan to enroll."}
+];
+$$("[data-faq]").forEach(function(el){
+  var home=el.getAttribute("data-faq")==="home";
+  el.innerHTML=FAQ.filter(function(f){return !home||f.home}).map(function(f,i){
+    return "<details"+(i===0?" open":"")+"><summary>"+f.q+"</summary><div class=\"a\"><p>"+f.a+"</p>"+(home?"":"<p class=\"byline\">Reviewed by Christopher Apana, Florida license W197973.</p>")+"</div></details>";
+  }).join("");
+});
+
+/* ---- Seven-month window ---- */
+(function(){
+  var sel=$("#bd-month"),grid=$("#iep"),out=$("#iep-out");
+  sel.innerHTML=monthOptions();
+  sel.value=String((T.m-1+3)%12);
+  function lastDay(y,m){return new Date(Date.UTC(y,m+1,0)).getUTCDate()}
+  function draw(){
+    var m=+sel.value, y=T.y+(m<T.m-1?1:0), cells=[];
+    for(var i=-3;i<=3;i++){var d=new Date(Date.UTC(y,m+i,1));cells.push({m:d.getUTCMonth(),y:d.getUTCFullYear(),bd:i===0})}
+    grid.innerHTML=cells.map(function(c){return "<div style=\"--i:"+cells.indexOf(c)+"\""+(c.bd?" class=\"bd\"":"")+"><b>"+MONTHS[c.m].slice(0,3)+"</b>"+(c.bd?"You turn 65":c.y)+"</div>"}).join("");
+    var a=cells[0],b=cells[6],pre=cells[2];
+    out.innerHTML="If you turn 65 in <b>"+MONTHS[m]+" "+y+"</b>, your window runs "+MONTHS[a.m]+" 1, "+a.y+" to "+MONTHS[b.m]+" "+lastDay(b.y,b.m)+", "+b.y+". Sign up by "+MONTHS[pre.m]+" "+lastDay(pre.y,pre.m)+" and coverage starts "+MONTHS[m]+" 1.";
+    var fm=$("#f-t65-bmonth"); if(fm)fm.value=String(m);
+  }
+  sel.addEventListener("change",draw); draw();
+})();
+
+/* ---- Scroll reveal ---- */
+var GROUPS=".guides > .guide,.steps > li,.reviews > .review,.duo > .panel,.legend > div,.cards3 > *,.cards2 > *,.principles > div,.team > .member,.posts > .post,.contact-grid > *,.events > .event";
+var REVEAL=".head,.sheet,.cta-line,.year,.portrait,.founder-copy,.faq,.window-tool,.ways,.check,.bullets,.notice,table.record,.photo.wide,.prose > section,.jump,.article-main > .lede,.article-main > section > h2,.article-main > section > p,.band > .wrap > .byline,.band > .wrap > p,.row,.sub-h,.closing .wrap > *,"+GROUPS;
+var canAnim=("IntersectionObserver" in window)&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches, io=null, ioBar=null, ioSeen=false;
+function showNow(el){el.classList.add("in");setTimeout(function(){el.classList.remove("rv","in");el.style.removeProperty("--d")},1500)}
+if(canAnim){
+  document.documentElement.classList.add("anim");
+  io=new IntersectionObserver(function(es){ioSeen=true;es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);showNow(e.target)})},{threshold:.06,rootMargin:"0px 0px -7% 0px"});
+  ioBar=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("go");ioBar.unobserve(e.target)}})},{threshold:.45});
+  $$(".yearbar").forEach(function(b){ioBar.observe(b)});
+  /* If the observer never reports (a background render, a thumbnail), show everything rather than leave it hidden */
+  setTimeout(function(){if(ioSeen)return;canAnim=false;$$(".rv").forEach(function(el){el.classList.remove("rv")});$$(".yearbar").forEach(function(b){b.classList.add("go")})},2500);
+}
+function reveal(root){
+  if(!canAnim||!root)return;
+  $$(REVEAL,root).forEach(function(el){
+    if(el.dataset.rv||el.closest(".hero")||el.closest(".aside")||el.closest("[data-form]")||el.closest(".page-head"))return; el.dataset.rv="1";
+    var d=0;
+    if(el.matches(GROUPS)){var sibs=Array.prototype.slice.call(el.parentNode.children);d=Math.min(sibs.indexOf(el),5)*80}
+    el.style.setProperty("--d",d+"ms"); el.classList.add("rv"); io.observe(el);
+  });
+}
+
+/* ---- Count-up numbers ---- */
+function countUps(root){
+  if(!canAnim)return;
+  $$(".cost .part,.pen .num",root).forEach(function(el){
+    var m=/^(\$?)([\d,]+)(%?)$/.exec(el.textContent.trim()); if(!m||el.dataset.cu)return; el.dataset.cu="1";
+    var end=+m[2].replace(/,/g,""), o=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return; o.disconnect(); var t0=null;
+      function step(t){if(!t0)t0=t;var k=Math.min((t-t0)/1100,1),v=Math.round(end*(1-Math.pow(1-k,3)));el.textContent=m[1]+v.toLocaleString("en-US")+m[3];if(k<1)requestAnimationFrame(step)}
+      requestAnimationFrame(step);
+    })},{threshold:.6});
+    o.observe(el);
+  });
+}
+/* ---- Typesetting: straight quotes in the copy are shown as typographic quotes. The wording is not touched. ---- */
+function typeset(root){
+  var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,t;
+  while((n=w.nextNode())){
+    t=n.nodeValue; if(t.indexOf("'")<0&&t.indexOf("\"")<0)continue;
+    if(/^(SCRIPT|STYLE|TEXTAREA|OPTION)$/.test(n.parentNode.nodeName))continue;
+    n.nodeValue=t.replace(/(^|[\s(\[\u2014-])"/g,"$1\u201C").replace(/"/g,"\u201D").replace(/(^|[\s(\[\u2014-])'/g,"$1\u2018").replace(/'/g,"\u2019");
+  }
+}
+
+/* ---- The founder photo is stored once ---- */
+var PHOTO="data:image/jpeg;base64,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";
+$$("img[data-photo=founder]").forEach(function(i){i.src=PHOTO});
+
+/* ---- A side form taller than the window sticks by its bottom edge instead of being cut off ---- */
+if("ResizeObserver" in window){
+  var ro=new ResizeObserver(function(es){es.forEach(function(e){e.target.style.setProperty("--aside-h",Math.ceil(e.target.offsetHeight)+"px")})});
+  $$(".aside,.cols2 > [data-form]").forEach(function(a){ro.observe(a)});
+}
+
+/* ---- Router ---- */
+var PH=function(t){return "<span class=\"ph\">["+t+"]</span>"};
+var GUIDES={
+  "working-past-65":{t:"Working past 65",btn:"Check my timing",h:"Working past 65? When to start Medicare and when to wait.",
+    lede:"If you or your spouse are still working at 65, you may not need all of Medicare yet. The answer depends mostly on the size of the employer behind your health plan.",
+    sec:[
+      {h:"The 20-employee line",cards:[["20 or more","employees","The employer plan pays first. You can usually delay Part B, and its premium, without a late penalty for as long as you're covered through current work."],["Fewer than 20","employees","Medicare usually pays first. You generally need Part A and Part B at 65, or the employer plan may pay little or nothing."]],p:["Coverage through a spouse's current job follows the same rule. Ask HR to confirm the plan's size and how it works with Medicare, in writing."]},
+      {h:"Part A and your health savings account",p:["Most people can take Part A at 65 with no premium. The catch is a health savings account: once you have any part of Medicare, you can't contribute to one.","When you sign up for Part A after 65, coverage is backdated up to six months. Stop HSA contributions about six months before you enroll to avoid a tax penalty."]},
+      {h:"When you stop working",p:["You get an eight-month Special Enrollment Period to sign up for Part B. It starts the month after your job or your employer coverage ends, whichever comes first.","COBRA and retiree coverage don't count as coverage from current work. Waiting for COBRA to run out is a common way people end up with the Part B penalty."]},
+      {h:"Prescription coverage",p:["Ask whether your employer drug coverage is creditable, meaning at least as good as Medicare's. If it is, you can delay Part D. After creditable coverage ends, you have 63 days to join a drug plan without a penalty."]}],
+    check:["Ask HR how many employees the company has","Get a letter saying your drug coverage is creditable","Decide when to stop HSA contributions","Mark the end date of your employer coverage","Book a free review two to three months before you retire"]},
+  "plan-review":{t:"Already on Medicare",btn:"Review my plan",h:"Already on Medicare? Get a free plan review in Broward or Palm Beach.",
+    lede:"Plans change every January: premiums, drug lists, networks. A review checks next year's version of your plan against your doctors and prescriptions, and tells you whether anything fits better.",
+    sec:[
+      {h:"What to bring",list:["Your Medicare card and current plan card","Your prescriptions, with doses and how often you take them","The doctors, specialists and hospitals you want to keep","Your plan's Annual Notice of Change, mailed each September"]},
+      {h:"What we check",cards:[["Doctors","","Whether each of your doctors and hospitals is in the plan's network for the coming year."],["Prescriptions","","Whether each drug is on the plan's list, which tier it's on, and what you'd pay at your pharmacy."],["Costs","","Changes to the premium, deductibles, copays and the yearly out-of-pocket limit."]]},
+      {h:"When you can change",ways:[["October 15 to December 7","Annual Enrollment. Switch plans for coverage starting January 1."],["January 1 to March 31","Medicare Advantage Open Enrollment. If you're in a Medicare Advantage plan, you can switch to another one or go back to Original Medicare once."],["After certain life events","A move, losing other coverage, or qualifying for Medicaid or Extra Help can open a Special Enrollment Period."]]},
+      {h:"Sometimes the answer is to stay put",p:["A review doesn't have to end in a change. If your current plan still fits, we'll tell you so and check again next fall."]}],
+    check:["Find your Annual Notice of Change","List your prescriptions and doses","List your doctors","Note anything that frustrated you this year","Book your review"]},
+  "medicare-and-medicaid":{t:"Medicare and Medicaid",btn:"See what I qualify for",h:"Medicare and Medicaid in Florida: how to use both.",
+    lede:"If your income and savings are limited, Medicaid and other programs can pay for much of what Medicare leaves to you. Many people who qualify never apply.",
+    sec:[
+      {h:"Having both",p:["People with Medicare and Medicaid are called dual eligible. Medicare pays first and Medicaid pays second, which can cover premiums, deductibles and copays."]},
+      {h:"Medicare Savings Programs",cards:[["QMB","Qualified Medicare Beneficiary","Pays your Part A and Part B premiums, deductibles, coinsurance and copays."],["SLMB","Specified Low-Income Medicare Beneficiary","Pays your Part B premium."],["QI","Qualifying Individual","Pays your Part B premium. Funding is limited, so apply early in the year."]],p:["Florida's income limits for each program in 2027 are "+PH("2027 limits")+"."]},
+      {h:"Extra Help with drug costs",p:["Extra Help lowers your Part D premium, deductible and copays. If you have Medicaid or a Medicare Savings Program, you get it automatically. Otherwise you can apply through Social Security."]},
+      {h:"Dual Special Needs Plans",p:["A Dual Special Needs Plan, or D-SNP, is a type of Medicare Advantage plan for people who have both Medicare and Medicaid. It coordinates the two so you deal with one plan. We'll check which are available in your county and whether your doctors take them."]},
+      {h:"How to apply in Broward and Palm Beach",ways:[["Medicaid and Medicare Savings Programs","Apply through the Florida Department of Children and Families, online at MyACCESS or by phone."],["Extra Help","Apply through Social Security at ssa.gov or 1-800-772-1213."],["Help with either","Call us at (561) 918-2999. We'll go through the forms with you at no cost."]]}],
+    check:["Gather proof of income and recent bank statements","Have your Medicare card ready","Apply for a Medicare Savings Program","Apply for Extra Help if you aren't enrolled automatically","Ask us which plans work with your Medicaid"]},
+  "prescription-costs":{t:"Prescription costs",btn:"Review my drug costs",h:"Medicare prescription costs in 2027.",
+    lede:"Part D now has a hard yearly limit on what you pay for covered drugs. Here is what changes in 2027 and how to keep your own costs down.",
+    sec:[
+      {h:"The 2027 numbers",cards:[["$2,400","Out-of-pocket cap","Once your costs for covered drugs reach this, you pay nothing more for the rest of the year. Up from $2,100 in 2026."],["$700","Highest deductible","The most a plan can ask you to pay before it starts sharing costs. Up from $615."],["$35","Insulin, per month","The most you pay for a month's supply of each covered insulin."]]},
+      {h:"Spread your costs across the year",p:["The Medicare Prescription Payment Plan lets you pay out-of-pocket drug costs in monthly amounts across the year, instead of all at once at the pharmacy. Ask your plan to enroll."]},
+      {h:"The Donut Hole is gone",p:["The coverage gap ended January 1, 2025. Your share no longer jumps partway through the year."]},
+      {h:"Check your drug list every fall",p:["Each plan has its own list of covered drugs, and the list and its price tiers can change every January. The plan that cost you least this year may not next year. This is the main thing we check in a plan review."]},
+      {h:"If the costs are still too high",p:["Extra Help can lower your premium, deductible and copays if your income and savings are limited. <a href=\"#medicare-and-medicaid\">See Medicare and Medicaid.</a>"]}],
+    check:["List every prescription with dose and frequency","Note which pharmacy you use","Read the drug section of your Annual Notice of Change","Ask your plan about the Medicare Prescription Payment Plan","Book a free review during Annual Enrollment"]}
+};
+var LEGAL={
+  "accessibility":{t:"Accessibility",h:"Accessibility at Apana Insurance.",by:"",sec:[
+    ["Our commitment",["We want everyone to be able to use this website, whatever their eyesight, hearing, mobility or device. The site is built to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA."]],
+    ["What we've done",["Body text is 18 pixels and never smaller than 16.","Text and buttons meet a contrast ratio of at least 4.5 to 1.","Every page works with a keyboard alone and shows a clear focus outline.","Forms have written labels, and errors are explained in words.","Animation switches off when your device asks for reduced motion."]],
+    ["If something doesn't work for you",["Call (561) 918-2999, Monday to Friday, 9AM to 5PM, or email info@apanainsurance.com. Tell us the page and what went wrong. We'll help you by phone straight away and fix the page."]]]},
+  "privacy":{t:"Privacy policy",h:"Privacy policy.",by:"Draft outline. Final wording comes from Apana's attorney.",sec:[
+    ["What we collect",["When you send a form we store what you typed, whether you ticked the consent box and the exact consent wording you saw, the date and time, the page you were on, the situation you chose, your IP address and how you reached the site."]],
+    ["How we use it",["To call you back about Medicare, and to keep a record of your consent. Submitting a form does not enroll you in a plan."]],
+    ["Who we share it with",["Your request goes to Apana's client system, "+PH("CRM name")+". Calls are logged by our call tracking provider. We do not sell your information. "+PH("Attorney to confirm full list")]],
+    ["Your choices",["You can tell us to stop calling or texting at any time, and ask to see or delete what we hold about you. Call (561) 918-2999 or email info@apanainsurance.com."]]]},
+  "terms":{t:"Terms",h:"Terms of use.",by:"Draft outline. Final wording comes from Apana's attorney.",sec:[
+    ["About this site",["This site is run by Apana Insurance, Inc., a licensed insurance agency in Florida. It gives general information about Medicare. It is not connected with or endorsed by the U.S. government or the federal Medicare program."]],
+    ["Not advice for your situation",["Guides and articles explain how Medicare generally works. For advice about your own coverage, speak to a licensed agent."]],
+    ["Full terms",[PH("Terms text from Apana's attorney")]]]}
+};
+function renderLegal(key){
+  var g=LEGAL[key];$("#l-crumb").textContent=g.t;$("#l-h1").textContent=g.h;$("#l-by").innerHTML=g.by;
+  $("#l-main").innerHTML=g.sec.map(function(x){return "<section><h2>"+x[0]+"</h2>"+(x[1].length>1?"<ul class=\"bullets\">"+x[1].map(function(l){return "<li>"+l+"</li>"}).join("")+"</ul>":"<p>"+x[1][0]+"</p>")+"</section>"}).join("");
+}
+function renderGuide(key){
+  var g=GUIDES[key],h="<p class=\"lede\">"+g.lede+"</p>";
+  g.sec.forEach(function(x){
+    h+="<section><h2>"+x.h+"</h2>";
+    if(x.cards){var word=x.cards.some(function(c){return c[0].length>6})?" word":"";h+="<div class=\""+(x.cards.length===2?"cards2":"cards3")+"\">"+x.cards.map(function(c){return "<div class=\"cost\"><span class=\"part"+word+"\">"+c[0]+"</span>"+(c[1]?"<b>"+c[1]+"</b>":"")+"<p>"+c[2]+"</p></div>"}).join("")+"</div>"}
+    if(x.list)h+="<ul class=\"bullets\">"+x.list.map(function(l){return "<li>"+l+"</li>"}).join("")+"</ul>";
+    if(x.ways)h+="<ul class=\"ways\">"+x.ways.map(function(w){return "<li><b>"+w[0]+"</b><span>"+w[1]+"</span></li>"}).join("")+"</ul>";
+    (x.p||[]).forEach(function(p){h+="<p>"+p+"</p>"});
+    h+="</section>";
+  });
+  h+="<section><h2>Your checklist</h2><ul class=\"check\">"+g.check.map(function(c,i){return "<li><label><input type=\"checkbox\" id=\"gk-"+key+"-"+i+"\"><span>"+c+"</span></label></li>"}).join("")+"</ul></section>";
+  $("#g-crumb").textContent=g.t;$("#g-h1").textContent=g.h;$("#g-main").innerHTML=h;
+  var f=$("#f-stub");if(f){$("h2",f).textContent=g.btn;$("#f-stub-btn").textContent=g.btn}
+  addJump($("#g-main"));
+}
+function addJump(main){
+  var old=$(".jump",main);if(old)old.remove();
+  var hs=$$("section > h2",main);if(hs.length<3)return;
+  var nav=document.createElement("div");nav.className="jump";nav.setAttribute("role","navigation");nav.setAttribute("aria-label","In this guide");
+  nav.innerHTML="<span>In this guide</span>";
+  hs.forEach(function(h){var b=document.createElement("button");b.type="button";b.textContent=h.textContent;b.addEventListener("click",function(){h.parentNode.scrollIntoView({behavior:canAnim?"smooth":"auto",block:"start"})});nav.appendChild(b)});
+  var lede=$(".lede",main);lede.parentNode.insertBefore(nav,lede.nextSibling);
+}
+$$(".article-main").forEach(function(m){if(m.id!=="g-main")addJump(m)});
+var head=$(".site-head"), views=$$("main[data-view]"), nav=$("#nav"), burger=$("#burger"), ddBtn=$("#dd-btn"), ddPanel=$("#dd-panel");
+function closeMenus(){nav.classList.remove("open");head.classList.remove("menu-open");burger.setAttribute("aria-expanded","false");ddPanel.hidden=true;ddBtn.setAttribute("aria-expanded","false")}
+function show(first,soft){
+  var name=(location.hash||"").replace(/^#/,"")||"home", viewName=name;
+  if(GUIDES[name]){viewName="guide";renderGuide(name)}
+  if(LEGAL[name]){viewName="legal";renderLegal(name)}
+  var target=views.filter(function(v){return v.getAttribute("data-view")===viewName})[0];
+  if(!target){target=views[0];name="home"}
+  views.forEach(function(v){v.hidden=v!==target});
+  document.title=(GUIDES[name]?GUIDES[name].t:LEGAL[name]?LEGAL[name].t:target.getAttribute("data-title"))+" | Apana Insurance";
+  $$(".nav a").forEach(function(a){if(a.getAttribute("href")==="#"+name)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  closeMenus();
+  typeset(document.body);
+  reveal(target);reveal($(".closing"));countUps(target);
+  if(!first){if(!soft){target.classList.remove("sw");void target.offsetWidth;target.classList.add("sw")}window.scrollTo(0,0);var h=$("h1",target);if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true})}}
+}
+function route(first){
+  if(!first&&canAnim&&document.startViewTransition){document.startViewTransition(function(){show(false,true)})}
+  else show(first,false);
+}
+window.addEventListener("hashchange",function(){route(false)});
+route(true);
+
+burger.addEventListener("click",function(){var o=nav.classList.toggle("open");head.classList.toggle("menu-open",o);burger.setAttribute("aria-expanded",String(o));if(o&&window.matchMedia("(max-width:1080px)").matches){ddPanel.hidden=false}});
+ddBtn.addEventListener("click",function(e){e.stopPropagation();ddPanel.hidden=!ddPanel.hidden;ddBtn.setAttribute("aria-expanded",String(!ddPanel.hidden))});
+document.addEventListener("click",function(e){if(!e.target.closest(".dd")&&!ddPanel.hidden&&!window.matchMedia("(max-width:1080px)").matches){ddPanel.hidden=true;ddBtn.setAttribute("aria-expanded","false")}});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMenus()});
+
+/* ---- Scroll to the nearest form ---- */
+document.addEventListener("click",function(e){
+  var b=e.target.closest("[data-scroll-form]"); if(!b)return;
+  var v=views.filter(function(x){return !x.hidden})[0], f=v&&$("form",v);
+  if(!f){location.hash="contact";return}
+  closeMenus();
+  f.scrollIntoView({behavior:canAnim?"smooth":"auto",block:"start"});
+  var i=$("input",f); if(i)setTimeout(function(){i.focus({preventScroll:true})},450);
+});
+
+function onScroll(){head.classList.toggle("scrolled",window.scrollY>8)}
+window.addEventListener("scroll",onScroll,{passive:true});onScroll();
+
+/* ---- Call bar hides while typing ---- */
+var bar=$("#callbar");
+document.addEventListener("focusin",function(e){if(e.target.matches("input:not([type=checkbox]):not([type=radio]),select,textarea"))bar.classList.add("kb")});
+document.addEventListener("focusout",function(){bar.classList.remove("kb")});
+})();
+</script>
+
+</body>
+</html>
