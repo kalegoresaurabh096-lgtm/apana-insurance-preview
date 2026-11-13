@@ -1181,7 +1181,7 @@ $("#yr").textContent=T.y;
   if(pos>.9)td.classList.add("edge-r"); if(pos<.1)td.classList.add("edge-l");
   $("#year-now").innerHTML="Today is "+MONTHS[T.m-1]+" "+T.d+". "+E.now;
   function fit(){var bar=oep.parentNode,n=0;[oep,aep].forEach(function(w){w.classList.remove("out");var s=w.firstElementChild;if(s&&s.offsetWidth>w.clientWidth-28){w.classList.add("out");n++}});bar.classList.toggle("one",n>0);bar.classList.toggle("two",n===2&&aep.firstElementChild.getBoundingClientRect().left<oep.firstElementChild.getBoundingClientRect().right+16)}
-  fit();window.addEventListener("resize",fit);if(document.fonts)document.fonts.ready.then(fit);
+  fit();window.addEventListener("resize",fit);if("ResizeObserver" in window)new ResizeObserver(fit).observe(oep.parentNode);if(document.fonts)document.fonts.ready.then(fit);
 })();
 
 /* ---- Forms ---- */
