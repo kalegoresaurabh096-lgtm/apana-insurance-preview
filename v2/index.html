@@ -609,6 +609,52 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
   .anim .steps li::before{animation:num-in linear both;animation-timeline:view();animation-range:entry 10% entry 90%}
   @keyframes num-in{from{opacity:0;transform:translateY(30px) scale(.8)}}
 }
+
+/* ---------- Motion, third pass: the approved site's playfulness, in v2's language ---------- */
+/* Reading progress along the top of the window */
+.progress{position:fixed;top:0;left:0;right:0;z-index:60;height:3px;background:linear-gradient(90deg,var(--indigo),var(--sky));transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+/* Floating shapes around the hero */
+.fx{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.fx i{position:absolute;display:block}
+.fx i:nth-child(1){left:3%;top:12%;width:26px;height:26px;border:4px solid var(--sky);border-radius:50%;opacity:.7}
+.fx i:nth-child(2){left:46%;top:8%;width:14px;height:14px;border-radius:50%;background:var(--indigo);opacity:.55}
+.fx i:nth-child(3){left:49%;bottom:22%;width:46px;height:46px;border:3px solid rgba(49,181,255,.45);border-radius:14px}
+.fx i:nth-child(4){left:28%;bottom:8%;width:110px;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--sky),rgba(49,181,255,0));transform:rotate(-34deg)}
+.fx i:nth-child(5){right:2%;top:40%;width:12px;height:12px;border-radius:50%;background:var(--sky);opacity:.6}
+.anim .fx i{animation:fx-in .9s var(--ease-out) both}
+.anim .fx i:nth-child(1){animation:fx-in .9s var(--ease-out) .3s both,float 5s ease-in-out 1.2s infinite alternate}
+.anim .fx i:nth-child(2){animation:fx-in .9s var(--ease-out) .45s both,float 7s ease-in-out 1.4s infinite alternate}
+.anim .fx i:nth-child(3){animation:fx-in .9s var(--ease-out) .6s both,spin 18s linear 1.5s infinite}
+.anim .fx i:nth-child(4){animation:fx-in .9s var(--ease-out) .75s both,slide 6s ease-in-out 1.7s infinite alternate}
+.anim .fx i:nth-child(5){animation:fx-in .9s var(--ease-out) .9s both,float 6s ease-in-out 1.8s infinite alternate}
+@keyframes fx-in{from{opacity:0;scale:.4}}
+@keyframes float{to{translate:0 -20px}}
+@keyframes spin{to{rotate:360deg}}
+@keyframes slide{from{translate:-22px 0}to{translate:28px 0}}
+@media (max-width:900px){.fx i:nth-child(2),.fx i:nth-child(3),.fx i:nth-child(4){display:none}.fx i:nth-child(1){left:auto;right:5%;top:3%;width:20px;height:20px;border-width:3px}}
+/* Eyebrows draw a short line in as they arrive */
+.anim .hero .eyebrow,.anim .page-head .eyebrow,.anim .head .eyebrow{background:linear-gradient(90deg,var(--sky),var(--sky)) 0 100%/0 2px no-repeat;padding-bottom:6px;animation:line-in .9s var(--ease-out) .5s forwards}
+@keyframes line-in{to{background-size:28px 2px}}
+/* The hero's main button gives a gentle heartbeat after the page settles */
+.anim .hero [data-form] .btn-primary{animation:beat 2.8s ease-in-out 2.4s infinite}
+@keyframes beat{0%,100%{box-shadow:0 10px 24px -12px rgba(48,56,144,.7),0 0 0 0 rgba(49,181,255,.5)}60%{box-shadow:0 10px 24px -12px rgba(48,56,144,.7),0 0 0 14px rgba(49,181,255,0)}}
+/* Two-column sections slide in from their own sides */
+.anim .split > .rv:first-child{transform:translateX(-60px) scale(.985)}
+.anim .split > .rv:last-child{transform:translateX(60px) scale(.985)}
+.anim .split > .rv.in{transform:none}
+/* The founder photo's halo floats */
+.anim .portrait::before{animation:halo 6s ease-in-out infinite alternate}
+@keyframes halo{to{translate:0 -18px;scale:1.06}}
+/* Inner page headers get a slowly bobbing glow */
+.page-head{position:relative;isolation:isolate;overflow:clip}
+.page-head::after{content:"";position:absolute;z-index:-1;right:-6%;top:-30%;width:min(48vw,560px);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(49,181,255,.2),rgba(49,181,255,0));pointer-events:none}
+.anim .page-head::after{animation:fx-in 1.4s var(--ease-out) both,bob 7s ease-in-out 1.4s infinite alternate}
+@keyframes bob{to{translate:-6% 14%;scale:1.1}}
+/* The dark panels breathe */
+.band.dark > .wrap::before{content:"";position:absolute;z-index:-1;right:-10%;top:-30%;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(49,181,255,.22),rgba(49,181,255,0));pointer-events:none}
+.anim .band.dark > .wrap::before{animation:breathe 8s ease-in-out infinite alternate}
+@keyframes breathe{to{translate:-12% 18%;scale:1.15}}
+/* The answer under a chip changes with a soft swap */
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .w{opacity:1!important;transform:none!important;filter:none!important}
@@ -618,6 +664,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
 </head>
 <body>
 
+<div class="progress" id="progress" aria-hidden="true"></div>
 <a class="sr" href="#home">Apana Insurance home</a>
 
 <div class="strip on-dark" role="region" aria-label="Medicare enrollment status">
@@ -655,6 +702,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
 <!-- ============ HOME ============ -->
 <main data-view="home" data-title="Medicare Agents in Broward and Palm Beach">
   <section class="hero">
+    <div class="fx" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
@@ -1181,7 +1229,7 @@ $("#yr").textContent=T.y;
   if(pos>.9)td.classList.add("edge-r"); if(pos<.1)td.classList.add("edge-l");
   $("#year-now").innerHTML="Today is "+MONTHS[T.m-1]+" "+T.d+". "+E.now;
   function fit(){var bar=oep.parentNode,n=0;[oep,aep].forEach(function(w){w.classList.remove("out");var s=w.firstElementChild;if(s&&s.offsetWidth>w.clientWidth-28){w.classList.add("out");n++}});bar.classList.toggle("one",n>0);bar.classList.toggle("two",n===2&&aep.firstElementChild.getBoundingClientRect().left<oep.firstElementChild.getBoundingClientRect().right+16)}
-  fit();window.addEventListener("resize",fit);if(document.fonts)document.fonts.ready.then(fit);
+  fit();window.addEventListener("resize",fit);if("ResizeObserver" in window)new ResizeObserver(fit).observe(oep.parentNode);if(document.fonts)document.fonts.ready.then(fit);
 })();
 
 /* ---- Forms ---- */
@@ -1322,6 +1370,20 @@ function countUps(root){
     o.observe(el);
   });
 }
+(function(){
+  var bar=$("#progress");
+  function upd(){var h=document.documentElement.scrollHeight-window.innerHeight;bar.style.transform="scaleX("+(h>0?Math.min(window.scrollY/h,1):0)+")"}
+  window.addEventListener("scroll",upd,{passive:true});window.addEventListener("resize",upd);window.addEventListener("hashchange",function(){setTimeout(upd,60)});upd();
+  if(!canAnim)return;
+  var radios=$$("#chip-row input"),i=0,stopped=false,grid=$(".hero-grid");
+  function stop(){stopped=true}
+  ["pointerdown","focusin","keydown","touchstart"].forEach(function(ev){grid.addEventListener(ev,stop,{passive:true})});
+  setInterval(function(){
+    if(stopped||document.hidden||$("main[data-view=home]").hidden||window.scrollY>300)return;
+    i=(i+1)%radios.length; radios[i].checked=true; radios[i].dispatchEvent(new Event("change",{bubbles:true}));
+  },3600);
+})();
+
 /* ---- Typesetting: straight quotes in the copy are shown as typographic quotes. The wording is not touched. ---- */
 function typeset(root){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,t;
