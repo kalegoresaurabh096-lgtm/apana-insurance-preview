@@ -608,6 +608,11 @@ table.compare tbody td:nth-child(2){background:#f6f8ff}
 .chip span{transition:background .2s,border-color .2s,color .2s,transform .2s}
 .chip input:hover+span{transform:translateY(-2px)}
 @media (max-width:900px){.hero::after{display:none}.fx i{display:none}.fx i:nth-child(1){display:block;left:auto;right:6%;top:5%}.fx i:nth-child(5){display:block;right:20%;top:12%}}
+.cards3{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.cost,.pen,.post,.steps li,.review,.guide,.panel{overflow-wrap:break-word}
+.cost .part{max-width:100%;overflow-wrap:anywhere}
+.cost .part.word{font-size:clamp(1.2rem,1.7vw,1.45rem);line-height:1.2}
+.contact-grid .cost b{overflow-wrap:anywhere}
 .months div{transition:background .3s}
 .months div:hover{background:rgba(255,255,255,.2)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
@@ -1398,7 +1403,7 @@ function renderGuide(key){
   var g=GUIDES[key],h="<p class=\"lede\">"+g.lede+"</p>";
   g.sec.forEach(function(x){
     h+="<section><h2>"+x.h+"</h2>";
-    if(x.cards)h+="<div class=\""+(x.cards.length===2?"cards2":"cards3")+"\">"+x.cards.map(function(c){return "<div class=\"cost\"><span class=\"part\">"+c[0]+"</span>"+(c[1]?"<b>"+c[1]+"</b>":"")+"<p>"+c[2]+"</p></div>"}).join("")+"</div>";
+    if(x.cards)h+="<div class=\""+(x.cards.length===2?"cards2":"cards3")+"\">"+x.cards.map(function(c){return "<div class=\"cost\"><span class=\"part"+(/^[$\d]/.test(c[0])?"":" word")+"\">"+c[0]+"</span>"+(c[1]?"<b>"+c[1]+"</b>":"")+"<p>"+c[2]+"</p></div>"}).join("")+"</div>";
     if(x.list)h+="<ul class=\"bullets\">"+x.list.map(function(l){return "<li>"+l+"</li>"}).join("")+"</ul>";
     if(x.ways)h+="<ul class=\"ways\">"+x.ways.map(function(w){return "<li><b>"+w[0]+"</b><span>"+w[1]+"</span></li>"}).join("")+"</ul>";
     (x.p||[]).forEach(function(p){h+="<p>"+p+"</p>"});
