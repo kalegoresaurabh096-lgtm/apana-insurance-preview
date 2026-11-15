@@ -150,7 +150,7 @@ a:hover .arrow,.btn:hover .arrow{transform:translateX(4px)}
 .burger[aria-expanded="true"] span::before{top:23px;transform:rotate(45deg)}
 .burger[aria-expanded="true"] span::after{top:23px;transform:rotate(-45deg)}
 @media (max-width:1180px){.phone small{display:none}.head-cta{gap:14px}}
-@media (max-width:1080px){
+@media (max-width:1160px){
   .nav{display:none;position:absolute;top:100%;left:0;right:0;height:calc(100vh - var(--head-h));height:calc(100dvh - var(--head-h));overflow-y:auto;overscroll-behavior:contain;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px max(var(--gut),env(safe-area-inset-right,0px)) calc(120px + env(safe-area-inset-bottom,0px)) max(var(--gut),env(safe-area-inset-left,0px))}
   .nav.open{display:flex;animation:sheet .4s var(--ease-out) both}
   @keyframes sheet{from{opacity:0;transform:translateY(-12px)}}
@@ -531,6 +531,20 @@ table.record td{color:var(--ink);font-weight:500;padding-right:0}
 .prose h2{font-size:clamp(1.5rem,1.3rem + .9vw,2rem);letter-spacing:-.03em}
 .narrow{max-width:calc(880px + 2*var(--gut))}
 
+/* ---------- Beyond Medicare (added 2026-11-15) ---------- */
+.band.mist .guide{background:#fff}
+.band.mist .guide:hover{box-shadow:var(--shadow-card)}
+.band.mist .guide .ico,.band.mist .guide .go .arrow{background-color:var(--mist)}
+.also{display:flex;flex-direction:column;gap:16px;padding-top:8px}
+.also-h{font-size:1.25rem;font-weight:650;letter-spacing:-.022em;color:var(--ink)}
+.pills{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.pills li{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line-2);font-size:1.0625rem;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
+.article-main .cards2{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+[data-added] .ph{white-space:normal;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* One more menu item: tighten the header between the phone menu and wide screens */
+@media (min-width:1161px){.nav > a{white-space:nowrap}}
+@media (min-width:1161px) and (max-width:1260px){.nav a,.nav .navlink{padding-inline:9px}.head-cta{gap:10px;margin-left:6px}}
+
 /* ---------- Motion ---------- */
 @keyframes rise{from{opacity:0;transform:translateY(22px)}}
 @keyframes rise-solid{from{transform:translateY(22px)}}
@@ -686,6 +700,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
           <a href="#prescription-costs">Prescription costs<span>The 2027 Part D cap and payment plan</span></a>
         </div>
       </div>
+      <a href="#beyond-medicare" data-added>Beyond Medicare</a>
       <a href="#seminars">Seminars</a>
       <a href="#about">About</a>
       <a href="#faq">FAQ</a>
@@ -803,7 +818,30 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     </div>
   </section>
 
-  <section class="band mist">
+  <section class="band mist" data-added aria-labelledby="beyond-h">
+    <div class="wrap stack-lg">
+      <div class="head">
+        <p class="eyebrow">Beyond Medicare</p>
+        <h2 id="beyond-h">Coverage for what Medicare doesn't pay for.</h2>
+        <p class="lede">Medicare doesn't include life insurance, and it pays for very little long-term care. We can help you plan for both, and for the costs a health plan leaves behind.</p>
+      </div>
+      <div class="guides">
+        <a class="guide" href="#beyond-medicare"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><span class="who">Not covered by Medicare</span><h3>Final Expense (Life Insurance)</h3><p>A smaller life policy meant for funeral costs and final bills, so your family isn't left paying them.</p><span class="go">Learn more <span class="arrow">→</span></span></a>
+        <a class="guide" href="#beyond-medicare"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></span><span class="who">Not covered by Medicare</span><h3>Long-Term Care Insurance</h3><p>Help paying for care at home, in assisted living or in a nursing home when you need help with daily activities.</p><span class="go">Learn more <span class="arrow">→</span></span></a>
+        <a class="guide" href="#beyond-medicare"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 16v-4M10 16V9M14 16v-6M18 16V6"/></svg></span><span class="who">Retirement income</span><h3>Annuities</h3><p>An insurance contract that can turn savings into steady income, including income for life.</p><span class="go">Learn more <span class="arrow">→</span></span></a>
+      </div>
+      <div class="also">
+        <p class="also-h">Also available</p>
+        <ul class="pills">
+          <li>Hospital Indemnity</li><li>Dental, Vision &amp; Hearing</li><li>Cancer</li><li>Heart Attack &amp; Stroke (Critical Illness)</li>
+        </ul>
+        <p><a class="link-cta" href="#beyond-medicare"><b>See all coverage beyond Medicare <span class="arrow">→</span></b></a></p>
+      </div>
+      <p class="byline">These products are not Medicare plans and are not connected with or endorsed by the U.S. government or the federal Medicare program.</p>
+    </div>
+  </section>
+
+  <section class="band">
     <div class="wrap split">
       <figure class="portrait"><img data-photo="founder" alt="Christopher Apana, founder of Apana Insurance" width="450" height="450"><figcaption><b>Christopher Apana</b>Founder, Apana Insurance</figcaption></figure>
       <div class="founder-copy">
@@ -816,7 +854,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     </div>
   </section>
 
-  <section class="band">
+  <section class="band mist">
     <div class="wrap stack-lg">
       <div class="head">
         <p class="eyebrow">In their words</p>
@@ -831,7 +869,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     </div>
   </section>
 
-  <section class="band mist">
+  <section class="band">
     <div class="wrap duo">
       <div class="panel light">
         <p class="eyebrow">Free educational events</p>
@@ -848,7 +886,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     </div>
   </section>
 
-  <section class="band">
+  <section class="band mist">
     <div class="wrap cols2">
       <div class="head pin">
         <p class="eyebrow">2027 questions</p>
@@ -1067,6 +1105,75 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
   </div></section>
 </main>
 
+<main data-view="beyond-medicare" data-title="Life, Long-Term Care and Supplemental Insurance" data-added hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Beyond Medicare</p>
+    <h1>Coverage for what Medicare doesn't pay for.</h1>
+    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513.</p>
+  </div></section>
+  <section class="band"><div class="wrap article">
+    <div class="article-main">
+      <p class="lede">Life insurance, long-term care and retirement income sit outside Medicare. So do some of the costs a health plan leaves behind. Here is what each one does, in plain words.</p>
+      <p class="notice"><b>Not covered by Medicare:</b> Medicare doesn't pay a life insurance benefit. It also doesn't cover long-term custodial care, the everyday help with bathing, dressing and eating that most people who need long-term care need.</p>
+
+      <section>
+        <h2>Final Expense (Life Insurance)</h2>
+        <p>Final expense is life insurance sized for the costs that come at the end of life: a funeral, medical bills and other debts. The benefit is paid to the people you name, and they can use it however they need.</p>
+        <ul class="bullets">
+          <li>Coverage amounts are smaller than a traditional life policy, which keeps premiums manageable on a retirement budget.</li>
+          <li>Many policies are whole life: the premium stays the same and coverage doesn't expire as long as premiums are paid.</li>
+          <li>Many policies ask a few health questions instead of requiring a medical exam.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Long-Term Care Insurance</h2>
+        <p>Medicare covers skilled nursing care only for a limited time after a qualifying hospital stay, up to 100 days in a benefit period, and doesn't cover custodial care at all. Long-term care insurance can help pay for that care, depending on the policy:</p>
+        <div class="cards2">
+          <div class="cost"><span class="part word">At home</span><p>A home health aide or help with daily activities, so you can stay where you live.</p></div>
+          <div class="cost"><span class="part word">Assisted living</span><p>Help with daily activities in an assisted living community.</p></div>
+          <div class="cost"><span class="part word">Nursing home</span><p>Care in a nursing home beyond what Medicare covers.</p></div>
+          <div class="cost"><span class="part word">Adult day care</span><p>Daytime care and supervision while family members work.</p></div>
+        </div>
+        <p>Coverage costs less when you buy it younger and in better health, and you usually have to qualify medically. Some life insurance policies and annuities also include long-term care benefits.</p>
+      </section>
+
+      <section>
+        <h2>Annuities</h2>
+        <p>An annuity is a contract with an insurance company. You pay in, all at once or over time, and it can pay you income later, for a set number of years or for the rest of your life.</p>
+        <ul class="bullets">
+          <li>Guarantees depend on the claims-paying ability of the insurance company that issues the annuity.</li>
+          <li>Annuities are not bank deposits and are not FDIC insured.</li>
+          <li>Most have surrender charges if you take out more than the contract allows in the early years.</li>
+        </ul>
+        <p>We don't give tax or legal advice. Please talk with your tax advisor about how an annuity fits your situation.</p>
+      </section>
+
+      <section>
+        <h2>Supplemental coverage</h2>
+        <p>These policies pay cash in addition to your health coverage. They don't replace it. Some Medicare Advantage plans already include some of these benefits, so we check what your plan covers first.</p>
+        <div class="cards2">
+          <div class="cost"><span class="part word">Hospital Indemnity</span><p>Pays a set cash amount for each day you're in the hospital. It can help with Medicare Advantage hospital copays.</p></div>
+          <div class="cost"><span class="part word">Dental, Vision &amp; Hearing</span><p>Original Medicare doesn't cover most dental care, eye exams for glasses or hearing aids. A separate plan can help with cleanings, fillings, glasses and hearing aids.</p></div>
+          <div class="cost"><span class="part word">Cancer</span><p>Pays cash if you're diagnosed with cancer, to help with travel, treatment costs and bills while you recover.</p></div>
+          <div class="cost"><span class="part word">Heart Attack &amp; Stroke (Critical Illness)</span><p>Pays a lump sum if you're diagnosed with a covered condition, such as a heart attack or stroke. You decide how to spend it.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>How we talk about these</h2>
+        <ul class="bullets">
+          <li>We start with what your Medicare coverage already pays, so you don't buy what you already have.</li>
+          <li>We never discuss life insurance or annuities during a Medicare plan appointment. If you'd like to talk about them, we set up a separate conversation.</li>
+          <li>You don't have to buy anything, and you can stop the conversation at any time.</li>
+        </ul>
+        <p class="byline">These products are not Medicare plans and are not connected with or endorsed by the U.S. government or the federal Medicare program. Policies are issued by the insurance companies that underwrite them, and benefits, limitations, exclusions and availability vary by company and policy. <span class="ph">[Confirm the life, health and annuity companies Apana represents and the licenses that apply]</span></p>
+      </section>
+    </div>
+    <aside class="aside"><div data-form="beyond"></div></aside>
+  </div></section>
+</main>
+
 <!-- ============ FAQ ============ -->
 <main data-view="faq" data-title="Medicare Questions for 2027" hidden>
   <section class="page-head"><div class="wrap">
@@ -1168,7 +1275,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
         <li><a href="#turning-65">Turning 65</a></li><li><a href="#working-past-65">Working past 65</a></li><li><a href="#plan-review">Already on Medicare</a></li><li><a href="#medicare-and-medicaid">Medicare and Medicaid</a></li><li><a href="#veterans">Veterans</a></li><li><a href="#prescription-costs">Prescription costs</a></li>
       </ul></div>
       <div><h4>Apana</h4><ul>
-        <li><a href="#about">About</a></li><li><a href="#seminars">Seminars</a></li><li><a href="#articles">Articles</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li><li data-added><a href="#beyond-medicare">Beyond Medicare</a></li><li><a href="#seminars">Seminars</a></li><li><a href="#articles">Articles</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li>
       </ul></div>
       <div><h4>Follow</h4><ul>
         <li><a href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener">Google reviews</a></li><li><a href="https://m.facebook.com/apanainsurance/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.linkedin.com/company/apanainsurance" target="_blank" rel="noopener">LinkedIn</a></li>
@@ -1254,6 +1361,7 @@ var FORMS={
   hero:{h:"Get a free plan review",sub:"Four fields. A licensed agent calls you back.",fields:[NAME,PHONE,ZIP,SITSEL],btn:"Plan my Medicare start"},
   t65:{h:"Plan my Medicare start",sub:"We'll map your window and your options with you.",fields:[NAME,Object.assign({},PHONE,{full:true}),{n:"bmonth",label:"Birthday month",type:"select",full:true,options:monthOptions()}],btn:"Plan my Medicare start"},
   veteran:{h:"Fit Medicare with my VA benefits",sub:"A licensed agent calls you back.",fields:[NAME,PHONE,ZIP],btn:"Fit Medicare with my VA benefits"},
+  beyond:{h:"Talk about coverage beyond Medicare",sub:"A licensed agent calls you back to set up a separate conversation.",consent:"Yes, Apana Insurance may call or text me at the number above about the insurance products I selected, including with automated technology. I don't have to agree to buy anything, and I can say stop at any time. Message and data rates may apply.",disc:"These products are not Medicare plans and are not connected with or endorsed by the U.S. government or the federal Medicare program. Benefits, limitations and availability vary by company and policy.",fields:[NAME,PHONE,ZIP,{n:"interest",label:"I'd like to talk about",type:"select",full:true,options:["Final Expense (Life Insurance)","Long-Term Care Insurance","Annuities","Hospital Indemnity","Dental, Vision &amp; Hearing","Cancer","Heart Attack &amp; Stroke (Critical Illness)","Not sure yet"].map(function(o){return "<option>"+o+"</option>"}).join("")}],btn:"Request a call back"},
   contact:{h:"Send us a message",sub:"We reply within one business day.",fields:[NAME,PHONE,ZIP,SITSEL],btn:"Request a call back"},
   stub:{h:"Get a free plan review",sub:"A licensed agent calls you back.",fields:[NAME,PHONE,ZIP],btn:"Request a call back"},
   seminar:{h:"Save my seat",sub:"We'll confirm by phone.",seminar:true,fields:[NAME,Object.assign({},PHONE,{full:true}),{n:"event",label:"Which seminar",type:"select",full:true,options:"<option>Medicare 101</option><option>Turning 65 this year</option><option>Medicare for veterans</option>"},{n:"guests",label:"Seats needed",type:"select",full:true,options:"<option>1</option><option>2</option><option>3</option><option>4</option>"}],btn:"RSVP"}
@@ -1264,11 +1372,11 @@ $$("[data-form]").forEach(function(el){
     "<div class=\"card-head\"><h2>"+c.h+"</h2><p class=\"sub\">"+c.sub+"</p></div>"+
     (c.seminar?"<p class=\"fine\"><b>This is an educational event.</b> No plan-specific benefits will be discussed and no enrollment forms will be collected.</p>":"")+
     "<div class=\"fields\">"+c.fields.map(function(f){return field(f,fid)}).join("")+"</div>"+
-    "<label class=\"consent\"><input type=\"checkbox\" id=\""+fid+"-consent\" name=\"consent\"><span>"+CONSENT+"</span></label>"+
+    "<label class=\"consent\"><input type=\"checkbox\" id=\""+fid+"-consent\" name=\"consent\"><span>"+(c.consent||CONSENT)+"</span></label>"+
     "<button class=\"btn btn-primary\" type=\"submit\" id=\""+fid+"-btn\">"+c.btn+"</button>"+
     "<div class=\"form-done\" role=\"status\" hidden></div>"+
     "<p class=\"fine small\">A licensed Apana agent will contact you. Submitting this form does not enroll you in a plan. <a href=\"#privacy\">Privacy policy</a></p></div>"+
-    "<div class=\"legal-note\"><p class=\"fine\">"+DISC+"</p></div></form>";
+    "<div class=\"legal-note\"><p class=\"fine\">"+(c.disc||DISC)+"</p></div></form>";
   var form=el.firstChild;
   form.addEventListener("submit",function(ev){
     ev.preventDefault();
@@ -1527,9 +1635,9 @@ function route(first){
 window.addEventListener("hashchange",function(){route(false)});
 route(true);
 
-burger.addEventListener("click",function(){var o=nav.classList.toggle("open");head.classList.toggle("menu-open",o);burger.setAttribute("aria-expanded",String(o));if(o&&window.matchMedia("(max-width:1080px)").matches){ddPanel.hidden=false}});
+burger.addEventListener("click",function(){var o=nav.classList.toggle("open");head.classList.toggle("menu-open",o);burger.setAttribute("aria-expanded",String(o));if(o&&window.matchMedia("(max-width:1160px)").matches){ddPanel.hidden=false}});
 ddBtn.addEventListener("click",function(e){e.stopPropagation();ddPanel.hidden=!ddPanel.hidden;ddBtn.setAttribute("aria-expanded",String(!ddPanel.hidden))});
-document.addEventListener("click",function(e){if(!e.target.closest(".dd")&&!ddPanel.hidden&&!window.matchMedia("(max-width:1080px)").matches){ddPanel.hidden=true;ddBtn.setAttribute("aria-expanded","false")}});
+document.addEventListener("click",function(e){if(!e.target.closest(".dd")&&!ddPanel.hidden&&!window.matchMedia("(max-width:1160px)").matches){ddPanel.hidden=true;ddBtn.setAttribute("aria-expanded","false")}});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMenus()});
 
 /* ---- Scroll to the nearest form ---- */
