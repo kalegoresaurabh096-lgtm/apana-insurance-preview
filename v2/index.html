@@ -138,7 +138,7 @@ a:hover .arrow,.btn:hover .arrow{transform:translateX(4px)}
 .nav .dd-panel a{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px 18px;border-radius:19px;font-weight:600;font-size:1.0625rem;line-height:1.25;white-space:normal}
 .nav .dd-panel a span{font-size:1rem;font-weight:425;line-height:1.4;color:var(--muted);letter-spacing:-.008em}
 .nav .dd-panel a[aria-current="page"]{background:rgba(48,56,144,.09);color:var(--indigo)}
-.head-cta{display:flex;align-items:center;gap:18px;flex:none;margin-left:14px}
+.head-cta{display:flex;align-items:center;gap:18px;flex:none;margin-left:18px;padding-left:22px;border-left:1px solid var(--line-2)}
 .phone{display:flex;flex-direction:column;align-items:flex-end;gap:4px;color:var(--ink);text-decoration:none;white-space:nowrap}
 .phone span{font:650 1.125rem/1.1 var(--font);letter-spacing:-.022em;transition:color .2s var(--ease)}
 .phone small{font:425 1rem/1.1 var(--font);letter-spacing:-.012em;color:var(--muted)}
@@ -159,7 +159,7 @@ a:hover .arrow,.btn:hover .arrow{transform:translateX(4px)}
   .dd-panel{position:static;width:auto;margin:0;box-shadow:none;border-radius:0;padding:6px 0 10px;grid-template-columns:minmax(0,1fr);animation:none;border-bottom:1px solid var(--line)}
   .nav .dd-panel a{padding:12px 4px;border-radius:12px;font-size:1.1875rem}
   .burger{display:inline-flex}
-  .head-cta{margin-left:0}
+  .head-cta{margin-left:0;padding-left:0;border-left:0}
   .head-cta .btn{display:none}
 }
 @media (max-width:520px){:root{--head-h:64px;--gut:20px}.brand img{height:29px}.site-head .phone{display:none}}
@@ -708,7 +708,6 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     </nav>
     <div class="head-cta">
       <a class="phone" href="tel:+15619182999"><span>(561) 918-2999</span><small>Mon to Fri, 9AM to 5PM</small></a>
-      <button class="btn btn-primary btn-sm" type="button" data-scroll-form>Free plan review</button>
     </div>
     <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
   </div>
