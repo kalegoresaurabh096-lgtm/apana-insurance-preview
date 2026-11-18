@@ -669,6 +669,79 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
 .anim .band.dark > .wrap::before{animation:breathe 8s ease-in-out infinite alternate}
 @keyframes breathe{to{translate:-12% 18%;scale:1.15}}
 /* The answer under a chip changes with a soft swap */
+
+/* ---------- v6 review additions ---------- */
+.dd-panel{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 10px;width:720px;margin-left:-360px}
+.dd-col{display:flex;flex-direction:column;gap:2px;min-width:0}
+.dd-h{padding:12px 18px 4px;font-size:1rem;font-weight:600;color:var(--muted);letter-spacing:-.008em}
+@media (max-width:1160px){.dd-panel{width:auto;margin:0}.dd-h{padding:14px 4px 2px}}
+body.nonmed .strip{display:none}
+.reviews-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.stars{display:inline-flex;gap:3px;color:#f2a900;font-size:1.25rem;line-height:1;letter-spacing:0}
+.rating{font-size:1.125rem;font-weight:600;color:var(--ink)}
+.review{background:#fff;box-shadow:var(--shadow-card)}
+.band:not(.mist) .review{background:#fff}
+.review .stars{font-size:1.125rem}
+.free-note{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;padding:clamp(20px,2.6vw,28px) clamp(22px,3vw,32px);border-radius:var(--r-md);background:var(--sky-100);color:var(--ink);font-size:1.125rem;line-height:1.5}
+.free-note b{display:block;font-size:1.25rem;letter-spacing:-.02em;margin-bottom:4px}
+.free-note .ico{width:44px;height:44px;border-radius:50%;background:var(--indigo);color:#fff;display:grid;place-content:center;font-weight:700}
+.gaps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.gap-item{min-height:0}
+.gap-item h3{font-size:1.4375rem;letter-spacing:-.028em}
+.gap-item .pays{font-size:1rem;font-weight:600;color:var(--indigo)}
+@media (max-width:900px){.gaps3{grid-template-columns:minmax(0,1fr);gap:14px}}
+details.fold > summary{display:none}
+@media (max-width:760px){
+  details.fold > summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;padding:0 22px;border-radius:var(--r-md);background:#fff;font-size:1.1875rem;font-weight:600;color:var(--ink);cursor:pointer;list-style:none}
+  details.fold > summary::-webkit-details-marker{display:none}
+  details.fold > summary::after{content:"";width:22px;height:22px;background:currentColor;-webkit-mask:var(--i-chev) center/100% 100% no-repeat;mask:var(--i-chev) center/100% 100% no-repeat;transition:transform .3s var(--ease-out)}
+  details.fold[open] > summary::after{transform:rotate(180deg)}
+  details.fold[open] > summary{margin-bottom:14px}
+}
+.links-line{display:flex;flex-wrap:wrap;gap:10px 28px}
+.field textarea{font:425 1.125rem/1.45 var(--font);color:var(--ink);min-height:150px;width:100%;padding:14px 16px;border:1px solid var(--control);border-radius:var(--r-sm);background:#fff;resize:vertical}
+.field textarea:focus{outline:3px solid var(--blue);outline-offset:2px;border-color:var(--blue)}
+.field .opt{font-weight:425;color:var(--muted)}
+.aside{position:static;align-self:stretch}
+.aside > [data-form],.aside .form{height:100%}
+.aside .form > .card{position:sticky;z-index:2;top:min(calc(var(--head-h) + 28px + env(safe-area-inset-top,0px)),calc(100vh - var(--card-h,0px) - 24px))}
+.aside .form > .card.nostick{position:static}
+.aside .card{gap:16px;padding:26px 28px}
+.aside .fields{gap:12px 12px}
+@media (max-width:1020px){.aside > [data-form],.aside .form{height:auto}.aside .form > .card{position:static}}
+.inline-form{max-width:640px}
+.book{display:flex;flex-direction:column;gap:18px}
+.book h3{font-size:1.5rem;letter-spacing:-.026em;color:var(--ink)}
+.book fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.book legend{font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:10px;padding:0}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slot{position:relative}
+.slot input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.slot span{display:inline-flex;align-items:center;min-height:48px;padding:0 16px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--control);font-size:1.0625rem;font-weight:500;color:var(--ink);background:#fff}
+.slot input:checked + span{background:var(--indigo);color:#fff;box-shadow:none}
+.slot input:focus-visible + span{outline:3px solid var(--blue);outline-offset:2px}
+.book .fine{color:var(--muted)}
+table.chart{border-collapse:collapse;width:100%;font-size:1rem;min-width:640px}
+table.chart th,table.chart td{padding:12px 5px;text-align:center;border-bottom:1px solid var(--line);vertical-align:middle}
+table.chart thead th{font-weight:650;color:var(--ink);font-size:1.0625rem;border-bottom:1px solid var(--line-2)}
+table.chart tbody th{text-align:left;font-weight:500;color:var(--ink);min-width:190px;padding-right:10px}
+table.chart td.y{color:var(--indigo);font-weight:700}
+table.chart td.n{color:var(--muted)}
+.chart-scroll{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r-md);background:var(--mist);padding:6px 18px 10px}
+.chart-scroll:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+table.types{border-collapse:collapse;width:100%;font-size:1.0625rem}
+table.types th,table.types td{text-align:left;vertical-align:top;padding:16px 18px 16px 0;border-bottom:1px solid var(--line)}
+table.types thead th{font-weight:650;color:var(--ink);border-bottom:1px solid var(--line-2)}
+table.types tbody th{font-weight:600;color:var(--ink);width:24%}
+@media (max-width:760px){
+  table.types,table.types thead,table.types tbody,table.types tr,table.types th,table.types td{display:block}
+  table.types thead{display:none}
+  table.types tr{padding:16px 0;border-bottom:1px solid var(--line-2)}
+  table.types th,table.types td{border:0;padding:4px 0;width:auto}
+  table.types td::before{content:attr(data-label)": ";font-weight:600;color:var(--ink)}
+}
+.ph{white-space:normal;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .w{opacity:1!important;transform:none!important;filter:none!important}
@@ -687,20 +760,28 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="#home" aria-label="Apana Insurance, home"><img src="data:image/png;base64,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" alt="Apana Insurance" width="324" height="48"></a>
+    <a class="brand" href="#home" aria-label="Apana Insurance, home"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUQAAAAwCAYAAABpLgOlAAAuEUlEQVR42u2deXzU9Z3/n59JMpPJNbmTyUlIONVwJIIFQUGg3UWxUqFoazfZqoVtu4jt7q9VV0p3tfanC7LbLa61v6SXF5XdcrQroAgUKkgIlxwhHDkn50ySmWSOJPP5/fGd7zczySSEQ7TdeT8e30cmc3y+n/P1eR+vz/srpJR8kiIsHbnsOTeWLk8icXorqUkdnD93Wa5abCMkIQlJSD5DIm4UIAowSHCrr9ldPZmK+qV09EwiNjw/4MthGSfI7i7n4ZkVErpsFcIEkFAkO0NDEpKQhOTPGhAFGAAkuAXE8cr+hVidz6DTF2DM0JNoHPiy1QnORg9VraeYkLKb/3P3i4C7pFyIshLpCg1JSEISkj97QNS0w1f2f4mO/nIAMosiB77V4YV4HVaLlwtVbmq9Bip3WEiJ2ymPvPh4aChCEpKQfNqiu27NsF4YNTDcXT0Nq/MZjBn6ATDs8GpgWOuCf99ay39/2MzRw7UANLY9KCYuWu1fbmm5iAwNTUhCEpI/K0CU4LY1o/eBYxxvfVCKTl8QYCL7y0d/8uLp8CsgpZcIfRfOvDVi+eocFQzX34YhBIohCUlI/iwAUfUZUi+M2v+v7F9IfkEpxgz9gGYIEK+DeB0f7XVy+L+6AwrSx0PEuF56PXFc1D8DUFYiXU+exF22ABEanpCEJCSfaUD0B0NbM/qEItmJpSOdGvtDACSah5ZptXjZv6uSCH0XojViyOfhme20di0SxXOnh4YkJCEJyZ8NIEpfRNjWjD4hDQ8Ab1Xciynq82Tm6wO/7fMfOsN2U7nxPhLPf4VeTxyiNQJ9/MDXEkxOAFp7VgowlJVIV+luZGh4QhKSkHzmTWaNHpMlnWJ39TR6+h9VTOX4wPKsTqg7c5pi+YyELln5/gGM516m1xMHQLR0at+NL+iCokV849VHAcqj14dM5pCEJCSffUAsLReRT570cQ4r6pcqgRSfqWy1eDW/obPRQ5h+u1xQUCk2b1AiLYs+/woR+i4tuKL+NSb1EjGul8MfLxer1qXKZWucoeEJSUhCcjMl/Fp/WFYiXeWvH/ockicGAimgRJg7vFid4PVUUzrjNQAV4OSmtS2i9Cc/592KNWCq18xlZ3sEyUldWM7n4kr6BvDPatCGLHlTwVGsWpeq/dNujWTZmNYQQH96IsDAqnUmAObH2UNjEZKbCoga0bpeGFUw8n+vrEQ6BcRxsv2bmKIGAim1LsjxI1+PNb6GOd7mT9wGYEbeTzh2fgHtnRlkjO3SAFE1nY+dXyCWr/6FXE+rrRl9QhY3bQGIscXfodO6FmNsg6LBdps4aKgTbeO/IFcttvn3SUhumhjY+uav6e29lY8y7mXZmqOhcQjJTTOZNfDym3DqeyrvkFf2L6Tbuwhjhl4xkzu85Piog85GD9G6nXy5aDvgDgDDemGUqxbbiLr4HKI1QgNCY1Kv9rc9NoOKj0rIks6beb5ZbNqRgKPjO3R0xOLqn4irfyJuaabh7AzWP7f009BWQ+KTvv48Wi+Z6Q83hsYhJDcVEDVTNcj7CWl4BMRhdT5D/njDgO/QNz+tFoV/mBv7hjTH11grRKRWno+qAyAPbNtJStxObJ2B90rQucgY20Xc7feI0hduH7E+N1o2bvwa7VYzORO8mJL7MSX3k5zdj8EMzs7Q8cJPUyKMfehMENYXAsKQ3GRA9DOdA0jYWdJJlnTyjVcfocmTH5RzeKHKjUjewso5u4b4AH0an3YKxXjhJZLsjZqWCGDzRpKgc+HNSuBk+2MCDGRJ5ycNigIMOBoeJiIKdIZAyo8520tb5wwx+75FoSkTkpD8LwVE/MBQ5QWK3dXT6E34Kvnjlc9q/RLUWC1eHM6PKYp8WUIXQGKRdInd1dPE428sF4+/sVy8fmheeYmSUULu31KF88wWbJ1GEnQu7VJN597UO3j8jftviok0Zd59tHXOwJytaLhet8BlV/pHZ5D09kBd7TdHC65aVD0kf3ESGtu/3H4ODohZ0unTDN1DzitXuJ4gesIMHAlKsoacSHAk6DTtsDDx13JBQaWmUb6y/17e+qCUJNNykkzL2XPyAV7Zf6+mec6b/QZJ9kZs3sCzy5NjPRiTejl6dIGwdOR+4j3R1vQ4vT0K+Hndgu7WZkTfOQ0U0/MknY4lVzpNow7i4Eio2LzBeCMHWOu/a/jOleoxmrL9vzfa79/IOn6aMlKU+3r64i8NfK+37kPW0A3u22vREDX/XVmJdPH6oSJk21LSzV5ibMqlguKFKjfp+gu+QIrSgOWrc6g4dxf58/KJz+kmPqeb/Hn5VJy7i+Wr00Ch4TDjlrcDzGaALpOHrCwH/Z4JPPXrr32iA1c8dzoOz0ISMhTN0FKnwxi/nZSkR3F0CLxuQWSsF4cNWntWjrgYlq3xqptHgKa4bI1XHWCxal2qKJ47XUybP1tMmz9bTWxxNQOvZRgaXJYfYAck7PX7G2yi+d/TPwgm5iwdL4rnThdzlo4fPMEDgmUjSGm5iBxcR23jALd/ucNtKFdaeIPrJjZvMGr3LJ47fXAfX1XZah8M0w/B+u5awWBIHy9b4xSbNxiDWR1i1bpUMWfpeDFn6firAQuxfHWO9rth6nk17wfMQb++vlZ6lNbnc5aO96fABczL0SgEy1fnjDRuwReWlEMu6xFMUkqQMk79Hynj+N6O3/Kt4/38S0vvkOvb27rYsPubUkp4e71RSgmb9n2J0lff5oWTv+A1+3/zmv2/eeHkL/jejt9S8qPbpZTIOoz8dHsCRd99lZk/r+ALZQe060vv7tVe7zo/TatbHUakNCClQdZhVOt7rReZt5WhS5CMvauPMXf0Y8iUzLp3kfLZ5EMYMpXPMqZ7GXNHP8v+Pkete9DyJs1ZTGbhGTInHyJ13Hlyil6VUsLKH6SSM/1lUsedJ2O6l6RbJEm3SFLyG8mYuJOJn3tYK8PXh8PWeeq82WTeVkbquPMk5nVp5SXmdZE5+RAFn/u6VpfUcecH6jL9Za2MlT9IJbvwd0pdC8+QWfiG9lnB575OxsSdJOZ1aVdm4Rlypz7Hyh+kqt8rKSPSf974/0/Jj24nZ/rLZBaeITGvS2tvYl4XqePOkzv1OSkl3PnAeK2/fPXgp9sTtHKkjCOz8AyGTEnRnOkB/XDnA+P928VPtyeQM/1lUvIb0SVI7YobK/37JdgVUPc7HxhPTtGrWjnolEuXoIxX5m1lg+sSMP4p+Y0j3Svo79S5MbiNuVOfI3XceXXeUXj3g9rYqO3zzTPufGB80PaoY5E67jyGzIF+SclvJKfoVf97UvC5r5OS38ikOYuHzLmU/EYmLFztN25vaPVQ+yhurCRj4k7/3/P2eqN/fYK233/OqfVT53Ne0Xf854R/mdYjmPwxiwkLV2vzxX8OJOZ1kXlbGVPnzQ7AOr91HJSHqJ1R9iFyQpHs5PE3lhMZu4h0s3fID5osOmJ0O3ninl8F7AxxeithogkwDfnNwnkxoNB45KrFNiHi3qX8fJESxIjW0WVS6hCd0Ud3YzhvfVAqFhSclml4bM3oycJ1veq8XLbGKeYsHY/T8SUSMnx+0BYdyabDHNi2F4CYzNexWGZoWuLlE2FI1zeAp4f1a8o+Ew2nJhI3Bhw2MBv7xOz7FlF97j9oaysgIQPCkRh8wRs3Zto7zDQ1LxSZk0pYsuKrctPaFrWOQ+qeW/QyHR2rcdggIQPikrx4PCjlGWJoa55Br2WGyC26DeHtpq2tgIgocFsgY/zkgMK67fPo6IgFYEzhODFt/k9ob/9HGuqWKJMhA62e9o6JOGxP8c6vSsWHe5fJyvcPDK6beqxTjC3+Dl2ul7A1QkwCxCRI9HovHo/ATSydHbG0XHhKZE0ZS0zah7S1TyQmHhztEBdpGvVAOttiaLlQQOataWL56hw+2PEhrZfMJObaMWe/SViEnX5PBPRPVsbx7AyROenLah8Hrfu4WV+n+tBrAKTkWZRyxtoB6O+NpddZTMPHJTRQIrKmvEle/lq5f0uVVlBvXzqtl8xExY69qknZ1zOZlgsFFExIDnjf672VlgsFRJvTxJhp36DmxFMAZE48THRsE/0eIy73HdRWPkZ01O+AKrF5g1GW+DjE+bOe5fLZdXg7ITHXTlLsLsKSlHnldk6mtvIxanlM5BZtlDUVT+Alk9ZLZkyp6YH1kGZaL5mJiQ8X0+bP5sSxP+LthNT8aszZOwgba6e/NxaYSsOphTRWLRS5xT+TNUceVzRdjGXB1uK0+bNprC+n5UIBOhOYs88SHav0Z7/HiN21kK6zM3jm22vFvz23Up45+PoQzCqSnaL0hdvZ9cYvaTg1EYMZkmJ3EZ52GuHtpq8/A8QdNJxSxs3X1oQi2ekfsA0fzocIYK0QkRRJt7B05NIXvgaZEw0MBcRMaw85Sf+hBlI0/+G8CRfZ9VErHbUZgMIn7KiNpq2xkdTxHQEYsnLOO6Li3F0cbr+b6IyBB1DFdeqJi4b67iJe2X8vK+U7CQh/riTXRdyuu/Q3dHtiMad58boFbjeY81/Xyl+9+pesXf1/sLaYSc7uJyYBeuylYtOOl4Z9UJbe4MFghsRUL8nZEkdjOE3239OvDyNngg8U3MpZbYNB+ig+irlee24h27bsFXDX4AULILIKy7DUl5CeJ0n2BYA628LodYLbZ1FE6+1EpsXQ7V6NKbmfMYX9eN0Cq0FHmD6wr8LDm0nIiCU2Vimry7uXTkcY6XkSt1vQ6+Plx8Z6Sc72kpwNl0+Yccs/iuK5RfKIPFpaLiLLSqRL5YyK/FnPUnNxHQkZMKawHwCXXYelbsBFExOvRO/t9hVE2Jdjzvb6ovth6MNGzz297a/DuFRvR3qS2PuH92i9ZCa38Hn+6osbB/efKJ47nZbOtdSdWsK2LXtFYfEsuWqxTa2/tjirD71G3BjISPtKsMUnwMC0+cU01pfTcGoF6aYXA/vUNx91Ydarmotheic6E/R0dw8CIisZUyU7f/EcjVULyZx4mPSkVfLIvqMB7qlTlbex7oH3BRg090zWlDdoOLWCxFw7iRPX8OTTWwbPWzFt/mxaLGupPbZajJnWTYTxYkA71PXc2+8kbgz09c7lYs1LAEycGbyPVAWgtvIxkVUYIetPlAbd3KfMe5AT+zYDkDPtZ6REveLfLq1tRw4s41LlS1hrfiOmza+Rle8fkMvWOEvLn4xMKJKdYtr82Zyp+iNuC+RM3cjMO9fLtzfWDgu+tcdWi6wpabL++EP+io1uWF+YP83ll8ceJXrCjKDaYfMhJyJ5i3x45p4Amk29MEpzfA1f+cJ2mi4ep/rDTqo/7KTp4nG+fHcZCwouiM0bjE+e9PNDzbvtv8hIUXbi5Kh+4joVErje7MQcraPi3F3C0pF7I2g4ctkap1i1LpUeeykx8UowxW7XERdpYfXqX6q+L4VEHluGw6YAVmKql3armRfX/u2o/RlRSWPxugWm5H4sdTrcbkGYp5rIsLPo9ZKG6jBcdh06g2RMYT+WuolsffPXQ8Zl4qLVWOpLyJngJTJWAfCG6jB0LguxMW+SnvI8yUlvEqZz0N4sMPgCRKMVr1vxl0YYwdEhiAw7S4x+F5FhZ7G26OhsC/Npkv04bNDUvknLTuSjUonJcxdz+awChqZkBYjb6sJw2RykJm0lPeV50tJ/ppWpAvG1ysnf9xOmc9DUvJC2tgIK5y6TlyuflpvWtlAvjP7zRB7Zd1TWHr+fzFvfpOHURH78zHcBVNYDAO3t/wjArZM/H2yhq74sWfn+AZqrbqVodtHgBXzDJUzfi6ND0Fi1kIzxu2T9xzMH31O+vbFWnt63wx90RP6sZ2k4tYLMiYdZ/jcF8vzBnwfbxGXl+wdkw5lF5EzdSFPrUzi7v4vBHLwuialeWtqXEGGEabcWDdtHB7bt5AcbZpCaX03DxyViyrwHB/t7RfHc6Zw7r4Bh4dxlsubI40PAEAzy7Y218uKRf6VodhFjZ67ljrvO+2v1YvnqHBpqN+O2KABdU/GECobq/TT/eeX7B2Rz1Tiyb91Kw6kVIn/Ws6MJqhhKdyMT0vCI3dXTONe6AGFWdvpmv7RcTRadSrNRzd8AcKgXRhYUnKbsWxv58t1lnP39T5iR9xO5oKBSQpdctsbp/2Ap+fDMPeR4Xqe7MVwDQr3Zqb2uDy9i7R9m+mux1xV9enfbI3S5zJiSlbbZGiEqtkydNOtv85WbnfcL4uPteDwCnUESEQWe3keHva/HHZgGTeU1ttWFkZq0lQl5n+cHG2awoWQ6SRG3k57yPC6bg7a6MLxuQc4EL03NC8XkuYu1Nm7akYDt8reISVDKc9l1WFt0pKVt5O7Fd8j64w/Jy5VPy/rjD3H34jtITizH0SE0oIMBDdJfIox9Af9bW3TIHjvm/Cd4+vlZsuHMIuqPTyUj7SvoXBYNFNPzJHbXDGbfd5e/uUlX+7NERA2AoaVOhylmK5OnFsva4/fLy5VPy5ojj7OhZDrJaWuxtuiw20efZEQ9qeKvIUanpOHthKy8jfL4nt8C2CqESTtVNQgYefr5vyMx146989ti1brUgOCQl/FkTJUc2Pahf1DIP8CoLVRwf+JgqIrDppjvz7z05ZGCHqXlIlKCW5S+cDsNtetIzLVz3/L7glkbQ0CspuIJUpO2KibnMEvK4xEYDJCZsmyktgswyFWLbWRklSgbTcs/qIqIBtqW1hdwW6Bg5qPquAVgh9/jSbQN7cLBH8pNa1sC1t7BPetovWRm7My1KkCrY6beb0gA8PvPl5CYa8fl/oF/4Ga4ieguL5FSZEkvb31QitUwnTRfBus0v0zWorabCSm7g2p7gI+7aMDSkQDA2v8bzRdnx6kTNuidf7B8O60ff4zHMnTAcwvc9DkeFLurp90A2kocHudybeA728KIj7eTnfeLwb5UuX9LFcbYHbQ3K203Z3tpa5/IlHn3jVrzstTpiE/4maw9fr88sG2nXLXYJpetccoj+47Ky5VPk5WraJx2n6YYEQUOv9Mxr7x0D509BSRnK+Dd3iyIj9/ovxsGaAv1J0qJjS4PMFOvJB6Pb4yzHpJnd25UNwYJbnnm4OuMm1SitScy1ovbDfWNfx1gkrrEDJLSpAauSbG7ZO3x+wN8bOpEvXDwhyTEPY+t8foG027XkZhrJyf3p/5jl5CGRztM4AdoctViG8bYHVhrYvlw77hAVPDU0XhMMG3+bYN9i8GOst408XYGbNbDRXC1ur6/+Su4LZBS8E+qP3pU97nnoX8haZICwMGkvVkQG3OW43u2BWwWw7AgZOX7B0jNr8bumuEPPKL0hdtpal5I5q1n5fmDPx8SRfcft5FYFstX5+DylpCSZ+HCwR+rdbrSEzzlqsU24tNfovGY4IN3F4wIiFI9f/z6oVkY00vIHhNOM1LTDpuRNFl0pOsv8LWpr6naXnn0euGfFKKsRLp4Zf9Cnv3td6hwPUGF6wl+eexRYenIHe6MsjTH1/DVLxzH0q2YUomm/gF13dQP8dlsfn+W/05yTZNz0qx7aeucQWKqV9MOjTHvBCxcf9M8N6eMmHgFDDSNr+nxEReH+j1ri47kpLPUHPmu/yQqLReR2k52fM9viY/fiMPnWk1Kk7idk7VJ1NF1J709aP44U1Q13/vhusHlBGw2eQU/8vnpRgeKymR/U57et0Ns3mAsLReRtgph0up4YNtOosK2Ym3R+fyfIPvyBrSYyDnYGtHM+cRUL+aU7w3WYALafbnyaczZZ69KSxwsvU4wGs8MHjuRJb2aJjF4cRmizyh1dk0MeN+UshGA2st/EJNmPTwqIPmkj5b2exRKmim+cjgQGmKtuOyLiRsDhZP+C8A69kn9FdtQL4yy7HsfYejfhXcYN67bAmER+yW4hwPDIe8bjKdx2OCj97K09/70/iy8naCPUIJXmzfohqODDaaFBfT5yY/upP0MxKa+oq7DUT/OeO6SPyg+W/eMIYDof0NbhTAJiGNf7z8hc6IR5n7SEEhLWIB2mGj8F2mOr9F2XrVBaoac3dXTOHz2y6TMnETyGBPJY0zI7Om8VXGvgLhhK/rlou1k9VUEaIkqMOrNTnrFXdetJXbZSjTQUrXD8i3/NlyAKQAMvG5BUprE4VmoHucrLfc7sz1kErkhLPxdNeikDlhZiXQFDF6iabMGunq9JDw2X5tE/X1pA8DTIYiM2+PvDwo2CeT+LVV4Ot7TQPZKYjBAbPQ2gJLuJ6UavQsoOzxin2Z6RxjB25euLQBXa2qA1ubpeE8e2XfUv1+CTtZw3ZZR1zHYWebhtJlhxnIQ2MQH9NnpfTsYO3Mt1ppYzh76DSv/vVnkTPmdGFv8HTFl3oNBOX83+mhpVHR0cODvdw471v4cvVXrUunrSyMyrDpYYGFYvqiapT4y4Y8jm1f9rUHn73Bj7JXWIe4OZ7uykZrNJ9X55g+kg7mdQ5QOdSw9KJHpiJhOjV9Z+sLtovSF2zUuY7Br+eocqg4kEBEF/b2mYFFmQwDN5uX3vklT92yy/XBLmPtpBqQljG7L/7Dy3u0BlRuckmnz+7PQT04mP68rECDSZrC7+iALCiptFcKUUCQ7VZ9MabmIlCWyRvS1/Qphuh1rZ1iAljjG7KTKks1v/udeseBbp+U1HOkT0+bPxuFZqJl2BoOk1+Xg6ytWCf8dOWAhRnTS7zES4RtTvV6JwtbUPATsDPpQLP+ARpiou2LFYuJbkZft2FGivm63wJCR7Nu6ooiIGgBY36QE8L+3AIP0177Doy+D/cqdojNIIowgwju1MkfZt+XR60UZgAxLISJKaXevE6JiRjbrtHuHWTXtd0RNsOeqxnkwkXc0loQAg7xw8IeieO52Wru/hsu+mJb2JbgtCg1JZ4LUAovQR+8lzvRreXrfjmHBdqR7XItVExE2OtB1GXLpE7EYI86obz15EndZ0cibRVmJpiY1BAWf0d5/aIsjh25mIso/on4lkB9ee3YaSMgAe/sGtr7zMr09cKaKANZFUDmsKABuC5DIEEDUKDOAsHTkctH5I7LHDACmai5LSxiitpsFhZtGqrBYtS6V3oy7SDf109qsAExKWi8pab18+GYnRXcH+unALcAgS6SLemGkTJ7gxx/s5pxlAZgcAMRFKdzE9IkOmjpu4/VDs3h45p5R7X7+foXW9m/hsKHRViJjvej1aVjqHhtx0flHTnUGSUw8OB1fEnOW/kjul1VDtAT/JBFCHx2g7gdbQM62GA2gVRlMwdAGTBc9xITIkk51U9Ha6g/uBsPIfk6ABFPvtUTsfa96gvZfkLZqUT9wB/TNJyTDzlV9Yl+wMfEFDI4CT4g5S8fT3jaO3r50nI476XXdScOpFTSwQuRM2cr3ny8JiN72Ybymutwo6bY0+5Z33LVFtWNiRtJQb4ZcVR85OiAy6S0yc87Q7/RN8ojR/TahEDKz9gbTEAfkl8cepdZrIMfcP+Szust9JNS+yMP3HlSfoezvD1Q1PvrH3w3h2YBD+60KjAC3JFuDLRZfmXqZRacoytrCufMTgISAOsRFeeCOBPYcekDMm3BRmuNrruQfKVNJqnOWjsfVv0IjYvtLZkF/gI8wmKbn/9qU3M/lE7HU1vwd8MSwWoLBAC7bnVofNaNPQAyYWurvrD3z6PbEEucjMJuS+4mJb9XMDhVsDAbod30uqB8oSzpVjVFs3mCk13XniEA42Bc3knk53OanEsjDDVZNi42Jl7jtk8WqdalBI5z+PqPe7iLtd5+yqAvRf1Px+SZV/+TPtXl08cxPqDu1hOe+v55Vi0v91AylXd7+xFH5H2904pK3NzaTusOC054pNu1IkKsW267oV/Ovh6Np6icSFAoAXc7h7VR9uAeuuS90YVbcFojN2TYcBeiqihsyuXdXT6PBsVrTDlW/oRpddluP8PxXfynBrdFS6oWxtFxElu5GJhTJToXI7XhwwF/Xo6erR3HqXrYY0XnPqZm0hzWn6oVRLiiopHDsXqydYcRFeeg859S0zPy8bpIzMvjdyeKranFtzd9ha0Sj2rjsOhqqw7DUBf71vyx1uoBLDQB43YKYBHB2Lg84K6s3eDAYBnh9MfGKv3HSrIc1l4RfSjQtWtbdtVIDL0eHwN1awf4tNT4T/dSArzHVi901Q+V2kSWdpbuRZElnabmI1Mr+pz88TmdPgRY4uhq5Fp9YjOG04tfxKD7Qzp4Cdr67ciStUsy+bxGdjiWa+2IYV/7NAEN/H5Y/tzJo/fdvqaLhzIOk5Flos5YEjH9iUpuiKXrHXrF//TLS43ZOvmGgro/ei7Umln//8SxtcxyFf1Vs2pGAp+fzn3hnm+IUWpO7e8loN+HBwcOActSYAMNHvkcPiAMPnI/j9T3fp9Zr0HiH/vzD2j9JcjyvD9bISncjy6PXCw3Mnvr117BEZGocQn/xnGnjrimnVRPdP9+i9Pdh+gdY+s+eovOcE9MEY4CWaZpg5NDxyWo2nGF5gepgr1qXirNzuZbEwWXXoddLkpPeJDmxXPl7hUslFat8vMRUL10uM0cOLBsSSFElMtZLhBG63L8WExetDurTPPjBuxqtRmeQOGwQrt+tmQ6ZOdtIyEAjcAPU1/w/lavoH6gB3wmA1up/JiY+eJ2C+qiuMy4w6+59xEVacHQoWnZSmqSza50YN+vrQTXL4rnTOX+mHLdb8cl+muJjRYhNOxLUeXRF6gZ0YYzfjtsC509max8UFh8jMdeO075YDR6qgFRaLiLF5g1GbfNSZcq8+7RjnTdC4kwKsb+r/dlAt8YV5MW1f0vrJfOwxOxrRppBLLvK94+Qml9N3aklWiLoK1ghwYI4Gq2nsWqhf77SqwFF/++GayZcFk5eP1SENe1+n3YYaC7X/kmS6D7Kfz7+K9VEUpO9lkevF9qO/41Xv8mx8wvIX6z4ZqydPuAw9XPZYiRMXODhmRXUC6P0pRnzOZkDfUvqaZcsWSOKJuylxv6Q8gVnG+rZ6JS0XjrHTmHPubE8PLPmig7rd7c9omXEBmi6JDBn/ULWnyi96qBMXcsfNU0oJl4ham/e8FNt4g02U03J/crxtQsvi6xbHiYs8k8Ibzde7630h99He7vQcjG21SlR7xlz/9NfIxE5U7bScGkJYwohObuftrpYWqzbRVZhObExuxDhncg+E/bu+3D1r0BEcVUnQXqvz3KTm9a2iD/8dxmtJ54iOVvZCEBHS/NrImfKEgzRW4kIbyIizEiHfREO6wr6RKzW7k9DPFbNbSTmLB1P1akdvLB2DzVHRpchvb93DgYzmmtD7Yffb3uT2srHyC36ITUVTyjHzHwLb9kab8BZ41XrUrHUKQyH6z25o9bh9L4dInPSLhrOLhS5xa/KUbRHTJs/m3bbS8SNuSmuCZGU/gQtF7az47XfiVXuqSORx7WTZR/uHTfkDH165vdpubCZ82fKxZyld8v9suqKbZ0y70Hamh7HnPI9eUQeDW4y7/rozuC18ZnN4X0bJHTRNj7AtNDAcNKshzn88XLSp4WTHKUAalvPAFXHYzFSNGGvhC7tFIGfXy0Yp7C0XERy/21HiI86M2zrujxX9NUIMODpfZQYnzvS4xEkZEB6/L9f9WBWvn+AqLCtNF1SNCFTcj92x0Se3fyAUrbfSRU1v6LLriMy1quauzQ3r6ap9Sk6HUs0/6VKAXLYIDF9jUqZ0BZSbv4/kJ6nHPUDBRQNBkmbtYRLtb+hoWE7l2p/Q1v7Cm1hqadrbpb81Rc3kppfzeUTYZp2nJjqpdOxhJbm12ixbudy7Waamx4jMiFG6Y/r4CDeSHG2xdDWVuA7f1sm5iwdP9J8ElmFZTScmkhq0tbBxHNmzv4XEnPt1B5brR4PUzUcCW5tzRTPnc47vzpGl8t83XzMwZrRkhVfJTW/WmuP/9MkB7dn3Kyvc2zvH4mNOcu4pT8bNZXpOkGb3MLnab1k5u1fVPufzApqTWz5zQGO7f3j4Mz18vie35IzdSOtl8ycPnZEcyUFK2fVulQxZtpznNi3mcaqhfQQoAqHB5iownAbfeM9iCSFc6iay5f0PZhbyuSrj74NPpa3/03mLB2PM/+76B+4g/QUO9EZfRoQqsBYWRFFVt9HrFy2a4i/o14YbX6mrf9DrsqjNxilOb5GmMKOUXNuEvGD0tqZJhhxXU6/Yu+Pm/VVLHUTSc+TmnaYmb31mo9exZhehbolmtntsEGXvgR4Hb3Bo5mnLruOPvsFIox9NFRPJClNkpzdrwVnVLBy2XU0XVLeGzNxrTx/8OeD/apy/5YqMXnufbj0b3D5RCzpeRK9XmLODgQ8j0dQe06H2XyYMHGczrbHAiLXgVphOI4eMBhEMDdD8N/0KPXtdUJkTJxvgxx4zOyp44uRJz7g8gkzCRn4EkP0DwlM1Z7TkZTYRLTpbeDbuOw6HB0QFjU42Geg1xmOt3Po0T3gagIyw2YQAoM8su+oKJ5bRF3TWzR8XEKbVclmo484ovLlsLYn43TeQo+9lNZLZlLzq7nj7m8PWexvb6wVxZV3Ax9w8dA6kTb+EWKSf4WeavQGDz1uE87uBTScWgFAwcxH8ZJJw6F1kHfNIBNwFHbT2hbRbr2Hgx+8S8OpEl7vLhG/3/Yz9PpDRBk68bj1eCjA0fYILRcKSMmz8PTzs1j/3FK8nY/5g+yoyc4jBVV8Y+fPMJCXK58W+bPcXDy0DmvNdpF1y2EMph1aP9ntubi7P09j1UIAsm/dii7i8uA6yZqKJ8SYad3UnHgKa83moOV4eotx9a+g/YyS9WfiLQ/KA9t2+s+J8AANivjsoI0Jr9Iz77b/GqJxTZtfTGfXHZhmL6HdkEFGkkLd6W4M11J4tfWE0d0YTuvHH/Odb5RJ6FIfVqVNxCzpHC5jjTZ5j9aHUec2c3dOdeBMdraN6D9UHcVdbd9TolodA5lmYkyvXpdJknXLYSyXZhCTIIiIgsaqhaJ47nR04RY/v50g0tjHwoe+xp63vkgv36etLmyIPy8mHszmw8Ql/VDjtgVZyPL0vh1iztJiLp75CY6OhThsIiggpKft4r7lX+XgB3OprXwMg1ngtkB/7ACgtFsjkd5oenuUUypuC9gyR+YrCH201o9dlyEyP5zkKhcsDgg4iOWr7+DgBz/GaV+MxZdeTAVTtb7m7LPk5d9PwQwTb/xE8a26LSDzoocEVaR3eGqO2wIkXR3FRKVn+Cg/2lGzI/uOik07ZvDjZ75Lj73UB1gruFQ5CKLNkHlLOU//6Em5avGQR+2WlotIeUQeFctX38rBD35MW/sKWg6tG1KP1Pxq0jO/L4/v+a3ILVbmo61z0Bj4tL7BZ+RHM0/f3lgrYCpjpj2LvfPb1FY+Bjw2YlteeFY5tjiYPqTyEAdTvq4cqYgKGvhRX184+EMxbf57tLf/I52OJTScnTGkjMyJh0lKfVE98xzMRygvVz4tZt+3l8vV38ViWYg3SDkpeRZyC8vUbEiDcWPQTtxRB9waYCpf0vdwtqqJ+v0PiV17HBz6fSruviLibr8H6zgltb83q0sDQ1Us3V7M6LF0e2mq7GOq+WdyQUElgMiSXsDA7uqJtLTHi9SkDgBa2pUIwK49joCyju3Uk/611ZxvS+VuAgExeYyJXluTxmMM5j88cSSC9Mzvk56pcKkiwozExHRpOQ+vUrROzJvwCLGmYpXMjMwxYUx20N4W6JH2dJuIdNfIy5VPi+K57+BImqMx9RFRhOvrSU/6UB7YtnMkH0pAhBMWiWnzZ9OVdg/u7knapBPhl4iO3qWCqphz/ASFc5cp7R5nRCcsWsRx3iI7DRdLSPYtwIhxRiYUnhyx8RnpbxIzV4kmkwM6YQmqbSnm/kOieO50rD3z8PQWK3VMUihEsTG7OHPwHQlusXx1DmPH3qvVISamyx9kJbhFZs4yzNlm/0wniknurqFw7jJiYrqupMmUlotIotcr45cc+w7GmR+TnH7Ef4GVR68XctUaG6sWPy027XiJX79yO+3uSfQ6FL+19HQTG1tDXMIJ1UxWqS1BNzG1H+YsXUtbUzEeCuh3GtCFWTGbT3Jg24caBzgl6hWiZn7AXfd85F8G6aYXiZ25jdtu/+O1mM+yRLq4XPm0WLVuI3vfux1Xz0S8/YmEGd3oqSY5/YjWls0bjOTk/pQow+Eh95tQeBiP+ytEh5+9qgWTalpHwtxfqWM3eOMoK5Eun1/wfjFn6Xi6cgrpcZt8COUkOvysaskJMLB5g071vw7pb2UN7RTFc6fT3TdR6+8I40VSk+r46sqP1LESm3YkKPPMrwzpy3wkwMBjr71Ia+o3yPncgPl0sd3N2e1N9J5XFk2vR9mJI/RdRIzrJVo6tWcq+0uCzoXNG4n7uIPb7/gP+epDb1MvjCJLerF0pPNWxb240wYQvKNW2XWaGxTf14mqDlJuuYWmyj4f6CrOv6Ix3cz+q2btd22XOzHZtsqVc965me6m4UwvzZd6qfY32jlincvChMK7h/iZRpjI122ijGQeXkOa/pstV3WyJAh38Hr8b2Ul0jXa+/v/RnvT91C20dYl2DgNpgBda3uu5re2CmFKvLjec9PmhR/1KICoP0I/3ah5O9z4aoAIIF5+75t80L2evvEexiYZuNjuJrxKz6mqWjwdvi+1RiBTetHHMyIYNrbGoqu3aWDo6wCRJSN4+b1HaHbPo2DugIba2hxBV49ei0qr55gt3V7tAVTqc1f+ftXFAUA8cpKirC2q9vmZWMzXA4iDH90aktEtrM9af31W6nQ19Qj1o19yh80bjHy5aDtu6xHCqwZ8FSoY6uOVS6YMAGC3MNJmjaPNGoezPUK7Tv8pE129janm72pgqC7y3dX5uNNmBIChKnFRnoAkDupjBNRHk/qDJ0D1vj5MYcdYUHD6L2ZxXyHt0f9m+bN6At0wY3gznhw3mnpc93c/i/W/kYBoHfukXprja3hk0jOaqayNYmsEng40LRECX0dLJ7ZOIx3Vcdg6jRgvbeDxRV+UZd/7aMgdVT+hv7RdHppryJ+uM5zER51h5Zxdqv/wpu9cI53mMBiUCLLh6ikvN70tV1GvT6puoy03KOH2BiyaG922YGVdbfnXVKdPOhXZpzDnPhVAVEnW8uGZe0jtfoSz25s0TdFfKwRFUwToPR9Bz8dJtJ7OQrRGkBK3k3tiHtaSiwYDjdSkDmgLTEmUPEZxoKrH+2CArhOd0RegkWak2BHONs1Uhi5bhTDd9ISdV9LkHDZ8NBJxtUXf9LZcRb0+qbqNptzBGdY/y20LVtbV3uOa6vQXZl3c7LUQYLZqfLdXH3pblL5wiZP7H8NjmEdfQ1LAr/p82YEi9F3ojr5LTNqHpMT8Qe7/z6orDs6CgtNUW8bSdjlHA8LW5gg6zzmxxSng6bEYtQSxNm8kzvYIuoWRaOkk3fE/mGynuX/qEfUI4XDJZm/WDqZyKQMc6QMUHwjXx3zmfTUhCUlIAoMqQRZ7HI+/8QV2/2s2Hs+tICIJC2/GmHQJnauapOTzo42cqkBQuhtZXiL1vH6oiBbHZM5c8JngfqdNwiNTtNeV5xQTyXH8Yz43/yDPr2zBHK9SHNyftjblD4jqJqA9AQ2UdFo93d08dd/Rz3JUNyQhCckwgGirEKYnT+L2P6M8kqgp67VnWFzJx+Gf4WM4H8HmDYqZvmyNd7DqfKNoKTcUEBmGghGSkITkL0ND1Bb4VWRPvhpt8UY5wz8NX0NIQhKSvzzRjQQ05dHrhWoG3vA736gyN2/QsXmD7jPbw39hUb+QhOR/rYYYkpCEJCT/m+T/AwjH4DzKJmiPAAAAAElFTkSuQmCC" alt="Apana Insurance" width="324" height="48"></a>
     <nav class="nav" id="nav" aria-label="Main">
       <div class="dd">
         <button class="navlink" type="button" id="dd-btn" aria-expanded="false" aria-controls="dd-panel">Guides <span aria-hidden="true">▾</span></button>
         <div class="dd-panel" id="dd-panel" hidden>
-          <a href="#turning-65">Turning 65<span>Your seven-month window, step by step</span></a>
-          <a href="#working-past-65">Working past 65<span>Employer coverage and delaying Part B</span></a>
-          <a href="#plan-review">Already on Medicare<span>A free review of your current plan</span></a>
-          <a href="#medicare-and-medicaid">Medicare and Medicaid<span>Using both, and the help you qualify for</span></a>
-          <a href="#veterans">Veterans<span>Medicare alongside VA and TRICARE</span></a>
-          <a href="#prescription-costs">Prescription costs<span>The 2027 Part D cap and payment plan</span></a>
+          <div class="dd-col">
+            <p class="dd-h">By situation</p>
+            <a href="#turning-65">Turning 65<span>Your seven-month window, step by step</span></a>
+            <a href="#working-past-65">Working past 65<span>Employer coverage and delaying Part B</span></a>
+            <a href="#plan-review">Already on Medicare<span>A free review of your current plan</span></a>
+            <a href="#medicare-and-medicaid">Medicare and Medicaid<span>Using both, and the help you qualify for</span></a>
+            <a href="#veterans">Veterans<span>Medicare alongside VA and TRICARE</span></a>
+            <a href="#prescription-costs">Prescription costs<span>The 2027 Part D cap and payment plan</span></a>
+          </div>
+          <div class="dd-col">
+            <p class="dd-h">By topic</p>
+            <a href="#medicare-advantage">Medicare Advantage<span>HMOs, PPOs and Special Needs Plans</span></a>
+            <a href="#medicare-supplement">Medicare Supplement (Medigap)<span>Plans A to N, side by side</span></a>
+            <a href="#what-medicare-doesnt-cover">What Medicare doesn't cover<span>Dental, vision, hearing, long-term care and travel</span></a>
+          </div>
         </div>
       </div>
-      <a href="#beyond-medicare" data-added>Beyond Medicare</a>
       <a href="#seminars">Seminars</a>
       <a href="#about">About</a>
       <a href="#faq">FAQ</a>
@@ -720,7 +801,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Licensed Medicare agents in Boca Raton</p>
+          <p class="eyebrow">Licensed insurance agents in Boca Raton</p>
           <h1>Medicare in Broward and Palm&nbsp;Beach, <em>made&nbsp;clear.</em></h1>
           <fieldset class="chips" role="radiogroup" aria-labelledby="chips-legend">
             <legend id="chips-legend">Which sounds like you?</legend>
@@ -740,7 +821,38 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     </div>
   </section>
 
+  <section class="band mist">
+    <div class="wrap stack-lg">
+      <div class="head">
+        <p class="eyebrow">How a plan review works</p>
+        <h2>One conversation. Your doctors and prescriptions come first.</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Tell us your situation</h3><p>Call (561) 918-2999 or send the short form. A licensed agent in Boca Raton calls you back.</p></li>
+        <li><h3>We check your doctors and drugs</h3><p>Bring your list. We compare 83 Medicare Advantage plans from 12 organizations against it and explain the trade-offs.</p></li>
+        <li><h3>You decide, including "stay put"</h3><p>A review doesn't have to end in a change. If you do enroll, we're here afterwards for bills, claims and next year's changes.</p></li>
+      </ol>
+      <div class="free-note"><span class="ico" aria-hidden="true">$0</span><p><b>Our help is free. Here's why.</b>The insurance company pays us when you enroll in a plan, and your premium is the same whether you use an agent or not. You never pay us, and you don't have to enroll to talk to us.</p></div>
+    </div>
+  </section>
+
   <section class="band">
+    <div class="wrap stack-lg">
+      <div class="head">
+        <p class="eyebrow">In their words</p>
+        <h2>What clients say on Google.</h2>
+        <div class="reviews-top"><span class="stars" aria-hidden="true">★★★★★</span><span class="rating">5.0 from 87 Google reviews</span></div>
+      </div>
+      <div class="reviews">
+        <figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"After 3 years of diligent work and never giving up on me we finally got everything we were shooting for. I cannot express all the trust and confidence I have in them."</blockquote><figcaption>Royce R., Google review</figcaption></figure>
+        <figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"They were terrific. Answered questions thoroughly. Very personable. The very next day they personally hand delivered my starting packets."</blockquote><figcaption>Bill H., Google review</figcaption></figure>
+        <figure class="review"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote><span class="ph">[A third Google review about service]</span></blockquote><figcaption><span class="ph">[Name, initial]</span>, Google review</figcaption></figure>
+      </div>
+      <p><a class="link-cta" href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener"><b>Read every review on Google <span class="arrow">→</span></b></a></p>
+    </div>
+  </section>
+
+  <section class="band mist">
     <div class="wrap stack-lg">
       <div class="head">
         <p class="eyebrow">Start with your situation</p>
@@ -789,7 +901,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
         <h2>Original Medicare or Medicare Advantage?</h2>
         <p class="lede">Neither is better for everyone. It comes down to your doctors, your prescriptions and how you'd rather pay.</p>
       </div>
-      <div class="tablewrap sheet"><table class="compare" role="table">
+      <details class="fold" open><summary>Compare the two side by side</summary><div class="tablewrap sheet"><table class="compare" role="table">
         <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader"><span class="sr">Topic</span></th><th scope="col" role="columnheader">Original Medicare<span>with a Medigap plan and a Part D drug plan</span></th><th scope="col" role="columnheader">Medicare Advantage<span>also called Part C</span></th></tr></thead>
         <tbody role="rowgroup">
           <tr role="row"><th scope="row" role="rowheader">Doctors</th><td role="cell" data-label="Original Medicare">Any doctor or hospital in the U.S. that takes Medicare.</td><td role="cell" data-label="Medicare Advantage">Usually a network of doctors and hospitals. Check that yours are in it.</td></tr>
@@ -798,75 +910,44 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
           <tr role="row"><th scope="row" role="rowheader">Prescriptions</th><td role="cell" data-label="Original Medicare">A separate Part D plan.</td><td role="cell" data-label="Medicare Advantage">Included in most plans.</td></tr>
           <tr role="row"><th scope="row" role="rowheader">Away from home</th><td role="cell" data-label="Original Medicare">Covered anywhere in the U.S.</td><td role="cell" data-label="Medicare Advantage">Outside the plan's service area, usually emergency and urgent care only.</td></tr>
         </tbody>
-      </table></div>
+      </table></div></details>
+      <p class="links-line"><a class="link-cta" href="#medicare-supplement"><b>Medicare Supplement guide <span class="arrow">→</span></b></a><a class="link-cta" href="#medicare-advantage"><b>Medicare Advantage guide <span class="arrow">→</span></b></a></p>
       <div class="cta-line"><p>Not sure which fits? We'll compare both against your doctors and prescriptions.</p><button class="btn btn-primary" type="button" data-scroll-form>Get a free plan review</button></div>
       <p class="byline">Reviewed by Christopher Apana, Florida license W197973.</p>
     </div>
   </section>
-  <section class="band">
+
+
+  <section class="band" aria-labelledby="gaps-h">
     <div class="wrap stack-lg">
       <div class="head">
-        <p class="eyebrow">How a plan review works</p>
-        <h2>One conversation. Your doctors and prescriptions come first.</h2>
+        <p class="eyebrow">Medicare's gaps</p>
+        <h2 id="gaps-h">What Medicare doesn't cover, and your options.</h2>
+        <p class="lede">Medicare leaves out most dental, vision and hearing care, almost all long-term care, and most care outside the U.S. Our guide explains what Medicare does pay for each, and every way to cover the rest, including ones we don't sell.</p>
       </div>
-      <ol class="steps">
-        <li><h3>Tell us your situation</h3><p>Call (561) 918-2999 or send the short form. A licensed agent in Boca Raton calls you back.</p></li>
-        <li><h3>We check your doctors and drugs</h3><p>Bring your list. We compare 83 Medicare Advantage plans from 12 organizations against it and explain the trade-offs.</p></li>
-        <li><h3>You decide, including "stay put"</h3><p>A review doesn't have to end in a change. If you do enroll, we're here afterwards for bills, claims and next year's changes.</p></li>
-      </ol>
+      <div class="gaps3">
+        <a class="gap-item guide" href="#what-medicare-doesnt-cover/dental-vision-hearing"><span class="pays">Medicare pays: very little</span><h3>Dental, vision and hearing</h3><p>Routine cleanings, glasses and hearing aids aren't covered by Original Medicare.</p><span class="go">Read more <span class="arrow">→</span></span></a>
+        <a class="gap-item guide" href="#what-medicare-doesnt-cover/long-term-care"><span class="pays">Medicare pays: up to 100 days of skilled care</span><h3>Long-term care</h3><p>Help with bathing, dressing and eating at home or in a nursing home isn't covered.</p><span class="go">Read more <span class="arrow">→</span></span></a>
+        <a class="gap-item guide" href="#what-medicare-doesnt-cover/care-abroad"><span class="pays">Medicare pays: almost nothing</span><h3>Care outside the U.S.</h3><p>Original Medicare generally doesn't pay for care while you travel abroad.</p><span class="go">Read more <span class="arrow">→</span></span></a>
+      </div>
+      <p><a class="link-cta" href="#what-medicare-doesnt-cover"><b>Read the guide: What Medicare doesn't cover <span class="arrow">→</span></b></a></p>
     </div>
   </section>
 
-  <section class="band mist" data-added aria-labelledby="beyond-h">
-    <div class="wrap stack-lg">
-      <div class="head">
-        <p class="eyebrow">Beyond Medicare</p>
-        <h2 id="beyond-h">Coverage for what Medicare doesn't pay for.</h2>
-        <p class="lede">Medicare doesn't include life insurance, and it pays for very little long-term care. We can help you plan for both, and for the costs a health plan leaves behind.</p>
-      </div>
-      <div class="guides">
-        <a class="guide" href="#beyond-medicare"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><span class="who">Not covered by Medicare</span><h3>Final Expense (Life Insurance)</h3><p>A smaller life policy meant for funeral costs and final bills, so your family isn't left paying them.</p><span class="go">Learn more <span class="arrow">→</span></span></a>
-        <a class="guide" href="#beyond-medicare"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></span><span class="who">Not covered by Medicare</span><h3>Long-Term Care Insurance</h3><p>Help paying for care at home, in assisted living or in a nursing home when you need help with daily activities.</p><span class="go">Learn more <span class="arrow">→</span></span></a>
-        <a class="guide" href="#beyond-medicare"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 16v-4M10 16V9M14 16v-6M18 16V6"/></svg></span><span class="who">Retirement income</span><h3>Annuities</h3><p>An insurance contract that can turn savings into steady income, including income for life.</p><span class="go">Learn more <span class="arrow">→</span></span></a>
-      </div>
-      <div class="also">
-        <p class="also-h">Also available</p>
-        <ul class="pills">
-          <li>Hospital Indemnity</li><li>Dental, Vision &amp; Hearing</li><li>Cancer</li><li>Heart Attack &amp; Stroke (Critical Illness)</li>
-        </ul>
-        <p><a class="link-cta" href="#beyond-medicare"><b>See all coverage beyond Medicare <span class="arrow">→</span></b></a></p>
-      </div>
-      <p class="byline">These products are not Medicare plans and are not connected with or endorsed by the U.S. government or the federal Medicare program.</p>
-    </div>
-  </section>
-
-  <section class="band">
+  <section class="band mist">
     <div class="wrap split">
       <figure class="portrait"><img data-photo="founder" alt="Christopher Apana, founder of Apana Insurance" width="450" height="450"><figcaption><b>Christopher Apana</b>Founder, Apana Insurance</figcaption></figure>
       <div class="founder-copy">
         <p class="eyebrow">From the founder</p>
         <p class="quote">"If you call us, you'll talk to a licensed agent in Boca Raton, not a call center."</p>
-        <p>I started Apana Insurance in 2020 after <span class="ph">[what got you into Medicare]</span>. Since then we've helped about <span class="ph">[number]</span> people in Broward and Palm Beach choose coverage, most of them referred by someone we'd already helped. I still review plans myself every fall, because the plans change every year and so do the people we serve.</p>
+        <p>Years ago I sat in a hospital beside someone I love and was told we didn't have the right insurance. In 2020 I started Apana Insurance so my neighbors in Broward and Palm Beach get their coverage right before they need it.</p>
+        <p>We've stayed small on purpose, so everyone who comes to us gets careful, complete planning. I still review plans myself every fall, because the plans change every year and so do the people we serve.</p>
         <div class="sig"><b>Christopher Apana</b><span>Founder. Florida license W197973, NPN 17317513</span></div>
         <p><a class="link-cta" href="#about"><b>Meet the team <span class="arrow">→</span></b></a></p>
       </div>
     </div>
   </section>
 
-  <section class="band mist">
-    <div class="wrap stack-lg">
-      <div class="head">
-        <p class="eyebrow">In their words</p>
-        <h2>What clients say on Google.</h2>
-      </div>
-      <div class="reviews">
-        <figure class="review"><blockquote>"After 3 years of diligent work and never giving up on me we finally got everything we were shooting for. I cannot express all the trust and confidence I have in them."</blockquote><figcaption>Royce R., Google review</figcaption></figure>
-        <figure class="review"><blockquote>"They do what they say they will do and went out of their way to help me get money back on my SSI check."</blockquote><figcaption>Norman B., Google review</figcaption></figure>
-        <figure class="review"><blockquote>"They were terrific. Answered questions thoroughly. Very personable. The very next day they personally hand delivered my starting packets."</blockquote><figcaption>Bill H., Google review</figcaption></figure>
-      </div>
-      <p><a class="link-cta" href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener"><b>Read every review on Google <span class="arrow">→</span></b></a></p>
-    </div>
-  </section>
 
   <section class="band">
     <div class="wrap duo">
@@ -874,6 +955,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
         <p class="eyebrow">Free educational events</p>
         <h3>Medicare seminars near you</h3>
         <p>An hour on how Medicare works, with time for questions. No plan-specific benefits are discussed and no enrollment forms are collected.</p>
+        <p><a class="link-cta" href="#seminars/host"><b>Host one for your HOA, condo or workplace <span class="arrow">→</span></b></a></p>
         <a class="btn btn-secondary" href="#seminars">See upcoming seminars</a>
       </div>
       <div class="panel night on-dark">
@@ -892,6 +974,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
         <h2>Straight answers, checked for this year.</h2>
         <p class="byline">Reviewed by Christopher Apana, Florida license W197973.</p>
         <p><a class="link-cta" href="#faq"><b>See all questions <span class="arrow">→</span></b></a></p>
+        <p><a class="link-cta" href="#faq/ask"><b>Ask your own question <span class="arrow">→</span></b></a></p>
       </div>
       <div class="faq" data-faq="home"></div>
     </div>
@@ -916,24 +999,26 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
           <div class="field"><label for="bd-month">Month you turn 65</label><select id="bd-month"></select></div>
           <div class="iep" id="iep" aria-hidden="true"></div>
           <p class="iep-out" id="iep-out" aria-live="polite"></p>
+          <p class="byline">Born on the 1st of the month? Medicare counts you as turning 65 the month before, so your window starts and ends one month earlier than shown.</p>
         </div>
       </section>
 
       <section>
         <h2>What Medicare costs in 2027</h2>
-        <div class="cards3">
-          <div class="cost"><span class="part">Part A</span><b>Hospital</b><p>Most people pay no premium. Hospital deductible $1,788 (projected).</p></div>
-          <div class="cost"><span class="part">Part B</span><b>Doctors and outpatient</b><p>$209.50 a month (projected), with a deductible of about $292 to $310 (projected). Higher incomes pay more.</p></div>
+        <div class="cards2">
+          <div class="cost"><span class="part">Part A</span><b>Hospital</b><p>Most people pay no premium. Hospital deductible $1,776 for each benefit period. In a skilled nursing facility, days 21 to 100 cost $222 a day.</p></div>
+          <div class="cost"><span class="part">Part B</span><b>Doctors and outpatient</b><p>$209.40 a month, with a $292 yearly deductible. Higher incomes pay more.</p></div>
+          <div class="cost"><span class="part">Part C</span><b>Medicare Advantage</b><p>Not an extra bill: another way to get Part A and Part B. You keep paying the Part B premium. Each plan sets its own premium and copays, and no plan can charge more than $9,850 a year for covered in-network care.</p></div>
           <div class="cost"><span class="part">Part D</span><b>Prescriptions</b><p>Premium varies by plan. Deductible up to $700. Out-of-pocket drug costs capped at $2,400.</p></div>
         </div>
-        <p class="byline">Part A and Part B figures are projections. CMS has not announced the final 2027 amounts, and we will update this page when it does.</p>
+        <p class="byline">Part A and Part B amounts are from CMS, released November 17, 2026. <a href="#medicare-advantage">How Medicare Advantage works.</a></p>
       </section>
 
       <section>
         <h2>Three ways to fill the gaps</h2>
         <ul class="ways">
-          <li><b>Original Medicare with a Medigap plan and a Part D drug plan</b><span>Any doctor who takes Medicare, predictable costs, a separate monthly premium.</span></li>
-          <li><b>A Medicare Advantage plan</b><span>One card, often drug coverage included, a network of doctors and a yearly out-of-pocket limit.</span></li>
+          <li><b>Original Medicare with a Medigap plan and a Part D drug plan</b><span>Any doctor who takes Medicare, predictable costs, a separate monthly premium. <a href="#medicare-supplement">See the Medicare Supplement guide.</a></span></li>
+          <li><b>A Medicare Advantage plan</b><span>One card, often drug coverage included, a network of doctors and a yearly out-of-pocket limit. <a href="#medicare-advantage">See the Medicare Advantage guide.</a></span></li>
           <li><b>Keep employer coverage for now</b><span>If you or your spouse still work at a company with 20 or more employees, you may be able to delay Part B without a penalty. <a href="#working-past-65">See Working past 65.</a></span></li>
         </ul>
         <p>We compare 83 Medicare Advantage plans from 12 organizations in Broward and Palm Beach and explain the trade-offs for your doctors and prescriptions.</p>
@@ -945,6 +1030,12 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
           <div class="pen on-dark"><span class="num">10%</span><h3>Part B late penalty</h3><p>Added to your premium for each full 12 months you could have had Part B and didn't.</p></div>
           <div class="pen on-dark"><span class="num">1%</span><h3>Part D late penalty</h3><p>Of the national base premium for each month you went without drug coverage that's at least as good as Medicare's.</p></div>
         </div>
+      </section>
+
+      <section>
+        <h2>Get your dates by email</h2>
+        <p>Tell us your birthday month and we'll email your seven-month window, with a reminder before it opens. That's all we send.</p>
+        <div class="inline-form" data-form="remind"></div>
       </section>
 
       <section>
@@ -967,7 +1058,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
   <section class="page-head"><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / About</p>
     <h1 class="mission">Medicare, explained by people who live here.</h1>
-    <p class="lede">A local, licensed Medicare agency serving Broward and Palm Beach from one office in Boca Raton since 2020.</p>
+    <p class="lede">A local, licensed insurance agency serving Broward and Palm Beach from one office in Boca Raton since 2020.</p>
   </div></section>
 
   <section class="band"><div class="wrap split flip">
@@ -996,25 +1087,24 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     <div class="head"><p class="eyebrow">The team</p><h2>The licensed agents you'll talk to.</h2><p>Every agent's Florida license and National Producer Number is listed under their name.</p></div>
     <div class="team">
       <div class="member"><img data-photo="founder" alt="Christopher Apana" width="450" height="450"><b>Christopher Apana</b><span>Founder</span><span>FL license W197973 · NPN 17317513</span></div>
-      <div class="member"><div class="photo sq"><span><span class="ph">[Photo]</span></span></div><b><span class="ph">[Agent name]</span></b><span><span class="ph">[Role]</span></span><span>FL license <span class="ph">[#]</span> · NPN <span class="ph">[#]</span></span></div>
-      <div class="member"><div class="photo sq"><span><span class="ph">[Photo]</span></span></div><b><span class="ph">[Agent name]</span></b><span><span class="ph">[Role]</span></span><span>FL license <span class="ph">[#]</span> · NPN <span class="ph">[#]</span></span></div>
-      <div class="member"><div class="photo sq"><span><span class="ph">[Photo]</span></span></div><b><span class="ph">[Agent name]</span></b><span><span class="ph">[Role]</span></span><span>FL license <span class="ph">[#]</span> · NPN <span class="ph">[#]</span></span></div>
+      <div class="member"><div class="photo sq"><span><span class="ph">[Photo]</span></span></div><b><span class="ph">[Second agent's name]</span></b><span><span class="ph">[Role]</span></span><span>FL license <span class="ph">[#]</span> · NPN <span class="ph">[#]</span></span></div>
     </div>
   </div></section>
 
   <section class="band mist"><div class="wrap duo">
-    <div class="panel light"><p class="eyebrow">In the community</p><h3>Free Medicare education seminars</h3><p>We hold educational seminars at <span class="ph">[venues]</span>. Open to anyone, with no plans discussed.</p><a class="btn btn-secondary" href="#seminars">Upcoming seminars</a></div>
+    <div class="panel light"><p class="eyebrow">In the community</p><h3>Free Medicare education seminars</h3><p>Free, educational hours in Broward and Palm Beach, open to anyone, with no plans discussed. Community groups and employers can ask us to come to them.</p><a class="btn btn-secondary" href="#seminars">Upcoming seminars</a></div>
     <div class="panel night on-dark"><p class="eyebrow">For those who served</p><h3>Support for veterans</h3><p>Help fitting Medicare around VA benefits, TRICARE For Life and CHAMPVA.</p><a class="btn btn-primary" href="#veterans">Veterans guide</a></div>
   </div></section>
 
   <section class="band"><div class="wrap cols2">
-    <div class="head"><p class="eyebrow">On the record</p><h2>The facts about us, in one place.</h2><p>Check them against our Google Business Profile, our BBB listing and the Florida Department of Financial Services licensee search.</p></div>
+    <div class="head"><p class="eyebrow">On the record</p><h2>The facts about us, in one place.</h2><p>Check them against our <a href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener">Google Business Profile</a>, our <a href="#about" class="ph">[BBB listing link]</a> and the <a href="https://licenseesearch.fldfs.com/" target="_blank" rel="noopener">Florida Department of Financial Services licensee search</a>.</p></div>
     <div class="tablewrap"><table class="record">
       <tr><th scope="row">Legal name</th><td>Apana Insurance, Inc.</td></tr>
       <tr><th scope="row">Address</th><td>20283 State Road 7, Suite 400, Boca Raton, FL 33498</td></tr>
       <tr><th scope="row">Phone</th><td>(561) 918-2999</td></tr>
       <tr><th scope="row">Founded</th><td>2020</td></tr>
-      <tr><th scope="row">Agency license</th><td>L121927</td></tr>
+      <tr><th scope="row">Agency license</th><td>L121927 (Florida)</td></tr>
+      <tr><th scope="row">Also licensed in</th><td><span class="ph">[Other states, or remove this row]</span></td></tr>
       <tr><th scope="row">Organizations represented (2027)</th><td>12 for Medicare Advantage, offering 83 plans. 6 for Medicare Part D, offering 11 plans.</td></tr>
       <tr><th scope="row">Google rating</th><td><a href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener">5.0 from 87 reviews on Google</a></td></tr>
     </table></div>
@@ -1029,7 +1119,8 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     <p class="lede">One hour, plain English, plenty of time for questions. Bring a spouse, a friend or the person who helps you with paperwork.</p>
   </div></section>
   <section class="band"><div class="wrap stack-lg">
-    <p class="notice"><b>These are educational events.</b> No plan-specific benefits will be discussed and no enrollment forms will be collected.</p>
+    <p class="notice"><b>These are educational events.</b> No plan-specific benefits will be discussed and no enrollment forms will be collected. For accommodation of persons with special needs at this event, call (561) 918-2999 (TTY 711).</p>
+    <p><a class="link-cta" href="#seminars/host"><b>Want a seminar for your HOA, condo, community or workplace? Request a session <span class="arrow">→</span></b></a></p>
     <div class="cols2 wide-left">
       <div class="stack-lg">
         <div class="stack">
@@ -1050,10 +1141,25 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
             <li>Your questions, for as long as you have them</li>
           </ul>
         </div>
-        <div class="photo wide"><span><span class="ph">[Photo: a recent Apana seminar]</span></span></div>
       </div>
       <div data-form="seminar"></div>
     </div>
+  </div></section>
+  <section class="band mist" id="host" aria-labelledby="host-h"><div class="wrap cols2 wide-left">
+    <div class="stack-lg">
+      <div class="head">
+        <p class="eyebrow">For HOAs, condos, communities and employers</p>
+        <h2 id="host-h">Bring the hour to your community.</h2>
+        <p class="lede">We give the same free, educational hour to HOA and condo boards, 55-plus communities, libraries, veterans' posts and HR teams.</p>
+      </div>
+      <ul class="bullets">
+        <li><b>You invite, we teach.</b> Your organization tells its own members about the session. We never ask for a resident or employee list, and anyone who wants a follow-up asks for it themselves.</li>
+        <li><b>Education only.</b> No plan-specific benefits are discussed and no enrollment forms are collected.</li>
+        <li><b>No money changes hands.</b> We don't charge to present, and we don't pay to be invited.</li>
+        <li><b>Where and how many.</b> We travel within <span class="ph">[distance]</span> of Boca Raton, for groups of <span class="ph">[number]</span> or more.</li>
+      </ul>
+    </div>
+    <div data-form="host"></div>
   </div></section>
 </main>
 
@@ -1104,72 +1210,119 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
   </div></section>
 </main>
 
-<main data-view="beyond-medicare" data-title="Life, Long-Term Care and Supplemental Insurance" data-added hidden>
+<!-- ============ OTHER INSURANCE (not Medicare) ============ -->
+<main data-view="other-insurance" data-title="Long-Term Care, Life and Critical Illness Insurance" data-nonmed hidden>
   <section class="page-head"><div class="wrap">
-    <p class="crumbs"><a href="#home">Home</a> / Beyond Medicare</p>
-    <h1>Coverage for what Medicare doesn't pay for.</h1>
+    <p class="crumbs"><a href="#home">Home</a> / Other insurance</p>
+    <h1>Long-term care, life and critical illness insurance.</h1>
     <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513.</p>
   </div></section>
   <section class="band"><div class="wrap article">
     <div class="article-main">
-      <p class="lede">Life insurance, long-term care and retirement income sit outside Medicare. So do some of the costs a health plan leaves behind. Here is what each one does, in plain words.</p>
-      <p class="notice"><b>Not covered by Medicare:</b> Medicare doesn't pay a life insurance benefit. It also doesn't cover long-term custodial care, the everyday help with bathing, dressing and eating that most people who need long-term care need.</p>
+      <p class="lede">These are separate insurance products. They are not Medicare, they don't fill Medicare's gaps, and nobody needs them to get Medicare help from us.</p>
+      <p class="notice"><b>This page is not about Medicare.</b> To see what Medicare pays for long-term care and every way to cover the rest, including Medicaid and VA benefits, read <a href="#what-medicare-doesnt-cover/long-term-care">What Medicare doesn't cover</a>.</p>
 
       <section>
-        <h2>Final Expense (Life Insurance)</h2>
-        <p>Final expense is life insurance sized for the costs that come at the end of life: a funeral, medical bills and other debts. The benefit is paid to the people you name, and they can use it however they need.</p>
+        <h2>Long-term care insurance</h2>
+        <p>Long-term care insurance helps pay for help with everyday activities, such as bathing, dressing and eating, at home, in assisted living or in a nursing home. Benefits usually start when you need help with two of six daily activities or have a severe cognitive impairment, and after a waiting period you choose.</p>
         <ul class="bullets">
-          <li>Coverage amounts are smaller than a traditional life policy, which keeps premiums manageable on a retirement budget.</li>
-          <li>Many policies are whole life: the premium stays the same and coverage doesn't expire as long as premiums are paid.</li>
-          <li>Many policies ask a few health questions instead of requiring a medical exam.</li>
+          <li>Premiums are lower when you buy younger and healthier, and you have to qualify medically.</li>
+          <li>Some life insurance policies include long-term care benefits instead of a separate policy.</li>
+          <li>Florida's Long-Term Care Partnership program lets some policies protect part of your savings if you later need Medicaid.</li>
         </ul>
       </section>
 
       <section>
-        <h2>Long-Term Care Insurance</h2>
-        <p>Medicare covers skilled nursing care only for a limited time after a qualifying hospital stay, up to 100 days in a benefit period, and doesn't cover custodial care at all. Long-term care insurance can help pay for that care, depending on the policy:</p>
-        <div class="cards2">
-          <div class="cost"><span class="part word">At home</span><p>A home health aide or help with daily activities, so you can stay where you live.</p></div>
-          <div class="cost"><span class="part word">Assisted living</span><p>Help with daily activities in an assisted living community.</p></div>
-          <div class="cost"><span class="part word">Nursing home</span><p>Care in a nursing home beyond what Medicare covers.</p></div>
-          <div class="cost"><span class="part word">Adult day care</span><p>Daytime care and supervision while family members work.</p></div>
-        </div>
-        <p>Coverage costs less when you buy it younger and in better health, and you usually have to qualify medically. Some life insurance policies and annuities also include long-term care benefits.</p>
-      </section>
-
-      <section>
-        <h2>Annuities</h2>
-        <p>An annuity is a contract with an insurance company. You pay in, all at once or over time, and it can pay you income later, for a set number of years or for the rest of your life.</p>
+        <h2>Life insurance (final expense)</h2>
+        <p>Final expense is a smaller whole life policy meant for funeral costs and final bills. The benefit is paid to the people you name, and they can use it however they need.</p>
         <ul class="bullets">
-          <li>Guarantees depend on the claims-paying ability of the insurance company that issues the annuity.</li>
-          <li>Annuities are not bank deposits and are not FDIC insured.</li>
-          <li>Most have surrender charges if you take out more than the contract allows in the early years.</li>
+          <li>The premium usually stays the same, and coverage doesn't expire while premiums are paid.</li>
+          <li>Many policies ask a few health questions instead of a medical exam. Guaranteed issue policies ask none, but usually pay a limited benefit in the first two to three years.</li>
         </ul>
-        <p>We don't give tax or legal advice. Please talk with your tax advisor about how an annuity fits your situation.</p>
       </section>
 
       <section>
-        <h2>Supplemental coverage</h2>
-        <p>These policies pay cash in addition to your health coverage. They don't replace it. Some Medicare Advantage plans already include some of these benefits, so we check what your plan covers first.</p>
-        <div class="cards2">
-          <div class="cost"><span class="part word">Hospital Indemnity</span><p>Pays a set cash amount for each day you're in the hospital. It can help with Medicare Advantage hospital copays.</p></div>
-          <div class="cost"><span class="part word">Dental, Vision &amp; Hearing</span><p>Original Medicare doesn't cover most dental care, eye exams for glasses or hearing aids. A separate plan can help with cleanings, fillings, glasses and hearing aids.</p></div>
-          <div class="cost"><span class="part word">Cancer</span><p>Pays cash if you're diagnosed with cancer, to help with travel, treatment costs and bills while you recover.</p></div>
-          <div class="cost"><span class="part word">Heart Attack &amp; Stroke (Critical Illness)</span><p>Pays a lump sum if you're diagnosed with a covered condition, such as a heart attack or stroke. You decide how to spend it.</p></div>
-        </div>
+        <h2>Critical illness: cancer, heart attack and stroke</h2>
+        <p>These policies pay a cash amount if you're diagnosed with a covered condition. They don't replace health coverage, and they pay on top of it. You decide how to spend the money, for example on travel for treatment or bills while you recover.</p>
       </section>
 
       <section>
         <h2>How we talk about these</h2>
         <ul class="bullets">
-          <li>We start with what your Medicare coverage already pays, so you don't buy what you already have.</li>
-          <li>We never discuss life insurance or annuities during a Medicare plan appointment. If you'd like to talk about them, we set up a separate conversation.</li>
+          <li>We only discuss these products when you ask us to.</li>
+          <li>We never discuss them during a Medicare appointment. If you raise one there, we set up a separate appointment for another day.</li>
           <li>You don't have to buy anything, and you can stop the conversation at any time.</li>
         </ul>
-        <p class="byline">These products are not Medicare plans and are not connected with or endorsed by the U.S. government or the federal Medicare program. Policies are issued by the insurance companies that underwrite them, and benefits, limitations, exclusions and availability vary by company and policy. <span class="ph">[Confirm the life, health and annuity companies Apana represents and the licenses that apply]</span></p>
+        <p class="byline">These products are not Medicare plans and are not connected with or endorsed by the U.S. government or the federal Medicare program. Policies are issued by the insurance companies that underwrite them, and benefits, limitations, exclusions and availability vary by company and policy. <span class="ph">[Companies Apana represents for these products, and the licenses that apply]</span></p>
       </section>
     </div>
-    <aside class="aside"><div data-form="beyond"></div></aside>
+    <aside class="aside"><div data-form="other"></div></aside>
+  </div></section>
+</main>
+
+<!-- ============ RETIREMENT INCOME (not Medicare) ============ -->
+<main data-view="retirement-income" data-title="Retirement Income and Annuities" data-nonmed hidden>
+  <section class="page-head"><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Retirement income</p>
+    <h1>Retirement income: covering the bills that can't wait.</h1>
+    <p class="byline">By Christopher Apana, Florida license W197973, NPN 17317513.</p>
+  </div></section>
+  <section class="band"><div class="wrap article">
+    <div class="article-main">
+      <p class="notice"><b>This page is about retirement income and annuities. It is not about Medicare.</b> Nothing here is part of a Medicare plan review, and we never bring it up in a Medicare appointment.</p>
+      <p class="lede">Most retirement plans start with one question: will the money that comes in every month, for as long as you live, cover the bills you can't skip?</p>
+
+      <section>
+        <h2>Start with the gap</h2>
+        <div class="cards3">
+          <div class="cost"><span class="part word">Step 1</span><b>Your essential bills</b><p>Housing, food, utilities, insurance, medicine. The things you pay every month no matter what.</p></div>
+          <div class="cost"><span class="part word">Step 2</span><b>Your guaranteed income</b><p>Social Security, a pension, or anything else paid for life.</p></div>
+          <div class="cost"><span class="part word">Step 3</span><b>The difference</b><p>If income covers the bills, you may not need anything else. If it doesn't, that gap is what to plan for.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ways to close it</h2>
+        <p>An annuity is one option, and often not the first. Others include waiting to claim Social Security, choosing a pension payout that continues for a spouse, cutting a fixed cost, or drawing a set amount from savings. We'll talk through all of them.</p>
+      </section>
+
+      <section>
+        <h2>The kinds of annuities we discuss</h2>
+        <p>An annuity is a contract with an insurance company. You pay in, all at once or over time, and it can pay you income later, for a set number of years or for life.</p>
+        <div class="tablewrap"><table class="types">
+          <thead><tr><th scope="col">Type</th><th scope="col">What it does</th><th scope="col">Access to your money</th><th scope="col">Main trade-off</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Fixed (multi-year guaranteed)</th><td data-label="What it does">Credits a set interest rate for a set number of years.</td><td data-label="Access to your money">Limited withdrawals; surrender charges in early years.</td><td data-label="Main trade-off">The rate is locked, even if rates rise.</td></tr>
+            <tr><th scope="row">Fixed indexed</th><td data-label="What it does">Credits interest linked to a market index, with a floor so you don't lose value from index drops.</td><td data-label="Access to your money">Limited withdrawals; surrender charges in early years.</td><td data-label="Main trade-off">Gains are capped or limited; terms are complex.</td></tr>
+            <tr><th scope="row">Immediate income</th><td data-label="What it does">Turns a lump sum into income that starts within a year.</td><td data-label="Access to your money">Usually none once income starts.</td><td data-label="Main trade-off">You give up the lump sum in exchange for income.</td></tr>
+            <tr><th scope="row">Deferred income</th><td data-label="What it does">Buys income that starts at a later age you choose.</td><td data-label="Access to your money">Usually none.</td><td data-label="Main trade-off">Little or no value if you die early, depending on options chosen.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="byline">We offer fixed and fixed indexed annuities only. <span class="ph">[Confirm: Apana does not sell variable or registered index-linked annuities]</span></p>
+      </section>
+
+      <section>
+        <h2>When an annuity is the wrong answer</h2>
+        <ul class="bullets">
+          <li>You may need the money for emergencies or large costs in the next several years.</li>
+          <li>Your guaranteed income already covers your essential bills.</li>
+          <li>You'd be paying surrender charges to leave another annuity.</li>
+          <li>You don't have enough savings outside the annuity to feel secure.</li>
+          <li>You're being rushed, or you don't understand the contract yet.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Our duty to you</h2>
+        <ul class="bullets">
+          <li>Florida law requires us to act in your best interest when we recommend an annuity. We review your income, savings, needs and goals first, and we'll tell you if an annuity doesn't fit.</li>
+          <li>If you buy an annuity through us, the insurance company pays us a commission. It doesn't come out of the money you put in, and we'll tell you how we're paid before you decide. <span class="ph">[Confirm commission wording]</span></li>
+          <li>We don't give investment, tax or legal advice. Please talk with your tax advisor about how an annuity fits your situation. <span class="ph">[Confirm]</span></li>
+        </ul>
+        <p class="byline">Annuities are insurance contracts, not bank deposits, and are not FDIC insured. Guarantees depend on the claims-paying ability of the issuing insurance company. Most annuities have surrender charges for withdrawals above the contract's limits in early years. Not connected with or endorsed by the U.S. government or the federal Medicare program. <span class="ph">[Annuity companies Apana represents]</span></p>
+      </section>
+    </div>
+    <aside class="aside"><div data-form="annuity"></div></aside>
   </div></section>
 </main>
 
@@ -1182,15 +1335,23 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
   </div></section>
   <section class="band"><div class="wrap narrow stack-lg">
     <div class="faq" data-faq="all"></div>
-    <div class="row"><span>Didn't find yours?</span><a class="btn btn-primary" href="#contact">Ask a licensed agent</a></div>
+  </div></section>
+  <section class="band mist" id="ask" aria-labelledby="ask-h"><div class="wrap cols2 wide-left">
+    <div class="head">
+      <p class="eyebrow">Didn't find yours?</p>
+      <h2 id="ask-h">Ask a licensed agent.</h2>
+      <p class="lede">Type your question and choose how you'd like the answer. A licensed agent replies within one business day. Questions that come up often become new answers on this page, without your name.</p>
+      <p class="byline">Please leave out your Medicare number and any health details.</p>
+    </div>
+    <div data-form="ask"></div>
   </div></section>
 </main>
 
 <!-- ============ CONTACT ============ -->
-<main data-view="contact" data-title="Contact a Medicare Agent in Boca Raton" hidden>
+<main data-view="contact" data-title="Contact a Licensed Insurance Agent in Boca Raton" hidden>
   <section class="page-head"><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / Contact</p>
-    <h1>Talk to a Medicare agent in Boca Raton.</h1>
+    <h1>Talk to a licensed agent in Boca Raton.</h1>
     <p class="lede">Call, send the form, or come by the office. You'll reach a licensed agent, not a call center.</p>
   </div></section>
   <section class="band"><div class="wrap cols2 wide-left">
@@ -1221,12 +1382,9 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
     <p class="lede">Short reads on the questions we hear most in Broward and Palm Beach. Every article is checked by a licensed agent and shows the date it was last reviewed.</p>
   </div></section>
   <section class="band"><div class="wrap stack-lg">
-    <div class="posts">
-      <article class="post"><span class="tag">Being updated for 2027</span><h3>Protect your Medicare by reviewing your Medicare Summary Notice</h3><p>What fraud, waste and abuse mean, how to read the notice, and what to do if you see a charge you don't recognize.</p><p class="byline">Reviewed by Christopher Apana</p></article>
-      <article class="post"><span class="tag">Update or retire</span><h3>Fun facts you didn't know about Social Security</h3><p>First published February 2024. It will be brought up to date or folded into the Turning 65 guide.</p><p><a class="link-cta" href="#turning-65"><b>Read the Turning 65 guide <span class="arrow">→</span></b></a></p></article>
-      <article class="post"><span class="tag">Moving into a guide</span><h3>How Broward County residents can apply online for Medicaid</h3><p>The useful steps are moving into the Medicare and Medicaid guide.</p><p><a class="link-cta" href="#medicare-and-medicaid"><b>Read the guide <span class="arrow">→</span></b></a></p></article>
-    </div>
-    <div class="cta-line"><p>Have a question we haven't written about? Ask a licensed agent.</p><a class="btn btn-primary" href="#contact">Contact us</a></div>
+    <p class="notice"><b>New articles are on the way.</b> Until they're published, our guides answer the questions we hear most.</p>
+    <p class="links-line"><a class="link-cta" href="#turning-65"><b>Turning 65 <span class="arrow">→</span></b></a><a class="link-cta" href="#plan-review"><b>Already on Medicare <span class="arrow">→</span></b></a><a class="link-cta" href="#medicare-and-medicaid"><b>Medicare and Medicaid <span class="arrow">→</span></b></a></p>
+    <div class="cta-line"><p>Have a question we haven't written about? Ask a licensed agent.</p><a class="btn btn-primary" href="#faq/ask">Ask a question</a></div>
   </div></section>
 </main>
 
@@ -1255,7 +1413,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
 
 <section class="band dark closing on-dark" aria-label="Call Apana Insurance">
   <div class="wrap">
-    <p class="eyebrow">Free plan review</p>
+    <p class="eyebrow" id="close-eyebrow">Free plan review</p>
     <h2>Talk it through with a licensed agent in Boca Raton.</h2>
     <a class="bigphone" href="tel:+15619182999">(561) 918-2999</a>
     <div class="row"><button class="btn btn-primary" type="button" data-scroll-form>Request a call back</button><span>Monday to Friday, 9AM to 5PM</span></div>
@@ -1266,24 +1424,27 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
   <div class="wrap">
     <div class="foot-grid">
       <div class="stack">
-        <span class="logo-chip"><img src="data:image/png;base64,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" alt="Apana Insurance" width="324" height="48"></span>
+        <span class="logo-chip"><img src="data:image/png;base64,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" alt="Apana Insurance" width="324" height="48"></span>
         <p>Apana Insurance<br>20283 State Road 7, Suite 400<br>Boca Raton, FL 33498</p>
         <p><a href="tel:+15619182999">(561) 918-2999</a><br>Monday to Friday, 9AM to 5PM</p>
       </div>
       <div><h4>Guides</h4><ul>
-        <li><a href="#turning-65">Turning 65</a></li><li><a href="#working-past-65">Working past 65</a></li><li><a href="#plan-review">Already on Medicare</a></li><li><a href="#medicare-and-medicaid">Medicare and Medicaid</a></li><li><a href="#veterans">Veterans</a></li><li><a href="#prescription-costs">Prescription costs</a></li>
+        <li><a href="#turning-65">Turning 65</a></li><li><a href="#working-past-65">Working past 65</a></li><li><a href="#plan-review">Already on Medicare</a></li><li><a href="#medicare-and-medicaid">Medicare and Medicaid</a></li><li><a href="#veterans">Veterans</a></li><li><a href="#prescription-costs">Prescription costs</a></li><li><a href="#medicare-advantage">Medicare Advantage</a></li><li><a href="#medicare-supplement">Medicare Supplement</a></li><li><a href="#what-medicare-doesnt-cover">What Medicare doesn't cover</a></li>
       </ul></div>
       <div><h4>Apana</h4><ul>
-        <li><a href="#about">About</a></li><li data-added><a href="#beyond-medicare">Beyond Medicare</a></li><li><a href="#seminars">Seminars</a></li><li><a href="#articles">Articles</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li><li><a href="#seminars">Seminars</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+      <h4 style="margin-top:28px">Not Medicare</h4><ul>
+        <li><a href="#other-insurance">Other insurance</a></li><li><a href="#retirement-income">Retirement income</a></li>
       </ul></div>
       <div><h4>Follow</h4><ul>
         <li><a href="https://share.google/0rHGawqTmPoTBNiZ1" target="_blank" rel="noopener">Google reviews</a></li><li><a href="https://m.facebook.com/apanainsurance/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.linkedin.com/company/apanainsurance" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul></div>
     </div>
     <div class="disclaimer">
-      <p><b>Medicare Advantage.</b> We do not offer every Medicare Advantage plan available in your area. Currently we represent 12 organizations which offer 83 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, to get information on all of your options.</p>
-      <p><b>Medicare Part D.</b> We do not offer every Medicare Part D plan available in your area. Currently we represent 6 organizations which offer 11 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, to get information on all of your options.</p>
-      <p>Not connected with or endorsed by the U.S. government or the federal Medicare program. Apana Insurance is a licensed insurance agency in Florida, license L121927.</p>
+      <p><b>Medicare Advantage plans:</b> We do not offer every plan available in your area. Currently we represent 12 organizations which offer 83 products in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options.</p>
+      <p><b>Medicare Part D plans:</b> We do not offer every plan available in your area. Currently we represent 6 organizations which offer 11 products in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options.</p>
+      <p>Not connected with or endorsed by the U.S. government or the federal Medicare program. Apana Insurance, Inc. is a licensed insurance agency in Florida, license L121927<span class="ph">[, and in other states where licensed]</span>. TTY users call 711.</p>
     </div>
     <div class="legal"><span>© <span id="yr">2026</span> Apana Insurance. All rights reserved.</span><a href="#privacy">Privacy policy</a><a href="#terms">Terms</a><a href="#accessibility">Accessibility</a></div>
   </div>
@@ -1291,7 +1452,7 @@ main.sw:not([hidden]){animation:vt-in .5s var(--ease-out) both}
 
 <div class="callbar" id="callbar">
   <a class="btn btn-secondary" href="tel:+15619182999">Call now</a>
-  <button class="btn btn-primary" type="button" data-scroll-form>Free review</button>
+  <button class="btn btn-primary" type="button" data-scroll-form id="callbar-btn">Free review</button>
 </div>
 
 <script>
@@ -1339,55 +1500,97 @@ $("#yr").textContent=T.y;
 })();
 
 /* ---- Forms ---- */
-var CONSENT="Yes, Apana Insurance may call or text me at the number above about Medicare plans, including with automated technology. I don't have to agree to buy anything, and I can say stop at any time. Message and data rates may apply.";
-var DISC="<b>Medicare Advantage.</b> We do not offer every Medicare Advantage plan available in your area. Currently we represent 12 organizations which offer 83 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, to get information on all of your options.</p><p class=\"fine\"><b>Medicare Part D.</b> We do not offer every Medicare Part D plan available in your area. Currently we represent 6 organizations which offer 11 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, to get information on all of your options.";
+var TXT=" Up to 4 messages a month. Message and data rates may apply. Reply STOP to opt out or HELP for help. See our <a href=\"#privacy\">Privacy policy</a> and <a href=\"#terms\">Terms</a>.";
+var CONSENT="Optional: Apana Insurance may also text me, and call me using automated technology, at the number above about Medicare plans. I don't have to agree to this to get help or to buy anything."+TXT;
+var DISC="<b>Medicare Advantage plans:</b> We do not offer every plan available in your area. Currently we represent 12 organizations which offer 83 products in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options.</p><p class=\"fine\"><b>Medicare Part D plans:</b> We do not offer every plan available in your area. Currently we represent 6 organizations which offer 11 products in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options.";
 var SITS=[
-  {id:"t65",label:"Turning 65",line:"Your seven-month window, explained and handled.",btn:"Plan my Medicare start",href:"#turning-65",link:"Read the Turning 65 guide"},
-  {id:"working65",label:"Working past 65",line:"Keep your employer plan or switch, without a penalty.",btn:"Check my timing",href:"#working-past-65",link:"Read the Working past 65 guide"},
-  {id:"review",label:"Already on Medicare",line:"A free review against your doctors and prescriptions.",btn:"Review my plan",href:"#plan-review",link:"How a plan review works"},
-  {id:"dual",label:"Medicare and Medicaid",line:"Coverage that uses both, and the help you qualify for.",btn:"See what I qualify for",href:"#medicare-and-medicaid",link:"Read the Medicare and Medicaid guide"},
-  {id:"veteran",label:"Veteran",line:"Medicare that works with your VA benefits.",btn:"Fit Medicare with my VA benefits",href:"#veterans",link:"Read the veterans guide"}
+  {id:"t65",label:"Turning 65",line:"Your seven-month window, explained and handled.",btn:"Get my free plan review",href:"#turning-65",link:"Read the Turning 65 guide"},
+  {id:"working65",label:"Working past 65",line:"Keep your employer plan or switch, without a penalty.",btn:"Get my free plan review",href:"#working-past-65",link:"Read the Working past 65 guide"},
+  {id:"review",label:"Already on Medicare",line:"A free review against your doctors and prescriptions.",btn:"Get my free plan review",href:"#plan-review",link:"How a plan review works"},
+  {id:"dual",label:"Medicare and Medicaid",line:"Coverage that uses both, and the help you qualify for.",btn:"Get my free plan review",href:"#medicare-and-medicaid",link:"Read the Medicare and Medicaid guide"},
+  {id:"veteran",label:"Veteran",line:"Medicare that works with your VA benefits.",btn:"Get my free plan review",href:"#veterans",link:"Read the veterans guide"}
 ];
 function monthOptions(){return MONTHS.map(function(m,i){return "<option value=\""+i+"\">"+m+"</option>"}).join("")}
 function field(f,id){
   var fid=id+"-"+f.n, cls="field"+(f.full?" full":"");
+  var req=f.opt?"":" required", lab=f.label+(f.opt?" <span class=\"opt\">(optional)</span>":"");
+  if(f.type==="textarea")return "<div class=\""+cls+"\"><label for=\""+fid+"\">"+lab+"</label><textarea id=\""+fid+"\" name=\""+f.n+"\""+(f.max?" maxlength=\""+f.max+"\"":"")+req+"></textarea></div>";
   if(f.type==="select")return "<div class=\""+cls+"\"><label for=\""+fid+"\">"+f.label+"</label><select id=\""+fid+"\" name=\""+f.n+"\">"+f.options+"</select></div>";
-  return "<div class=\""+cls+"\"><label for=\""+fid+"\">"+f.label+"</label><input id=\""+fid+"\" name=\""+f.n+"\" type=\""+(f.type||"text")+"\""+(f.ac?" autocomplete=\""+f.ac+"\"":"")+(f.im?" inputmode=\""+f.im+"\"":"")+(f.max?" maxlength=\""+f.max+"\"":"")+" required></div>";
+  return "<div class=\""+cls+"\"><label for=\""+fid+"\">"+lab+"</label><input id=\""+fid+"\" name=\""+f.n+"\" type=\""+(f.type||"text")+"\""+(f.ac?" autocomplete=\""+f.ac+"\"":"")+(f.im?" inputmode=\""+f.im+"\"":"")+(f.max?" maxlength=\""+f.max+"\"":"")+req+"></div>";
 }
 var NAME={n:"name",label:"Full name",ac:"name",full:true}, PHONE={n:"phone",label:"Phone",type:"tel",ac:"tel",im:"tel"}, ZIP={n:"zip",label:"ZIP code",ac:"postal-code",im:"numeric",max:5};
 var SITSEL={n:"situation",label:"Your situation",type:"select",full:true,options:SITS.map(function(s){return "<option value=\""+s.id+"\">"+s.label+"</option>"}).join("")};
+var EMAIL={n:"email",label:"Email",type:"email",ac:"email",full:true};
+var NOTMED="These products are not Medicare plans and are not connected with or endorsed by the U.S. government or the federal Medicare program. Benefits, limitations and availability vary by company and policy.";
+var EDU="Seminars are educational. No plan-specific benefits are discussed and no enrollment forms are collected. For accommodation of persons with special needs, call (561) 918-2999 (TTY 711).";
 var FORMS={
-  hero:{h:"Get a free plan review",sub:"Four fields. A licensed agent calls you back.",fields:[NAME,PHONE,ZIP,SITSEL],btn:"Plan my Medicare start"},
-  t65:{h:"Plan my Medicare start",sub:"We'll map your window and your options with you.",fields:[NAME,Object.assign({},PHONE,{full:true}),{n:"bmonth",label:"Birthday month",type:"select",full:true,options:monthOptions()}],btn:"Plan my Medicare start"},
-  veteran:{h:"Fit Medicare with my VA benefits",sub:"A licensed agent calls you back.",fields:[NAME,PHONE,ZIP],btn:"Fit Medicare with my VA benefits"},
-  beyond:{h:"Talk about coverage beyond Medicare",sub:"A licensed agent calls you back to set up a separate conversation.",consent:"Yes, Apana Insurance may call or text me at the number above about the insurance products I selected, including with automated technology. I don't have to agree to buy anything, and I can say stop at any time. Message and data rates may apply.",disc:"These products are not Medicare plans and are not connected with or endorsed by the U.S. government or the federal Medicare program. Benefits, limitations and availability vary by company and policy.",fields:[NAME,PHONE,ZIP,{n:"interest",label:"I'd like to talk about",type:"select",full:true,options:["Final Expense (Life Insurance)","Long-Term Care Insurance","Annuities","Hospital Indemnity","Dental, Vision &amp; Hearing","Cancer","Heart Attack &amp; Stroke (Critical Illness)","Not sure yet"].map(function(o){return "<option>"+o+"</option>"}).join("")}],btn:"Request a call back"},
-  contact:{h:"Send us a message",sub:"We reply within one business day.",fields:[NAME,PHONE,ZIP,SITSEL],btn:"Request a call back"},
-  stub:{h:"Get a free plan review",sub:"A licensed agent calls you back.",fields:[NAME,PHONE,ZIP],btn:"Request a call back"},
-  seminar:{h:"Save my seat",sub:"We'll confirm by phone.",seminar:true,fields:[NAME,Object.assign({},PHONE,{full:true}),{n:"event",label:"Which seminar",type:"select",full:true,options:"<option>Medicare 101</option><option>Turning 65 this year</option><option>Medicare for veterans</option>"},{n:"guests",label:"Seats needed",type:"select",full:true,options:"<option>1</option><option>2</option><option>3</option><option>4</option>"}],btn:"RSVP"}
+  hero:{h:"Get a free plan review",sub:"Free, with no obligation. A licensed agent calls you back.",fields:[NAME,PHONE,ZIP,SITSEL],btn:"Get my free plan review",book:true},
+  t65:{h:"Get a free plan review",sub:"We'll map your window and your options with you.",fields:[NAME,Object.assign({},PHONE,{full:true}),{n:"bmonth",label:"Birthday month",type:"select",full:true,options:monthOptions()}],btn:"Get my free plan review",book:true},
+  veteran:{h:"Get a free plan review",sub:"Medicare that fits your VA benefits. A licensed agent calls you back.",fields:[NAME,PHONE,ZIP],btn:"Get my free plan review",book:true},
+  contact:{h:"Request a call back",sub:"Free, with no obligation. We reply within one business day.",fields:[NAME,PHONE,ZIP,SITSEL],btn:"Request a call back",book:true},
+  stub:{h:"Get a free plan review",sub:"Free, with no obligation. A licensed agent calls you back.",fields:[NAME,PHONE,ZIP],btn:"Get my free plan review",book:true},
+  remind:{h:"Send me my dates",sub:"One email with your window, and one reminder before it opens.",fields:[Object.assign({},NAME,{full:false}),{n:"bmonth",label:"Birthday month",type:"select",options:monthOptions()},EMAIL],btn:"Send me my dates",
+    consent:null,note:"We'll only use your email for these reminders. Unsubscribe at any time. <a href=\"#privacy\">Privacy policy</a>",disc:"",
+    done:["Your dates are on the way.","Check your inbox for your seven-month window. We'll send one reminder before it opens."]},
+  seminar:{h:"Save my seat",sub:"We'll call to confirm your seat and remind you the day before.",seminar:true,fields:[NAME,Object.assign({},PHONE,{full:true}),{n:"event",label:"Which seminar",type:"select",full:true,options:"<option>Medicare 101</option><option>Turning 65 this year</option><option>Medicare for veterans</option>"},{n:"guests",label:"Seats needed",type:"select",full:true,options:"<option>1</option><option>2</option><option>3</option><option>4</option>"}],btn:"RSVP",
+    consent:null,note:"We'll use your number only to confirm your seat and remind you. Saving a seat doesn't sign you up for calls about plans.",disc:EDU,
+    done:["Your seat is saved.","We'll call to confirm and remind you the day before. For accommodation of persons with special needs, call (561) 918-2999 (TTY 711)."]},
+  host:{h:"Request a seminar",sub:"For an HOA, condo board, community or employer.",fields:[{n:"org",label:"Organization or community",full:true},{n:"name",label:"Your name and role",ac:"name",full:true},PHONE,Object.assign({},EMAIL,{full:false,opt:true}),{n:"gtype",label:"Type of group",type:"select",full:true,options:["HOA or condo association","55-plus community","Employer or HR team","Library or community center","Veterans' organization","Faith community","Other"].map(function(o){return "<option>"+o+"</option>"}).join("")}],btn:"Ask about a date",
+    consent:null,note:"We'll call you about dates and logistics only.",disc:EDU,
+    done:["Thanks. We'll be in touch about dates.","A licensed agent will call within one business day to talk through dates, the room and how you'll invite your members."]},
+  ask:{h:"Ask your question",sub:"A licensed agent replies within one business day.",fields:[NAME,{n:"reply",label:"How should we answer?",type:"select",full:true,options:"<option>Call me</option><option>Email me</option>"},Object.assign({},PHONE,{opt:true}),Object.assign({},EMAIL,{full:false,opt:true}),{n:"question",label:"Your question",type:"textarea",full:true,max:1000}],btn:"Send my question",
+    consent:null,note:"Please don't include your Medicare number or health details. Asking a question doesn't sign you up for anything.",
+    done:["We got your question.","A licensed agent will answer the way you asked, within one business day."]},
+  other:{h:"Request a call back",sub:"A licensed agent will call to set up a separate appointment about the product you choose.",consent:"Optional: Apana Insurance may also text me, and call me using automated technology, at the number above about the insurance product I chose. I don't have to agree to this to get help or to buy anything."+TXT,disc:NOTMED,
+    fields:[NAME,PHONE,ZIP,{n:"interest",label:"I'd like to talk about",type:"select",full:true,options:["Long-term care insurance","Life insurance (final expense)","Cancer or critical illness insurance","Not sure yet"].map(function(o){return "<option>"+o+"</option>"}).join("")}],btn:"Request a call back",
+    done:["Thanks. We'll call to set up a time.","This will be its own appointment, about the product you chose. It is not a Medicare appointment."]},
+  annuity:{h:"Talk about retirement income",sub:"A licensed agent will call to set up an appointment about annuities and retirement income.",consent:"Optional: Apana Insurance may also text me, and call me using automated technology, at the number above about annuities and retirement income. I don't have to agree to this to get help or to buy anything."+TXT,disc:"Annuities are not Medicare plans, are not bank deposits and are not FDIC insured. Not connected with or endorsed by the U.S. government or the federal Medicare program.",
+    fields:[NAME,PHONE,ZIP],btn:"Request a call back",
+    done:["Thanks. We'll call to set up a time.","This appointment is about annuities and retirement income only. It is not a Medicare appointment."]}
 };
+function nextDays(n){var out=[],d=new Date(Date.UTC(T.y,T.m-1,T.d));while(out.length<n){d=new Date(d.getTime()+864e5);var w=d.getUTCDay();if(w>0&&w<6)out.push(["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][w]+" "+MONTHS[d.getUTCMonth()].slice(0,3)+" "+d.getUTCDate())}return out}
+function slots(name,list,fid){return "<div class=\"slots\">"+list.map(function(x,i){return "<label class=\"slot\"><input type=\"radio\" name=\""+fid+"-"+name+"\" value=\""+x+"\""+(i===0?" checked":"")+"><span>"+x+"</span></label>"}).join("")+"</div>"}
+function bookStep(fid,first){
+  var w=document.createElement("div");w.className="book";
+  w.innerHTML="<h3>Pick a time</h3>"+
+    "<fieldset><legend>Day</legend>"+slots("day",nextDays(4),fid)+"</fieldset>"+
+    "<fieldset><legend>Time</legend>"+slots("time",["9:30 AM","11:00 AM","1:30 PM","3:30 PM"],fid)+"</fieldset>"+
+    "<fieldset><legend>How you'd like to meet</legend>"+slots("how",["Phone","Zoom","At our Boca Raton office"],fid)+"</fieldset>"+
+    "<div class=\"field\"><label for=\""+fid+"-bemail\">Email for your confirmation <span class=\"opt\">(optional)</span></label><input id=\""+fid+"-bemail\" type=\"email\" autocomplete=\"email\"></div>"+
+    "<p class=\"fine\">Before a Medicare appointment we'll confirm the topics you want to cover, so we only discuss what you asked about.</p>"+
+    "<button class=\"btn btn-primary\" type=\"button\">Confirm my time</button>";
+  $("button",w).addEventListener("click",function(){
+    var pick=function(n){var r=$("input[name=\""+fid+"-"+n+"\"]:checked",w);return r?r.value:""};
+    var msg=document.createElement("p");msg.innerHTML="<b>You're booked: "+pick("day")+" at "+pick("time")+", by "+pick("how").replace("At our","at our")+".</b> We'll call the day before to confirm.";
+    w.innerHTML="";w.appendChild(msg);
+  });
+  return w;
+}
 $$("[data-form]").forEach(function(el){
   var id=el.getAttribute("data-form"),c=FORMS[id],fid="f-"+id;
   el.innerHTML="<form class=\"form\" id=\""+fid+"\" novalidate><div class=\"card\">"+
     "<div class=\"card-head\"><h2>"+c.h+"</h2><p class=\"sub\">"+c.sub+"</p></div>"+
     (c.seminar?"<p class=\"fine\"><b>This is an educational event.</b> No plan-specific benefits will be discussed and no enrollment forms will be collected.</p>":"")+
     "<div class=\"fields\">"+c.fields.map(function(f){return field(f,fid)}).join("")+"</div>"+
-    "<label class=\"consent\"><input type=\"checkbox\" id=\""+fid+"-consent\" name=\"consent\"><span>"+(c.consent||CONSENT)+"</span></label>"+
+    (c.consent===null?"":"<label class=\"consent\"><input type=\"checkbox\" id=\""+fid+"-consent\" name=\"consent\"><span>"+(c.consent||CONSENT)+"</span></label>")+
     "<button class=\"btn btn-primary\" type=\"submit\" id=\""+fid+"-btn\">"+c.btn+"</button>"+
     "<div class=\"form-done\" role=\"status\" hidden></div>"+
-    "<p class=\"fine small\">A licensed Apana agent will contact you. Submitting this form does not enroll you in a plan. <a href=\"#privacy\">Privacy policy</a></p></div>"+
-    "<div class=\"legal-note\"><p class=\"fine\">"+(c.disc||DISC)+"</p></div></form>";
+    "<p class=\"fine small\">"+(c.note||"By sending this form you ask a licensed Apana agent to call you. Sending it does not enroll you in a plan. <a href=\"#privacy\">Privacy policy</a>")+"</p></div>"+
+    (c.disc===""?"":"<div class=\"legal-note\"><p class=\"fine\">"+(c.disc||DISC)+"</p></div>")+"</form>";
   var form=el.firstChild;
   form.addEventListener("submit",function(ev){
     ev.preventDefault();
-    var bad=$$("input[required]",form).filter(function(i){return !i.value.trim()}),done=$(".form-done",form);
+    var bad=$$("input[required],textarea[required]",form).filter(function(i){return !i.value.trim()}),done=$(".form-done",form);
     done.hidden=false;
     if(bad.length){done.textContent="Please fill in "+bad.map(function(i){return i.previousElementSibling.textContent.toLowerCase()}).join(", ")+" so an agent can reach you.";bad[0].focus();return}
     var first=(form.elements["name"].value.trim().split(/\s+/)[0]||"").slice(0,30);
     done.className="thanks";done.textContent="";
-    var h3=document.createElement("h3");h3.textContent="Thanks"+(first?", "+first:"")+".";
-    var p1=document.createElement("p");p1.textContent="On the live site a licensed Apana agent would now call you back within one business day.";
+    var h3=document.createElement("h3");h3.textContent=c.done?c.done[0]:"Thanks"+(first?", "+first:"")+". A licensed agent will call you within one business day.";
+    var p1=document.createElement("p");p1.textContent=c.done?c.done[1]:"Want to pick a time now? Choose one below, or skip it and we'll call you.";
     var p2=document.createElement("p");p2.textContent="This is a design preview, so nothing was sent.";
-    done.appendChild(h3);done.appendChild(p1);done.appendChild(p2);
+    done.appendChild(h3);done.appendChild(p1);
+    if(c.book)done.appendChild(bookStep(fid,first));
+    done.appendChild(p2);
     $$(".fields,.consent,button[type=submit]",form).forEach(function(x){x.hidden=true});
   });
 });
@@ -1412,7 +1615,9 @@ $$("[data-form]").forEach(function(el){
 var FAQ=[
   {q:"What is the Donut Hole?",a:"The coverage gap ended January 1, 2025. In 2027, once your out-of-pocket drug costs reach $2,400, you pay nothing more for covered Part D drugs for the rest of the year (up from $2,100 in 2026).",home:1},
   {q:"How much do I have to pay for Part D?",a:"Premiums vary by plan. The standard deductible can be no more than $700 in 2027 (up from $615). Covered insulin costs no more than $35 a month.",home:1},
-  {q:"How much do Part A and Part B cost?",a:"Most people pay no Part A premium. The 2027 standard Part B premium is projected at $209.50 a month and the deductible at about $292 to $310. CMS has not announced the final amounts."},
+  {q:"How much do Part A and Part B cost?",a:"Most people pay no Part A premium. In 2027 the Part A hospital deductible is $1,776, the standard Part B premium is $209.40 a month and the Part B deductible is $292. Higher incomes pay more for Part B."},
+  {q:"Does Medicare Advantage cost extra?",a:"You keep paying your Part B premium. Some plans also charge their own premium, and each sets its own copays. In 2027 no plan can charge more than $9,850 a year for covered in-network care, and many set a lower limit."},
+  {q:"Do I pay more if I use an agent?",a:"No. The insurance company pays us when you enroll, and your premium is the same whether you use an agent or not. Our help is free."},
   {q:"What is the Medicare Advantage Open Enrollment Period?",a:"January 1 to March 31. If you're in a Medicare Advantage plan, you can switch to another one or go back to Original Medicare once.",home:1},
   {q:"What if I want to change plans?",a:"Annual Enrollment runs October 15 to December 7 for coverage starting January 1. Some life events open a Special Enrollment Period at other times.",home:1},
   {q:"Can I spread out my drug costs?",a:"Yes. The Medicare Prescription Payment Plan lets you pay out-of-pocket drug costs in monthly amounts across the year. Ask your plan to enroll."}
@@ -1485,10 +1690,7 @@ function countUps(root){
   var radios=$$("#chip-row input"),i=0,stopped=false,grid=$(".hero-grid");
   function stop(){stopped=true}
   ["pointerdown","focusin","keydown","touchstart"].forEach(function(ev){grid.addEventListener(ev,stop,{passive:true})});
-  setInterval(function(){
-    if(stopped||document.hidden||$("main[data-view=home]").hidden||window.scrollY>300)return;
-    i=(i+1)%radios.length; radios[i].checked=true; radios[i].dispatchEvent(new Event("change",{bubbles:true}));
-  },3600);
+  /* The chips no longer change on their own: the reader chooses. */
 })();
 
 /* ---- Typesetting: straight quotes in the copy are shown as typographic quotes. The wording is not touched. ---- */
@@ -1527,11 +1729,44 @@ $$("img[data-photo=founder]").forEach(function(i){i.src=PHOTO});
 if("ResizeObserver" in window){
   var ro=new ResizeObserver(function(es){es.forEach(function(e){e.target.style.setProperty("--aside-h",Math.ceil(e.target.offsetHeight)+"px")})});
   $$(".aside,.cols2 > [data-form]").forEach(function(a){ro.observe(a)});
+  /* Only the form card sticks, and only when all of it fits below the header; otherwise it scrolls with the page */
+  var head0=$(".site-head"), fitCard=function(c){c.classList.toggle("nostick",c.offsetHeight>window.innerHeight-head0.offsetHeight-48)};
+  var rc=new ResizeObserver(function(es){es.forEach(function(e){fitCard(e.target)})});
+  $$(".aside .form > .card").forEach(function(c){rc.observe(c)});
+  window.addEventListener("resize",function(){$$(".aside .form > .card").forEach(fitCard)});
 }
+
+/* ---- The comparison table starts folded on phones ---- */
+if(window.matchMedia("(max-width:760px)").matches)$$("details.fold").forEach(function(d){d.open=false});
 
 /* ---- Router ---- */
 var PH=function(t){return "<span class=\"ph\">["+t+"]</span>"};
 var GUIDES={
+  "medicare-advantage":{t:"Medicare Advantage",btn:"Get a free plan review",h:"Medicare Advantage in Broward and Palm Beach: how it works.",
+    lede:"Medicare Advantage, also called Part C, is a way to get your Part A and Part B benefits through a private plan approved by Medicare. It isn't an extra layer on top of Medicare. Here is how the plans work, what they cost and how to compare them.",
+    sec:[
+      {h:"How it works",list:["You still have Medicare, and you keep paying your Part B premium.","The plan replaces Original Medicare's way of paying for care. You use the plan's card, not your red, white and blue card.","Most plans include Part D drug coverage. Many add dental, vision and hearing benefits.","You can't use a Medicare Supplement (Medigap) policy with a Medicare Advantage plan."]},
+      {h:"The main plan types",cards:[["HMO","Health Maintenance Organization","You use the plan's network and usually need a referral to see a specialist. Care outside the network generally isn't covered except emergencies."],["PPO","Preferred Provider Organization","You can see doctors outside the network, usually at a higher cost. No referral needed for specialists."],["SNP","Special Needs Plan","For people with both Medicare and Medicaid (D-SNP), certain chronic conditions (C-SNP), or living in a nursing home (I-SNP)."]]},
+      {h:"What it costs",p:["You pay your Part B premium, the plan's premium if it has one, and copays or coinsurance when you get care.","Every plan has a yearly limit on what you pay for covered services. In 2027 no plan can set its in-network limit above $9,850, and many set it lower. Once you reach it, the plan pays 100% for covered care for the rest of the year."]},
+      {h:"Hospital stays and hospital indemnity",p:["Medicare Advantage plans charge their own copays for hospital stays, often a set amount for each day. A hospital indemnity policy pays you a set cash amount for each day you're in the hospital, which can help with those copays.","It's a separate policy, so we only add it if your plan's hospital costs would be hard for you to cover. We can discuss it in the same appointment as your Medicare plan if you'd like."]},
+      {h:"Before you choose",ways:[["Doctors and hospitals","Check that each one is in the plan's network for the coming year."],["Prescriptions","Check each drug is on the plan's list, and its tier."],["Prior authorization","Many plans need approval before some services. Ask which ones."],["Travel","Outside the plan's service area, coverage is usually emergency and urgent care only."]]},
+      {h:"When you can join or switch",ways:[["Your seven-month window","When you first get Medicare. <a href=\"#turning-65\">See Turning 65.</a>"],["October 15 to December 7","Annual Enrollment. Join, switch or drop a plan for January 1."],["January 1 to March 31","If you're already in a Medicare Advantage plan, you can switch plans or go back to Original Medicare once."]]}],
+    check:["List your doctors and hospitals","List your prescriptions and doses","Decide whether you travel often","Check the plan's yearly out-of-pocket limit","Book a free plan review"]},
+  "medicare-supplement":{t:"Medicare Supplement",btn:"Get a free plan review",h:"Medicare Supplement (Medigap) in Florida: Plans A to N explained.",
+    lede:"A Medicare Supplement policy, also called Medigap, works alongside Original Medicare and pays some or all of what Medicare leaves to you: deductibles, coinsurance and copays. Here is how the standard plans compare and when to buy.",
+    sec:[
+      {h:"What Medigap is",list:["It works only with Original Medicare (Part A and Part B), not with Medicare Advantage.","It doesn't include drug coverage, so most people add a separate Part D plan.","You can see any doctor or hospital in the U.S. that takes Medicare. There's no network.","Plans are standardized by letter. Plan G from one company has the same benefits as Plan G from another. Only the price and service differ."]},
+      {h:"The plans side by side",id:"chart",html:"<p>Each check means the plan pays 100% of that benefit. A percentage means it pays that share.</p><div class=\"chart-scroll\" tabindex=\"0\" role=\"region\" aria-label=\"Medigap plan chart, scrolls sideways\"><table class=\"chart\"><caption class=\"sr\">Benefits covered by Medigap Plans A to N</caption><thead><tr><th scope=\"col\">Benefit</th><th scope=\"col\">A</th><th scope=\"col\">B</th><th scope=\"col\">C</th><th scope=\"col\">D</th><th scope=\"col\">F</th><th scope=\"col\">G</th><th scope=\"col\">K</th><th scope=\"col\">L</th><th scope=\"col\">M</th><th scope=\"col\">N</th></tr></thead><tbody><tr><th scope=\"row\">Part A coinsurance and hospital costs, up to 365 extra days</th><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td></tr><tr><th scope=\"row\">Part B coinsurance or copayment</th><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td>50%</td><td>75%</td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓*</span><span class=\"sr\">Yes, with copays</span></td></tr><tr><th scope=\"row\">Blood (first 3 pints)</th><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td>50%</td><td>75%</td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td></tr><tr><th scope=\"row\">Part A hospice care coinsurance or copayment</th><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td>50%</td><td>75%</td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td></tr><tr><th scope=\"row\">Skilled nursing facility coinsurance</th><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td>50%</td><td>75%</td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td></tr><tr><th scope=\"row\">Part A deductible</th><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td>50%</td><td>75%</td><td>50%</td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td></tr><tr><th scope=\"row\">Part B deductible</th><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td></tr><tr><th scope=\"row\">Part B excess charges</th><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"y\"><span aria-hidden=\"true\">✓</span><span class=\"sr\">Yes, 100%</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td></tr><tr><th scope=\"row\">Foreign travel emergency (up to plan limits)</th><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td>80%</td><td>80%</td><td>80%</td><td>80%</td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td class=\"n\"><span aria-hidden=\"true\">–</span><span class=\"sr\">No</span></td><td>80%</td><td>80%</td></tr><tr><th scope=\"row\">Out-of-pocket limit (2026)</th><td class=\"n\" colspan=\"6\">None</td><td>$8,000</td><td>$4,000</td><td class=\"n\" colspan=\"2\">None</td></tr></tbody></table></div><ul class=\"bullets\"><li>Plans C and F are available only to people eligible for Medicare before January 1, 2020.</li><li>Plan N pays the Part B coinsurance except for copays of up to $20 for some office visits and up to $50 for emergency room visits that don't lead to an admission.</li><li>Plans F and G also come in a high-deductible version.</li><li>Plans K and L have yearly out-of-pocket limits: $8,000 and $4,000 in 2026. <span class=\"ph\">[Update to 2027 limits when Medicare.gov posts them]</span></li></ul><p class=\"byline\">Chart from Medicare.gov, \"Compare Medigap plan benefits.\" Apana Insurance is not connected with or endorsed by the U.S. government or the federal Medicare program.</p>"},
+      {h:"When to buy in Florida",ways:[["Your Medigap Open Enrollment","Six months starting the month you're 65 or older and enrolled in Part B. Companies must sell you any plan they offer, at their best rate, whatever your health."],["Guaranteed issue rights","In certain situations, such as losing employer coverage or a Medicare Advantage plan leaving your area, you can buy certain plans without health questions, usually within 63 days."],["Under 65 with a disability","Florida requires companies to offer Medigap to people under 65 who have Medicare because of a disability, with an open enrollment period after Part B starts."],["Any other time","Companies can ask health questions and may charge more or decline."]]},
+      {h:"The Outline of Coverage",p:["When you apply, the insurance company must give you an Outline of Coverage for its policy and a Medicare buyer's guide. We'll go through both with you before you sign."]}],
+    check:["Note when your Part B starts","Decide whether you want a network or any doctor","List your prescriptions for a separate Part D plan","Compare the same plan letter from several companies","Book a free plan review"]},
+  "what-medicare-doesnt-cover":{t:"What Medicare doesn't cover",btn:"Get a free plan review",h:"What Medicare doesn't cover, and every way to cover the rest.",
+    lede:"Medicare pays for a lot, but not everything. For each gap below we start with what Medicare does pay, then list every option, including ones we don't sell.",
+    sec:[
+      {h:"Dental, vision and hearing",id:"dental-vision-hearing",ways:[["What Medicare pays","Original Medicare doesn't cover routine dental care, eye exams for glasses, or hearing aids. It covers some dental care tied to certain medical treatment, one pair of glasses after cataract surgery, and hearing exams your doctor orders to diagnose a problem."],["Medicare Advantage","Many plans include dental, vision and hearing benefits. What they cover varies a lot, so we check the details."],["A separate dental, vision and hearing plan","Pays toward cleanings, fillings, glasses and hearing aids, usually with waiting periods and yearly limits."],["Medicaid","If you qualify, Florida Medicaid may help with some dental services. <a href=\"#medicare-and-medicaid\">See Medicare and Medicaid.</a>"],["Paying as you go","Discount programs, dental schools and community clinics can cost less than a plan if you need little care."]]},
+      {h:"Long-term care",id:"long-term-care",ways:[["What Medicare pays","Up to 100 days of skilled nursing care in a benefit period, after a qualifying hospital stay. Days 21 to 100 cost $222 a day in 2027. It also covers hospice and some part-time skilled care at home. It doesn't pay for custodial care, the everyday help with bathing, dressing and eating."],["Medicaid","Florida Medicaid's Long-Term Care program is the main payer of long-term care for people with limited income and savings. It can pay for care at home, in assisted living or in a nursing home."],["VA benefits","Veterans may qualify for VA long-term care, or for Aid and Attendance payments with a VA pension. <a href=\"#veterans\">See the veterans guide.</a>"],["Your own savings","Many people pay for care from savings, income or the sale of a home."],["Long-term care insurance","A separate policy you buy before you need care. It isn't Medicare, so we discuss it only in its own appointment. <a href=\"#other-insurance\">See Other insurance.</a>"]]},
+      {h:"Care outside the U.S.",id:"care-abroad",ways:[["What Medicare pays","Original Medicare generally doesn't pay for care outside the U.S., except in rare situations, such as some emergencies near the Canadian or Mexican border."],["Medicare Supplement","Plans C, D, F, G, M and N pay 80% of emergency care abroad, after a $250 deductible, up to a $50,000 lifetime limit. <a href=\"#medicare-supplement/chart\">See the chart.</a>"],["Medicare Advantage","Some plans cover emergency and urgent care worldwide. Check before you travel."],["Travel medical insurance","A short-term policy for a trip. <span class=\"ph\">[Confirm: Apana does not sell travel medical insurance]</span>"]]}],
+    check:["Check what your current plan covers for dental, vision and hearing","Talk with family about how you'd pay for long-term care","Check your coverage before any trip abroad","Ask us to compare plans with the extras you need"]},
   "working-past-65":{t:"Working past 65",btn:"Check my timing",h:"Working past 65? When to start Medicare and when to wait.",
     lede:"If you or your spouse are still working at 65, you may not need all of Medicare yet. The answer depends mostly on the size of the employer behind your health plan.",
     sec:[
@@ -1589,7 +1824,8 @@ function renderLegal(key){
 function renderGuide(key){
   var g=GUIDES[key],h="<p class=\"lede\">"+g.lede+"</p>";
   g.sec.forEach(function(x){
-    h+="<section><h2>"+x.h+"</h2>";
+    h+="<section"+(x.id?" id=\""+x.id+"\"":"")+"><h2>"+x.h+"</h2>";
+    if(x.html)h+=x.html;
     if(x.cards){var word=x.cards.some(function(c){return c[0].length>6})?" word":"";h+="<div class=\""+(x.cards.length===2?"cards2":"cards3")+"\">"+x.cards.map(function(c){return "<div class=\"cost\"><span class=\"part"+word+"\">"+c[0]+"</span>"+(c[1]?"<b>"+c[1]+"</b>":"")+"<p>"+c[2]+"</p></div>"}).join("")+"</div>"}
     if(x.list)h+="<ul class=\"bullets\">"+x.list.map(function(l){return "<li>"+l+"</li>"}).join("")+"</ul>";
     if(x.ways)h+="<ul class=\"ways\">"+x.ways.map(function(w){return "<li><b>"+w[0]+"</b><span>"+w[1]+"</span></li>"}).join("")+"</ul>";
@@ -1613,7 +1849,7 @@ $$(".article-main").forEach(function(m){if(m.id!=="g-main")addJump(m)});
 var head=$(".site-head"), views=$$("main[data-view]"), nav=$("#nav"), burger=$("#burger"), ddBtn=$("#dd-btn"), ddPanel=$("#dd-panel");
 function closeMenus(){nav.classList.remove("open");head.classList.remove("menu-open");burger.setAttribute("aria-expanded","false");ddPanel.hidden=true;ddBtn.setAttribute("aria-expanded","false")}
 function show(first,soft){
-  var name=(location.hash||"").replace(/^#/,"")||"home", viewName=name;
+  var raw=(location.hash||"").replace(/^#/,""), parts=raw.split("/"), name=parts[0]||"home", anchor=parts[1]||"", viewName=name;
   if(GUIDES[name]){viewName="guide";renderGuide(name)}
   if(LEGAL[name]){viewName="legal";renderLegal(name)}
   var target=views.filter(function(v){return v.getAttribute("data-view")===viewName})[0];
@@ -1625,7 +1861,10 @@ function show(first,soft){
   typeset(document.body);
   if(canAnim)splitWords(document.body);
   reveal(target);reveal($(".closing"));countUps(target);
+  var nonmed=target.hasAttribute("data-nonmed");document.body.classList.toggle("nonmed",nonmed);
+  $("#close-eyebrow").textContent=nonmed?"Talk to us":"Free plan review";$("#callbar-btn").textContent=nonmed?"Call back":"Free review";
   if(!first){if(!soft){target.classList.remove("sw");void target.offsetWidth;target.classList.add("sw")}window.scrollTo(0,0);var h=$("h1",target);if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true})}}
+  if(anchor){var a=document.getElementById(anchor);if(a)setTimeout(function(){a.scrollIntoView({block:"start"});var hh=$("h2",a);if(hh){hh.setAttribute("tabindex","-1");hh.focus({preventScroll:true})}},first?120:60)}
 }
 function route(first){
   if(!first&&canAnim&&document.startViewTransition){document.startViewTransition(function(){show(false,true)})}
@@ -1642,7 +1881,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMenus()
 /* ---- Scroll to the nearest form ---- */
 document.addEventListener("click",function(e){
   var b=e.target.closest("[data-scroll-form]"); if(!b)return;
-  var v=views.filter(function(x){return !x.hidden})[0], f=v&&$("form",v);
+  var v=views.filter(function(x){return !x.hidden})[0], f=v&&($(".aside form",v)||$("form:not(#f-remind):not(#f-ask):not(#f-host)",v)||$("form",v));
   if(!f){location.hash="contact";return}
   closeMenus();
   f.scrollIntoView({behavior:canAnim?"smooth":"auto",block:"start"});
