@@ -19,7 +19,7 @@ In Divi, set the alignment on the **Tablet** (and Phone) tab of the module's Siz
 
 ## Audit fixes 1 to 16
 
-Applied as written in the audit, plus its two script changes (phone menu height, short years in the seven-month tool). For fix 9 the plain-text phone numbers in the page body (1-800-MEDICARE and the office number) are wrapped in `<span class="nb">`; FAQ question lines and script-built text were left alone. The optional `&nbsp;` in "Part B" / "Plan G" was not done.
+Applied as written in the audit, plus its two script changes (phone menu height, short years in the seven-month tool). For fix 9 the plain-text phone numbers in the page body (1-800-MEDICARE and the office number) are wrapped in `<span class="nb">`; FAQ question lines and script-built text were left alone. "Part A/B/C/D" in the page body now use a non-breaking space so they never split across lines ("Plan G" only appears in script-built text, which was left alone).
 
 ## Breakpoints to set up in Divi 5 first
 
